@@ -1,59 +1,125 @@
 <!DOCTYPE html>
+
 <html>
 <head>
 <title>Login - Delivery Jobs India</title>
+
 <style>
 body{
-
-font-family:Arial;
-background:#f4f4f4;
+    font-family:Arial,sans-serif;
+    background:#f4f4f4;
+    margin:0;
+    padding:0;
 }
 
 .container{
-width:400px;
-margin:100px auto;
-background:white;
-padding:20px;
-border-radius:10px;
-box-shadow:0 0 10px gray;
+    width:400px;
+    margin:100px auto;
+    background:white;
+    padding:25px;
+    border-radius:10px;
+    box-shadow:0 0 10px rgba(0,0,0,0.2);
 }
 
 h2{
-text-align:center;
+    text-align:center;
+    margin-bottom:20px;
 }
 
 input{
-width:100%;
-padding:10px;
-margin:10px 0;
+    width:100%;
+    padding:12px;
+    margin:10px 0;
+    box-sizing:border-box;
+    border:1px solid #ccc;
+    border-radius:5px;
 }
 
 button{
-width:100%;
-padding:10px;
-background:#007bff;
-color:white;
-border:none;
+    width:100%;
+    padding:12px;
+    background:#007bff;
+    color:white;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+    font-size:16px;
+}
+
+button:hover{
+    background:#0056b3;
+}
+
+.error{
+    color:red;
+    font-size:14px;
+    margin-bottom:10px;
+}
+
+.success{
+    color:green;
+    font-size:14px;
+    margin-bottom:10px;
+}
+
+p{
+    text-align:center;
 }
 </style>
+
 </head>
+
 <body>
 
 <div class="container">
+
 <h2>Login</h2>
 
-<input type="email" placeholder="Email">
+<div id="message"></div>
 
-<input type="password" placeholder="Password">
+<input type="email" id="email" placeholder="Enter Email">
 
-<button>Login</button>
+<input type="password" id="password" placeholder="Enter Password">
 
-<p style="text-align:center;">
+<button onclick="login()">Login</button>
+
+<p>
 New User?
-<a href="Index.html">Create Account</a>
+<a href="index.html">Create Account</a>
 </p>
 
 </div>
+
+<script>
+
+function login(){
+
+let email=document.getElementById("email").value.trim();
+let password=document.getElementById("password").value.trim();
+let msg=document.getElementById("message");
+
+msg.innerHTML="";
+
+if(email===""){
+    msg.innerHTML='<div class="error">Please enter email</div>';
+    return;
+}
+
+if(password===""){
+    msg.innerHTML='<div class="error">Please enter password</div>';
+    return;
+}
+
+if(password.length<6){
+    msg.innerHTML='<div class="error">Password must be at least 6 characters</div>';
+    return;
+}
+
+msg.innerHTML='<div class="success">Login Successful</div>';
+
+}
+
+</script>
 
 </body>
 </html>
