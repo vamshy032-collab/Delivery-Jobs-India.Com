@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Delivery Jobs India</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#f4f4f4;
+    background-image:url('logo.png');
+    background-repeat:no-repeat;
+    background-position:center;
+    background-size:cover;
+    min-height:50vh;
+}
+
+.container{
+    width:90%;
+    max-width:400px;
+    background:white;
+    padding:25px;
+    margin:50px auto;
+    border-radius:10px;
+    box-shadow:0 0 10px rgba(0,0,0,0.2);
+}
+
+.logo{
+    width:120px;
+    display:block;
+    margin:0 auto 15px;
+}
+
+h1{
+    text-align:center;
+    color:#007bff;
+    margin-bottom:10px;
+}
+
+h2{
+    text-align:center;
+    margin-bottom:20px;
+}
+
+input{
+    width:100%;
+    padding:12px;
+    margin-top:10px;
+    border:1px solid #ccc;
+    border-radius:5px;
+    font-size:15px;
+}
+
+button{
+    width:100%;
+    padding:12px;
+    background:#007bff;
+    color:white;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+    font-size:16px;
+    margin-top:10px;
+}
+
+button:hover{
+    background:#0056b3;
+}
+
+p{
+    text-align:center;
+    margin-top:15px;
+}
+
+a{
+    text-decoration:none;
+    color:#007bff;
+}
+
+.error{
+    color:red;
+    font-size:13px;
+    display:block;
+    height:18px; /* Fixed space for errors */
+    margin-top:3px;
+    margin-bottom:3px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<img src="logo.png" class="logo" alt="Logo">
+
+<h1>Delivery Jobs India</h1>
+<h2>Create Account</h2>
+
+<input type="text" id="fullname" placeholder="Full Name" maxlength="30">
+<span id="nameError" class="error"></span>
+
+<input type="email" id="email" placeholder="Email Address">
+<span id="emailError" class="error"></span>
+
+<input type="tel" id="phone" placeholder="Phone Number" maxlength="10">
+<span id="phoneError" class="error"></span>
+
+<input type="password" id="password" placeholder="Password">
+<span id="passwordError" class="error"></span>
+
+<input type="password" id="confirmPassword" placeholder="Confirm Password">
+<span id="confirmPasswordError" class="error"></span>
+
+<button onclick="validateForm()">Create Account</button>
+
+<p>
+Already have an account?
+<a href="login.html">Login</a>
+</p>
+
+</div>
+
+<script>
+function validateForm(){
+
+let fullname = document.getElementById("fullname").value.trim();
+let email = document.getElementById("email").value.trim();
+let phone = document.getElementById("phone").value.trim();
+let password = document.getElementById("password").value;
+let confirmPassword = document.getElementById("confirmPassword").value;
+
+document.getElementById("nameError").innerHTML="";
+document.getElementById("emailError").innerHTML="";
+document.getElementById("phoneError").innerHTML="";
+document.getElementById("passwordError").innerHTML="";
+document.getElementById("confirmPasswordError").innerHTML="";
+
+let valid=true;
+
+if(fullname===""){
+document.getElementById("nameError").innerHTML="Enter your full name";
+valid=false;
+}
+
+if(email===""){
+document.getElementById("emailError").innerHTML="Enter your email address";
+valid=false;
+}
+else{
+let emailPattern=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+if(!emailPattern.test(email)){
+document.getElementById("emailError").innerHTML="Enter valid email address";
+valid=false;
+}
+}
+
+let phonePattern=/^[6-9][0-9]{9}$/;
+
+if(phone===""){
+document.getElementById("phoneError").innerHTML="Enter your phone number";
+valid=false;
+}
+else if(!phonePattern.test(phone)){
+document.getElementById("phoneError").innerHTML="Enter valid phone number";
+valid=false;
+}
+
+if(password===""){
+document.getElementById("passwordError").innerHTML="Enter new password";
+valid=false;
+}
+else if(password.length < 8){
+document.getElementById("passwordError").innerHTML="Password must be at least 8 characters";
+valid=false;
+}
+
+if(confirmPassword===""){
+document.getElementById("confirmPasswordError").innerHTML="Confirm your password";
+valid=false;
+}
+else if(password !== confirmPassword){
+document.getElementById("confirmPasswordError").innerHTML="Passwords do not match";
+valid=false;
+}
+
+if(valid){
+alert("Account Created Successfully");
+}
+}
+</script>
+
+</body>
+</html>
