@@ -1,127 +1,1459 @@
 <!DOCTYPE html>
+<html lang="en">
 
-<html>
 <head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
 <title>Login - Delivery Jobs India</title>
 
+<link rel="preconnect"
+href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+rel="stylesheet">
+
 <style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
 body{
-    font-family:Arial,sans-serif;
-    background:#f4f4f4;
-    margin:0;
-    padding:0;
+
+background:
+linear-gradient(rgba(15,23,42,.92),
+rgba(15,23,42,.92)),
+url("background.jpg");
+
+background-size:cover;
+
+background-position:center;
+
+background-attachment:fixed;
+
+min-height:100vh;
+
+overflow-x:hidden;
+
+color:white;
+
+}
+
+a{
+
+text-decoration:none;
+
+}
+
+img{
+
+max-width:100%;
+
+display:block;
+
 }
 
 .container{
-    width:400px;
-    margin:100px auto;
-    background:white;
-    padding:25px;
-    border-radius:10px;
-    box-shadow:0 0 10px rgba(0,0,0,0.2);
+
+width:90%;
+
+max-width:1400px;
+
+margin:auto;
+
 }
 
-h2{
-    text-align:center;
-    margin-bottom:20px;
+/* ==========================
+HEADER
+========================== */
+
+header{
+
+position:fixed;
+
+top:0;
+
+left:0;
+
+width:100%;
+
+height:85px;
+
+background:rgba(15,23,42,.95);
+
+backdrop-filter:blur(10px);
+
+z-index:9999;
+
+box-shadow:0 5px 20px rgba(0,0,0,.20);
+
 }
 
-input{
-    width:100%;
-    padding:12px;
-    margin:10px 0;
-    box-sizing:border-box;
-    border:1px solid #ccc;
-    border-radius:5px;
+.navbar{
+
+width:90%;
+
+max-width:1400px;
+
+margin:auto;
+
+height:100%;
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+}
+.logo{
+
+display:flex;
+
+align-items:center;
+
+gap:12px;
+
 }
 
-button{
-    width:100%;
-    padding:12px;
-    background:#007bff;
-    color:white;
-    border:none;
-    border-radius:5px;
-    cursor:pointer;
-    font-size:16px;
+.logo img{
+
+width:55px;
+
+height:55px;
+
 }
 
-button:hover{
-    background:#0056b3;
+.logo h2{
+
+font-size:28px;
+
+font-weight:700;
+
+color:white;
+
 }
 
-.error{
-    color:red;
-    font-size:14px;
-    margin-bottom:10px;
+.nav-links{
+
+display:flex;
+
+gap:28px;
+
+align-items:center;
+
 }
 
-.success{
-    color:green;
-    font-size:14px;
-    margin-bottom:10px;
+.nav-links a{
+
+color:white;
+
+font-size:17px;
+
+transition:.3s;
+
 }
 
-p{
-    text-align:center;
+.nav-links a:hover{
+
+color:#ff9800;
+
 }
+
+.home-btn{
+
+background:#ff6b00;
+
+padding:12px 28px;
+
+border-radius:35px;
+
+color:white;
+
+font-weight:600;
+
+transition:.3s;
+
+}
+
+.home-btn:hover{
+
+background:#ff8c00;
+
+transform:translateY(-3px);
+
+}
+
+/* ==========================
+LOGIN SECTION
+========================== */
+
+.login-section{
+
+min-height:100vh;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+padding:140px 20px 60px;
+
+}
+
+.login-container{
+
+width:90%;
+
+max-width:1100px;
+
+display:grid;
+
+grid-template-columns:1fr 0.85fr;
+
+gap:40px;
+
+align-items:center;
+
+}
+
+/* ==========================
+LEFT SIDE
+========================== */
+
+.left{
+
+color:white;
+
+}
+
+.tag{
+
+display:inline-block;
+
+background:#ff6b00;
+
+padding:10px 20px;
+
+border-radius:30px;
+
+font-size:15px;
+
+font-weight:600;
+
+margin-bottom:20px;
+
+}
+.left h1{
+
+font-size:58px;
+
+line-height:72px;
+
+margin-bottom:20px;
+
+}
+
+.left h1 span{
+
+color:#ff9800;
+
+}
+
+.left p{
+
+font-size:20px;
+
+line-height:34px;
+
+color:#dbe4f0;
+
+margin-bottom:35px;
+
+}
+
+.stats{
+
+display:flex;
+
+flex-wrap:wrap;
+
+gap:20px;
+
+}
+
+.stat{
+
+background:rgba(255,255,255,.12);
+
+padding:18px 24px;
+
+border-radius:15px;
+
+backdrop-filter:blur(8px);
+
+min-width:140px;
+
+text-align:center;
+
+}
+
+.stat h3{
+
+font-size:30px;
+
+color:#ff9800;
+
+margin-bottom:8px;
+
+}
+
+.stat p{
+
+font-size:15px;
+
+color:white;
+
+}
+
+/* ==========================
+RIGHT SIDE LOGIN CARD
+========================== */
+
+.login-card{
+
+background:white;
+
+color:#111827;
+
+padding:30px;
+
+border-radius:20px;
+
+width:100%;
+
+max-width:420px;
+
+margin:auto;
+
+box-shadow:0 15px 35px rgba(0,0,0,.20);
+
+}
+
+.login-card h2{
+
+font-size:28px;
+
+text-align:center;
+
+margin-bottom:8px;
+
+}
+
+.login-card p{
+
+text-align:center;
+
+color:#6b7280;
+
+font-size:14px;
+
+margin-bottom:22px;
+
+}
+
+.input-group{
+
+margin-bottom:20px;
+
+}
+
+.input-group label{
+
+display:block;
+
+margin-bottom:8px;
+
+font-weight:600;
+
+}
+.input-group input{
+
+width:100%;
+
+padding:12px;
+
+border:1px solid #ddd;
+
+border-radius:10px;
+
+font-size:15px;
+
+outline:none;
+
+transition:.3s;
+
+}
+
+.input-group input:focus{
+
+border-color:#ff6b00;
+
+box-shadow:0 0 10px rgba(255,107,0,.25);
+
+}
+
+/* Error & Success */
+
+.error-msg{
+
+display:block;
+
+margin-top:6px;
+
+font-size:13px;
+
+color:#e53935;
+
+font-weight:600;
+
+}
+
+.input-group input.error{
+
+border:2px solid #e53935;
+
+}
+
+.input-group input.success{
+
+border:2px solid #2e7d32;
+
+}
+
+/* ==========================
+LOGIN BUTTON
+========================== */
+
+.login-btn{
+
+width:100%;
+
+padding:13px;
+
+border:none;
+
+border-radius:10px;
+
+background:#ff6b00;
+
+color:white;
+
+font-size:16px;
+
+font-weight:600;
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+.login-btn:hover{
+
+background:#ff8c00;
+
+transform:translateY(-2px);
+
+}
+
+/* ==========================
+GOOGLE BUTTON
+========================== */
+
+.google-btn{
+
+width:100%;
+
+padding:13px;
+
+margin-top:15px;
+
+background:#fff;
+
+border:2px solid #ddd;
+
+border-radius:10px;
+
+font-size:15px;
+
+font-weight:600;
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+.google-btn:hover{
+
+border-color:#4285F4;
+
+}
+
+/* ==========================
+OTP BUTTON
+========================== */
+
+.otp-btn{
+
+width:100%;
+
+padding:13px;
+
+margin-top:15px;
+
+border:none;
+
+border-radius:10px;
+
+background:#0f172a;
+
+color:white;
+
+font-size:15px;
+
+font-weight:600;
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+.otp-btn:hover{
+
+background:#1e293b;
+
+}
+/* ==========================
+RESPONSIVE
+========================== */
+
+@media(max-width:992px){
+
+.login-container{
+
+grid-template-columns:1fr;
+
+gap:50px;
+
+text-align:center;
+
+}
+
+.left{
+
+order:2;
+
+}
+
+.login-card{
+
+order:1;
+
+max-width:420px;
+
+margin:auto;
+
+}
+
+.stats{
+
+justify-content:center;
+
+}
+
+.left h1{
+
+font-size:46px;
+
+line-height:60px;
+
+}
+
+}
+
+@media(max-width:768px){
+
+header{
+
+height:auto;
+
+padding:15px 0;
+
+}
+
+.navbar{
+
+flex-direction:column;
+
+gap:15px;
+
+}
+
+.nav-links{
+
+flex-wrap:wrap;
+
+justify-content:center;
+
+gap:15px;
+
+}
+
+.logo h2{
+
+font-size:22px;
+
+}
+
+.left h1{
+
+font-size:36px;
+
+line-height:48px;
+
+}
+
+.left p{
+
+font-size:17px;
+
+line-height:30px;
+
+}
+
+.login-card{
+
+max-width:360px;
+
+padding:22px;
+
+}
+
+.login-card h2{
+
+font-size:24px;
+
+}
+
+.stat{
+
+width:140px;
+
+}
+
+}
+
+@media(max-width:480px){
+
+.logo img{
+
+width:45px;
+
+height:45px;
+
+}
+
+.logo h2{
+
+font-size:18px;
+
+}
+
+.nav-links a{
+
+font-size:14px;
+
+}
+
+.home-btn{
+
+padding:10px 20px;
+
+font-size:14px;
+
+}
+
+.left h1{
+
+font-size:30px;
+
+line-height:40px;
+
+}
+
+.left p{
+
+font-size:15px;
+
+line-height:26px;
+
+}
+
+.login-card{
+
+max-width:320px;
+
+padding:18px;
+
+border-radius:16px;
+
+}
+
+.input-group input{
+
+padding:10px;
+
+font-size:14px;
+
+}
+
+.login-btn,
+.google-btn,
+.otp-btn{
+
+padding:11px;
+
+font-size:14px;
+
+}
+
+.stats{
+
+display:grid;
+
+grid-template-columns:repeat(2,1fr);
+
+gap:12px;
+
+}
+
+.stat{
+
+width:100%;
+
+}
+
+}
+
 </style>
 
 </head>
 
 <body>
 
-<div class="container">
+<!-- ==========================
+HEADER
+========================== -->
+<header>
+
+<div class="navbar">
+
+<div class="logo">
+
+<img src="logo.png" alt="Delivery Jobs India">
+
+<h2>Delivery Jobs India</h2>
+
+</div>
+
+<div class="nav-links">
+
+<a href="index.html">Home</a>
+
+<form id="loginForm" action="main home.html">
+
+<a href="companies.html">Companies</a>
+
+<a href="contact.html">Contact</a>
+
+</div>
+
+<a href="index.html" class="home-btn">
+
+← Back to Home
+
+</a>
+
+</div>
+
+</header>
+
+<!-- ==========================
+LOGIN SECTION STARTS
+========================== -->
+
+<section class="login-section">
+
+<div class="login-container">
+
+<!-- LEFT SIDE -->
+
+<div class="left">
+
+<span class="tag">
+
+🚀 India's Trusted Delivery Job Portal
+
+</span>
+
+<h1>
+
+Welcome Back to
+
+<span>
+
+Delivery Jobs India
+
+</span>
+
+</h1>
+
+<p>
+
+Login to apply for thousands of Delivery Jobs from
+Swiggy, Zomato, Blinkit, Amazon, Flipkart,
+Porter, Shadowfax, Delhivery and many more.
+
+</p>
+
+<div class="stats">
+
+<div class="stat">
+
+<h3>25+</h3>
+
+<p>Companies</p>
+
+</div>
+
+<div class="stat">
+
+<h3>5000+</h3>
+
+<p>Jobs</p>
+
+</div>
+
+<div class="stat">
+
+<h3>28</h3>
+
+<p>States</p>
+
+</div>
+
+<div class="stat">
+
+<h3>24×7</h3>
+
+<p>Support</p>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ==========================
+RIGHT SIDE LOGIN CARD
+========================== -->
+
+<div class="login-card">
 
 <h2>Login</h2>
 
-<div id="message"></div>
+<p>
 
-<input type="email" id="email" placeholder="Enter Email">
+Login to continue your job search.
 
-<input type="password" id="password" placeholder="Enter Password">
+</p>
 
-<button onclick="login()">Login</button>
+<form id="loginForm" action="find jobs.html">
+    <!-- ==========================
+EMAIL / MOBILE
+========================== -->
+
+<div class="input-group">
+
+<label>Email or Mobile Number</label>
+
+<input
+type="text"
+id="emailMobile"
+name="emailMobile"
+placeholder="Enter Email or Mobile Number"
+maxlength="50"
+required>
+
+<small
+id="emailMobileError"
+class="error-msg"></small>
+
+</div>
+
+<!-- ==========================
+PASSWORD
+========================== -->
+
+<div class="input-group password-box">
+
+<label>Password</label>
+
+<input
+type="password"
+id="password"
+name="password"
+placeholder="Enter Password"
+minlength="8"
+maxlength="20"
+required>
+
+<span
+id="togglePassword"
+class="show-password">
+
+👁
+
+</span>
+
+<small
+id="passwordError"
+class="error-msg"></small>
+
+</div>
+
+<!-- ==========================
+REMEMBER ME & FORGOT PASSWORD
+========================== -->
+
+<div
+style="display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:20px;
+font-size:14px;">
+
+<label>
+
+<input
+type="checkbox">
+
+ Remember Me
+
+</label>
+
+<a
+href="forgot-password.html"
+style="color:#ff6b00;
+font-weight:600;">
+
+Forgot Password?
+
+</a>
+
+</div>
+
+<!-- ==========================
+LOGIN BUTTON
+========================== -->
+
+<button
+type="submit"
+class="login-btn">
+
+Login
+
+</button>
+
+<div
+style="text-align:center;
+margin:20px 0;
+font-weight:600;
+color:#777;">
+
+──────── OR ────────
+
+</div>
+
+<!-- ==========================
+GOOGLE LOGIN
+========================== -->
+
+<button
+type="button"
+class="google-btn">
+
+<img
+src="google.png"
+style="width:20px;
+height:20px;
+margin-right:10px;
+display:inline-block;
+vertical-align:middle;">
+
+Continue with Google
+
+</button>
+
+<!-- ==========================
+OTP LOGIN
+========================== -->
+
+<button
+type="button"
+class="otp-btn">
+
+📱 Continue with OTP
+
+</button>
+<!-- ==========================
+SIGNUP LINK
+========================== -->
+
+<p
+style="
+text-align:center;
+margin-top:25px;
+font-size:15px;">
+
+Don't have an account?
+
+<a
+href="signup.html"
+style="
+color:#ff6b00;
+font-weight:700;">
+
+Create Account
+
+</a>
+
+</p>
+
+</form>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ==========================
+FOOTER
+========================== -->
+
+<footer class="footer">
+
+<div class="container">
+
+<div class="footer-grid">
+
+<div>
+
+<h2>Delivery Jobs India</h2>
 
 <p>
-New User?
-<a href="index.html">Create Account</a>
+
+India's Trusted Delivery Jobs Portal.
+Find Delivery Jobs across India.
+
 </p>
 
 </div>
 
+<div>
+
+<h3>Quick Links</h3>
+
+<ul>
+
+<li><a href="index.html">Home</a></li>
+
+<li><a href="find jobs.html">Find Jobs</a></li>
+
+<li><a href="companies.html">Companies</a></li>
+
+<li><a href="about.html">About Us</a></li>
+
+<li><a href="contact.html">Contact</a></li>
+
+</ul>
+
+</div>
+
+<div>
+
+<h3>Support</h3>
+
+<ul>
+
+<li><a href="privacy-policy.html">Privacy Policy</a></li>
+
+<li><a href="terms.html">Terms & Conditions</a></li>
+
+<li><a href="faq.html">FAQ</a></li>
+
+<li><a href="help.html">Help Center</a></li>
+
+</ul>
+
+</div>
+
+<div>
+
+<h3>Contact</h3>
+
+<p>📞 +91 98765 43210</p>
+
+<p>📧 support@deliveryjobsindia.com</p>
+
+<p>📍 Hyderabad, Telangana, India</p>
+
+</div>
+
+</div>
+
+<hr>
+
+<p class="copyright">
+
+© 2026 Delivery Jobs India. All Rights Reserved.
+
+</p>
+
+</div>
+
+</footer>
+
+<style>
+
+.footer{
+
+background:#0f172a;
+
+padding:60px 0 30px;
+
+color:white;
+
+}
+
+.footer-grid{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+gap:30px;
+
+}
+
+.footer h2,
+.footer h3{
+
+margin-bottom:15px;
+
+}
+
+.footer ul{
+
+list-style:none;
+
+padding:0;
+
+}
+
+.footer li{
+
+margin-bottom:10px;
+
+}
+
+.footer a{
+
+color:#d1d5db;
+
+text-decoration:none;
+
+transition:.3s;
+
+}
+
+.footer a:hover{
+
+color:#ff9800;
+
+}
+
+.footer p{
+
+color:#d1d5db;
+
+line-height:28px;
+
+}
+
+.footer hr{
+
+margin:30px 0;
+
+border:1px solid rgba(255,255,255,.15);
+
+}
+
+.copyright{
+
+text-align:center;
+
+color:#d1d5db;
+
+}
+
+.show-password{
+
+position:absolute;
+
+right:15px;
+
+top:45px;
+
+cursor:pointer;
+
+font-size:18px;
+
+}
+
+.password-box{
+
+position:relative;
+
+}
+
+</style>
 <script>
 
-function login(){
+/* ==========================
+SHOW / HIDE PASSWORD
+========================== */
 
-let email=document.getElementById("email").value.trim();
-let password=document.getElementById("password").value.trim();
-let msg=document.getElementById("message");
+const togglePassword =
+document.getElementById("togglePassword");
 
-msg.innerHTML="";
+const password =
+document.getElementById("password");
 
-if(email===""){
-    msg.innerHTML='<div class="error">Please enter email</div>';
-    return;
+togglePassword.addEventListener("click",function(){
+
+if(password.type==="password"){
+
+password.type="text";
+
+togglePassword.innerHTML="🙈";
+
+}else{
+
+password.type="password";
+
+togglePassword.innerHTML="👁";
+
 }
 
-if(password===""){
-    msg.innerHTML='<div class="error">Please enter password</div>';
-    return;
+});
+
+/* ==========================
+LOGIN VALIDATION
+========================== */
+
+const loginForm =
+document.getElementById("loginForm");
+
+const emailMobile =
+document.getElementById("emailMobile");
+
+const passwordField =
+document.getElementById("password");
+
+const emailMobileError =
+document.getElementById("emailMobileError");
+
+const passwordError =
+document.getElementById("passwordError");
+
+loginForm.addEventListener("submit",function(e){
+
+let valid=true;
+
+emailMobileError.innerHTML="";
+passwordError.innerHTML="";
+
+emailMobile.classList.remove("error","success");
+passwordField.classList.remove("error","success");
+
+const value=emailMobile.value.trim();
+
+const emailRegex =
+/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+const phoneRegex =
+/^[6-9]\d{9}$/;
+
+if(value===""){
+
+emailMobileError.innerHTML=
+"Please enter Email or Mobile Number";
+
+emailMobile.classList.add("error");
+
+valid=false;
+
+}
+else if(
+!emailRegex.test(value)
+&&
+!phoneRegex.test(value)
+){
+
+emailMobileError.innerHTML=
+"Enter valid Email or 10 digit Mobile Number";
+
+emailMobile.classList.add("error");
+
+valid=false;
+
+}else{
+
+emailMobile.classList.add("success");
+
+}
+/* ==========================
+PASSWORD VALIDATION
+========================== */
+
+if(passwordField.value.trim()===""){
+
+passwordError.innerHTML=
+"Please enter Password";
+
+passwordField.classList.add("error");
+
+valid=false;
+
+}
+else if(passwordField.value.length<8){
+
+passwordError.innerHTML=
+"Password must contain minimum 8 characters";
+
+passwordField.classList.add("error");
+
+valid=false;
+
+}
+else{
+
+passwordField.classList.add("success");
+
 }
 
-if(password.length<6){
-    msg.innerHTML='<div class="error">Password must be at least 6 characters</div>';
-    return;
+/* ==========================
+STOP FORM IF INVALID
+========================== */
+
+if(!valid){
+
+e.preventDefault();
+
 }
 
-msg.innerHTML='<div class="success">Login Successful</div>';
-setTimeout(() => {
-    window.location.href = "index home.html";
-}, 1000);
+});
+
+/* ==========================
+LIVE VALIDATION
+========================== */
+
+emailMobile.addEventListener("input",function(){
+
+const value=this.value.trim();
+
+const emailRegex=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const phoneRegex=/^[6-9]\d{9}$/;
+
+if(value===""){
+
+emailMobileError.innerHTML="";
+this.classList.remove("error","success");
+
 }
+else if(emailRegex.test(value) || phoneRegex.test(value)){
+
+emailMobileError.innerHTML="";
+this.classList.remove("error");
+this.classList.add("success");
+
+}
+else{
+
+emailMobileError.innerHTML=
+"Enter valid Email or 10 digit Mobile Number";
+
+this.classList.remove("success");
+this.classList.add("error");
+
+}
+
+});
+
+passwordField.addEventListener("input",function(){
+
+if(this.value.length>=8){
+
+passwordError.innerHTML="";
+this.classList.remove("error");
+this.classList.add("success");
+
+}
+else{
+
+passwordError.innerHTML=
+"Minimum 8 characters required";
+
+this.classList.remove("success");
+this.classList.add("error");
+
+}
+
+});
 
 </script>
 
 </body>
+
 </html>

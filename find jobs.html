@@ -1,10 +1,19 @@
 <!DOCTYPE html>
-
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Find Jobs - Delivery Jobs India</title>
+
+<title>Find Delivery Jobs | Delivery Jobs India</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
 
@@ -12,130 +21,285 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:Arial,sans-serif;
+font-family:'Poppins',sans-serif;
+}
+
+html{
+scroll-behavior:smooth;
 }
 
 body{
-background:#f5f5f5;
+
+background:#F8FAFC;
+
+overflow-x:hidden;
+
 }
 
-/* Header */
+/*================ HEADER ================*/
+
 header{
-background:#0f172a;
-color:white;
-padding:20px;
-text-align:center;
-}
 
-header h1{
-font-size:40px;
-}
+position:sticky;
 
-/* Search */
-.search-box{
-background:white;
-padding:25px;
-margin:25px auto;
-width:90%;
-border-radius:15px;
-box-shadow:0 5px 15px rgba(0,0,0,0.1);
+top:0;
+
+z-index:999;
+
 display:flex;
-justify-content:center;
+
+justify-content:space-between;
+
+align-items:center;
+
+padding:18px 70px;
+
+background:linear-gradient(135deg,#5B21B6,#7C3AED);
+
+box-shadow:0 10px 30px rgba(0,0,0,.15);
+
+}
+
+.logo{
+
+display:flex;
+
+align-items:center;
+
 gap:15px;
-flex-wrap:wrap;
+
+}
+
+.logo img{
+
+width:55px;
+
+height:55px;
+
+}
+
+.logo h2{
+
+color:white;
+
+font-size:30px;
+
+font-weight:700;
+
+}
+
+nav{
+
+display:flex;
+
+gap:30px;
+
+}
+
+nav a{
+
+color:white;
+
+text-decoration:none;
+
+font-size:17px;
+
+font-weight:500;
+
+transition:.3s;
+
+}
+
+nav a:hover{
+
+color:#FFD54F;
+
+}
+
+.contact{
+
+color:white;
+
+text-align:right;
+
+line-height:28px;
+
+}
+
+/*================ HERO ================*/
+
+.hero{
+
+padding:90px 20px;
+
+text-align:center;
+
+color:white;
+
+background:linear-gradient(135deg,#5B21B6,#6D28D9,#7C3AED);
+
+background-size:300% 300%;
+
+animation:bgMove 10s infinite;
+
+}
+
+.hero h1{
+
+font-size:55px;
+
+margin-bottom:20px;
+
+}
+
+.hero p{
+
+font-size:22px;
+
+max-width:850px;
+
+margin:auto;
+
+line-height:1.8;
+
+opacity:.95;
+
+}
+
+@keyframes bgMove{
+
+0%{background-position:0% 50%;}
+
+50%{background-position:100% 50%;}
+
+100%{background-position:0% 50%;}
+
+}
+
+/*================ SEARCH BOX ================*/
+
+.search-box{
+
+width:92%;
+
+margin:-45px auto 60px;
+
+background:white;
+
+padding:35px;
+
+border-radius:20px;
+
+box-shadow:0 15px 40px rgba(0,0,0,.12);
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+gap:20px;
+
+position:relative;
+
+z-index:10;
+
 }
 
 .search-box input,
+
 .search-box select{
-padding:12px;
-width:220px;
+
+padding:15px;
+
 border:1px solid #ddd;
-border-radius:8px;
+
+border-radius:10px;
+
+font-size:16px;
+
+outline:none;
+
+transition:.3s;
+
 }
 
-.search-box button{
-background:#ff6b00;
+.search-box input:focus,
+
+.search-box select:focus{
+
+border-color:#7C3AED;
+
+box-shadow:0 0 10px rgba(124,58,237,.3);
+
+}
+
+.search-btn{
+
+background:#F97316;
+
 color:white;
+
 border:none;
-padding:12px 30px;
-border-radius:8px;
+
+border-radius:10px;
+
+padding:15px;
+
+font-size:17px;
+
 cursor:pointer;
-font-weight:bold;
+
+transition:.3s;
+
 }
 
-/* Jobs */
-.jobs{
-width:90%;
-margin:auto;
-padding:20px 0;
+.search-btn:hover{
+
+background:#EA580C;
+
+transform:translateY(-3px);
+
 }
 
-.jobs h2{
-text-align:center;
-font-size:40px;
-margin-bottom:30px;
-}
+/*================ RESPONSIVE ================*/
 
-.job-container{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-gap:25px;
-}
+@media(max-width:900px){
 
-.job-card{
-background:white;
+header{
+
+flex-direction:column;
+
 padding:20px;
-border-radius:15px;
-box-shadow:0 5px 15px rgba(0,0,0,0.1);
-transition:.4s;
-animation:fadeIn 1s ease;
+
+gap:15px;
+
 }
 
-.job-card:hover{
-transform:translateY(-10px);
+nav{
+
+flex-wrap:wrap;
+
+justify-content:center;
+
 }
 
-.job-card h3{
-color:#ff6b00;
-margin-bottom:10px;
+.hero h1{
+
+font-size:38px;
+
 }
 
-.salary{
-font-size:20px;
-font-weight:bold;
-color:green;
-margin:10px 0;
+.hero p{
+
+font-size:18px;
+
 }
 
-.apply-btn{
-background:#ff6b00;
-color:white;
-padding:10px 20px;
-border:none;
-border-radius:8px;
-cursor:pointer;
-margin-top:15px;
+.search-box{
+
+grid-template-columns:1fr;
+
 }
 
-/* Animation */
-@keyframes fadeIn{
-from{
-opacity:0;
-transform:translateY(30px);
-}
-to{
-opacity:1;
-transform:translateY(0);
-}
-}
-
-/* Footer */
-footer{
-background:#0f172a;
-color:white;
-text-align:center;
-padding:20px;
-margin-top:40px;
 }
 
 </style>
@@ -145,88 +309,1181 @@ margin-top:40px;
 <body>
 
 <header>
-<h1>Find Delivery Jobs</h1>
+
+<div class="logo">
+
+<img src="logo.png">
+
+<h2>Delivery Jobs India</h2>
+
+</div>
+
+<nav>
+
+<a href="index.html">Home</a>
+
+<a href="find jobs.html">Find Jobs</a>
+
+<a href="#">Companies</a>
+
+<a href="#">About</a>
+
+<a href="#">Contact</a>
+
+</nav>
+
+<div class="contact">
+
+📞 9493171903
+
+<br>
+
+📧 support@deliveryjobsindia.com
+
+</div>
+
 </header>
 
-<div class="search-box">
+<section class="hero">
+
+<h1>Find Your Dream Delivery Job</h1>
+
+<p>
+
+Search thousands of Delivery Jobs across India.
+
+Apply for Swiggy, Zomato, Blinkit, Amazon, Flipkart,
+
+Porter, Delhivery and many more.
+
+</p>
+
+</section>
+
+<section class="search-box">
+
+<input type="text" placeholder="Search Job Title">
 
 <input type="text" placeholder="Enter City">
 
 <select>
+
 <option>Select Company</option>
+
 <option>Swiggy</option>
+
 <option>Zomato</option>
+
 <option>Blinkit</option>
+
 <option>Amazon</option>
-<option>Zepto</option>
+
+<option>Flipkart</option>
+
+<option>Porter</option>
+
+<option>Rapido</option>
+
+<option>Delhivery</option>
+
 </select>
 
-<button>Search</button>
+<select>
 
-</div>
+<option>Job Type</option>
 
-<section class="jobs">
+<option>Full Time</option>
 
-<h2>Latest Jobs</h2>
+<option>Part Time</option>
 
-<div class="job-container">
+<option>Night Shift</option>
 
+</select>
+
+<button class="search-btn">
+
+Search Jobs
+
+</button>
+
+</section>
+<!-- ================= FEATURED JOBS ================= -->
+
+<section class="jobs-section">
+
+<h2>🔥 Featured Delivery Jobs</h2>
+
+<div class="jobs-grid">
+
+<!-- Job 1 -->
 <div class="job-card">
-<h3>Swiggy Delivery Partner</h3>
+
+<div class="company-name">Swiggy</div>
+
+<h3>Delivery Partner</h3>
+
 <p>📍 Hyderabad</p>
-<p class="salary">₹35,000 / Month</p>
-<p>Full Time</p>
+
+<p>💰 ₹25,000 - ₹45,000 / Month</p>
+
+<p>🕒 Full Time</p>
+
+<p>🚲 Bike Required</p>
+
+<div class="job-buttons">
+
 <button class="apply-btn">Apply Now</button>
+
+<button class="save-btn">❤ Save</button>
+
 </div>
 
-<div class="job-card">
-<h3>Zomato Delivery Boy</h3>
-<p>📍 Bangalore</p>
-<p class="salary">₹30,000 / Month</p>
-<p>Part Time</p>
-<button class="apply-btn">Apply Now</button>
 </div>
 
-<div class="job-card">
-<h3>Blinkit Rider</h3>
-<p>📍 Chennai</p>
-<p class="salary">₹32,000 / Month</p>
-<p>Full Time</p>
-<button class="apply-btn">Apply Now</button>
-</div>
+<!-- Job 2 -->
 
 <div class="job-card">
-<h3>Amazon Delivery Associate</h3>
+
+<div class="company-name">Zomato</div>
+
+<h3>Delivery Executive</h3>
+
+<p>📍 Warangal</p>
+
+<p>💰 ₹22,000 - ₹40,000 / Month</p>
+
+<p>🕒 Part Time</p>
+
+<p>🚲 Bike Required</p>
+
+<div class="job-buttons">
+
+<button class="apply-btn">Apply Now</button>
+
+<button class="save-btn">❤ Save</button>
+
+</div>
+
+</div>
+
+<!-- Job 3 -->
+
+<div class="job-card">
+
+<div class="company-name">Blinkit</div>
+
+<h3>Rider</h3>
+
+<p>📍 Bengaluru</p>
+
+<p>💰 ₹30,000+ Incentives</p>
+
+<p>🕒 Full Time</p>
+
+<p>🚲 Any Vehicle</p>
+
+<div class="job-buttons">
+
+<button class="apply-btn">Apply Now</button>
+
+<button class="save-btn">❤ Save</button>
+
+</div>
+
+</div>
+
+<!-- Job 4 -->
+
+<div class="job-card">
+
+<div class="company-name">Amazon</div>
+
+<h3>Delivery Associate</h3>
+
+<p>📍 Vijayawada</p>
+
+<p>💰 ₹24,000 - ₹38,000</p>
+
+<p>🕒 Full Time</p>
+
+<p>🚲 Bike Required</p>
+
+<div class="job-buttons">
+
+<button class="apply-btn">Apply Now</button>
+
+<button class="save-btn">❤ Save</button>
+
+</div>
+
+</div>
+
+<!-- Job 5 -->
+
+<div class="job-card">
+
+<div class="company-name">Flipkart</div>
+
+<h3>Delivery Boy</h3>
+
+<p>📍 Karimnagar</p>
+
+<p>💰 ₹23,000 - ₹35,000</p>
+
+<p>🕒 Full Time</p>
+
+<p>🚲 Bike Required</p>
+
+<div class="job-buttons">
+
+<button class="apply-btn">Apply Now</button>
+
+<button class="save-btn">❤ Save</button>
+
+</div>
+
+</div>
+
+<!-- Job 6 -->
+
+<div class="job-card">
+
+<div class="company-name">Rapido</div>
+
+<h3>Bike Captain</h3>
+
 <p>📍 Hyderabad</p>
-<p class="salary">₹40,000 / Month</p>
-<p>Full Time</p>
+
+<p>💰 ₹28,000+</p>
+
+<p>🕒 Flexible Hours</p>
+
+<p>🚲 Bike Required</p>
+
+<div class="job-buttons">
+
 <button class="apply-btn">Apply Now</button>
+
+<button class="save-btn">❤ Save</button>
+
 </div>
 
-<div class="job-card">
-<h3>Zepto Delivery Executive</h3>
-<p>📍 Pune</p>
-<p class="salary">₹33,000 / Month</p>
-<p>Part Time</p>
-<button class="apply-btn">Apply Now</button>
-</div>
-
-<div class="job-card">
-<h3>Delhivery Courier Partner</h3>
-<p>📍 Mumbai</p>
-<p class="salary">₹36,000 / Month</p>
-<p>Full Time</p>
-<button class="apply-btn">Apply Now</button>
 </div>
 
 </div>
 
 </section>
 
-<footer>
+<style>
+
+/*================ JOB SECTION ================*/
+
+.jobs-section{
+
+padding:70px 5%;
+
+background:#F8FAFC;
+
+}
+
+.jobs-section h2{
+
+text-align:center;
+
+font-size:42px;
+
+color:#5B21B6;
+
+margin-bottom:45px;
+
+}
+
+.jobs-grid{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+
+gap:30px;
+
+}
+
+.job-card{
+
+background:#fff;
+
+padding:28px;
+
+border-radius:18px;
+
+box-shadow:0 10px 30px rgba(0,0,0,.08);
+
+transition:.35s;
+
+border-top:5px solid #5B21B6;
+
+}
+
+.job-card:hover{
+
+transform:translateY(-10px);
+
+box-shadow:0 20px 45px rgba(91,33,182,.20);
+
+}
+
+.company-name{
+
+display:inline-block;
+
+background:#F3E8FF;
+
+color:#5B21B6;
+
+padding:8px 16px;
+
+border-radius:30px;
+
+font-weight:600;
+
+margin-bottom:18px;
+
+}
+
+.job-card h3{
+
+font-size:24px;
+
+margin-bottom:18px;
+
+color:#111827;
+
+}
+
+.job-card p{
+
+margin:10px 0;
+
+font-size:16px;
+
+color:#555;
+
+}
+
+.job-buttons{
+
+display:flex;
+
+gap:15px;
+
+margin-top:22px;
+
+}
+
+.apply-btn{
+
+flex:1;
+
+background:#F97316;
+
+color:#fff;
+
+border:none;
+
+padding:13px;
+
+border-radius:10px;
+
+cursor:pointer;
+
+font-size:16px;
+
+font-weight:600;
+
+transition:.3s;
+
+}
+
+.apply-btn:hover{
+
+background:#EA580C;
+
+}
+
+.save-btn{
+
+background:#fff;
+
+border:2px solid #5B21B6;
+
+color:#5B21B6;
+
+padding:13px 18px;
+
+border-radius:10px;
+
+cursor:pointer;
+
+font-weight:600;
+
+transition:.3s;
+
+}
+
+.save-btn:hover{
+
+background:#5B21B6;
+
+color:#fff;
+
+}
+
+@media(max-width:768px){
+
+.jobs-section h2{
+
+font-size:32px;
+
+}
+
+.jobs-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.job-buttons{
+
+flex-direction:column;
+
+}
+
+}
+
+</style>
+<!-- ================= WHY CHOOSE US ================= -->
+
+<section class="why-us">
+
+<h2>Why Choose Delivery Jobs India?</h2>
+
+<div class="features">
+
+<div class="feature-box">
+<div class="icon">🚀</div>
+<h3>Fast Hiring</h3>
+<p>Apply and connect with hiring partners quickly.</p>
+</div>
+
+<div class="feature-box">
+<div class="icon">🏢</div>
+<h3>50+ Companies</h3>
+<p>Find jobs from India's leading delivery companies.</p>
+</div>
+
+<div class="feature-box">
+<div class="icon">💰</div>
+<h3>Best Salary</h3>
+<p>Compare salary packages before applying.</p>
+</div>
+
+<div class="feature-box">
+<div class="icon">📍</div>
+<h3>Jobs Near You</h3>
+<p>Search jobs by your city and preferred location.</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- ================= STATS ================= -->
+
+<section class="stats">
+
+<div class="stat-box">
+<h2>50K+</h2>
+<p>Jobs Posted</p>
+</div>
+
+<div class="stat-box">
+<h2>100+</h2>
+<p>Hiring Companies</p>
+</div>
+
+<div class="stat-box">
+<h2>1L+</h2>
+<p>Registered Users</p>
+</div>
+
+<div class="stat-box">
+<h2>24×7</h2>
+<p>Support</p>
+</div>
+
+</section>
+
+<!-- ================= TOP COMPANIES ================= -->
+
+<section class="top-companies">
+
+<h2>Top Hiring Companies</h2>
+
+<div class="company-grid">
+
+<div class="company-card" style="background:#FC8019;">Swiggy</div>
+
+<div class="company-card" style="background:#E23744;">Zomato</div>
+
+<div class="company-card" style="background:#FFD400;color:#000;">Blinkit</div>
+
+<div class="company-card" style="background:#00C853;">Zepto</div>
+
+<div class="company-card" style="background:#2874F0;">Flipkart</div>
+
+<div class="company-card" style="background:#FF9900;">Amazon</div>
+
+<div class="company-card" style="background:#673AB7;">Delhivery</div>
+
+<div class="company-card" style="background:#5C2D91;">Porter</div>
+
+</div>
+
+</section>
+
+<!-- ================= CTA ================= -->
+
+<section class="cta">
+
+<h2>Ready To Start Your Delivery Career?</h2>
+
+<p>Search thousands of delivery jobs across India.</p>
+
+<button onclick="window.scrollTo({top:0,behavior:'smooth'})">
+
+Search Jobs
+
+</button>
+
+</section>
+
+<style>
+
+/* WHY US */
+
+.why-us{
+
+padding:80px 5%;
+
+background:#fff;
+
+}
+
+.why-us h2{
+
+text-align:center;
+
+font-size:40px;
+
+margin-bottom:45px;
+
+color:#5B21B6;
+
+}
+
+.features{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+
+gap:30px;
+
+}
+
+.feature-box{
+
+background:#F8FAFC;
+
+padding:30px;
+
+border-radius:18px;
+
+text-align:center;
+
+transition:.35s;
+
+box-shadow:0 8px 25px rgba(0,0,0,.08);
+
+}
+
+.feature-box:hover{
+
+transform:translateY(-10px);
+
+}
+
+.icon{
+
+font-size:55px;
+
+margin-bottom:20px;
+
+}
+
+.feature-box h3{
+
+margin-bottom:15px;
+
+color:#5B21B6;
+
+}
+
+/* STATS */
+
+.stats{
+
+background:linear-gradient(135deg,#5B21B6,#7C3AED);
+
+padding:70px 5%;
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+
+gap:25px;
+
+text-align:center;
+
+color:#fff;
+
+}
+
+.stat-box h2{
+
+font-size:48px;
+
+margin-bottom:10px;
+
+}
+
+.stat-box p{
+
+font-size:18px;
+
+}
+
+/* COMPANIES */
+
+.top-companies{
+
+padding:80px 5%;
+
+background:#F8FAFC;
+
+}
+
+.top-companies h2{
+
+text-align:center;
+
+font-size:40px;
+
+color:#5B21B6;
+
+margin-bottom:40px;
+
+}
+
+.company-grid{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+gap:25px;
+
+}
+
+.company-card{
+
+padding:35px;
+
+border-radius:18px;
+
+color:#fff;
+
+font-size:24px;
+
+font-weight:700;
+
+text-align:center;
+
+transition:.35s;
+
+cursor:pointer;
+
+box-shadow:0 10px 30px rgba(0,0,0,.12);
+
+}
+
+.company-card:hover{
+
+transform:translateY(-10px) scale(1.05);
+
+}
+
+/* CTA */
+
+.cta{
+
+padding:90px 20px;
+
+text-align:center;
+
+background:linear-gradient(135deg,#4C1D95,#7C3AED);
+
+color:#fff;
+
+}
+
+.cta h2{
+
+font-size:46px;
+
+margin-bottom:20px;
+
+}
+
+.cta p{
+
+font-size:20px;
+
+margin-bottom:35px;
+
+}
+
+.cta button{
+
+background:#F97316;
+
+color:#fff;
+
+border:none;
+
+padding:16px 40px;
+
+font-size:18px;
+
+border-radius:12px;
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+.cta button:hover{
+
+background:#EA580C;
+
+transform:translateY(-4px);
+
+}
+
+@media(max-width:768px){
+
+.why-us h2,
+.top-companies h2,
+.cta h2{
+
+font-size:32px;
+
+}
+
+.cta p{
+
+font-size:18px;
+
+}
+
+}
+
+</style>
+<!-- ================= FOOTER ================= -->
+
+<footer class="footer">
+
+<div class="footer-container">
+
+<div class="footer-box">
+
 <h3>Delivery Jobs India</h3>
-<p>Find Delivery Jobs Across India</p>
+
+<p>
+
+India's Trusted Delivery Jobs Platform.
+
+Find Delivery Jobs from Swiggy, Zomato,
+
+Blinkit, Amazon, Flipkart, Delhivery,
+
+Porter and many more.
+
+</p>
+
+</div>
+
+<div class="footer-box">
+
+<h3>Quick Links</h3>
+
+<a href="index.html">Home</a>
+
+<a href="find jobs.html">Find Jobs</a>
+
+<a href="#">Companies</a>
+
+<a href="#">About Us</a>
+
+<a href="#">Contact Us</a>
+
+</div>
+
+<div class="footer-box">
+
+<h3>Support</h3>
+
+<a href="#">Privacy Policy</a>
+
+<a href="#">Terms & Conditions</a>
+
+<a href="#">Help Center</a>
+
+<a href="#">FAQs</a>
+
+<a href="#">Report Issue</a>
+
+</div>
+
+<div class="footer-box">
+
+<h3>Contact</h3>
+
+<p>📞 +91 9493171903</p>
+
+<p>📧 support@deliveryjobsindia.com</p>
+
+<p>📍 Hyderabad, Telangana</p>
+
+</div>
+
+</div>
+
+<hr>
+
+<div class="social-icons">
+
+<a href="#">📘</a>
+
+<a href="#">📸</a>
+
+<a href="#">💼</a>
+
+<a href="#">▶️</a>
+
+<a href="#">📢</a>
+
+</div>
+
+<p class="copyright">
+
+© 2026 Delivery Jobs India. All Rights Reserved.
+
+</p>
+
 </footer>
 
+<!-- ================= SCROLL TO TOP ================= -->
+
+<button id="topBtn">
+
+⬆
+
+</button>
+
+<style>
+
+/*================ FOOTER ================*/
+
+.footer{
+
+background:linear-gradient(135deg,#4C1D95,#5B21B6,#7C3AED);
+
+padding:70px 5% 30px;
+
+color:#fff;
+
+margin-top:80px;
+
+}
+
+.footer-container{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+
+gap:35px;
+
+}
+
+.footer-box h3{
+
+margin-bottom:18px;
+
+font-size:24px;
+
+}
+
+.footer-box p{
+
+line-height:28px;
+
+color:#E5E7EB;
+
+}
+
+.footer-box a{
+
+display:block;
+
+color:#E5E7EB;
+
+text-decoration:none;
+
+margin:10px 0;
+
+transition:.3s;
+
+}
+
+.footer-box a:hover{
+
+color:#FBBF24;
+
+padding-left:8px;
+
+}
+
+.footer hr{
+
+margin:40px 0 25px;
+
+border:none;
+
+height:1px;
+
+background:rgba(255,255,255,.20);
+
+}
+
+/*================ SOCIAL ================*/
+
+.social-icons{
+
+display:flex;
+
+justify-content:center;
+
+gap:18px;
+
+margin-bottom:25px;
+
+}
+
+.social-icons a{
+
+width:50px;
+
+height:50px;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+background:rgba(255,255,255,.10);
+
+border-radius:50%;
+
+font-size:24px;
+
+text-decoration:none;
+
+transition:.35s;
+
+}
+
+.social-icons a:hover{
+
+background:#F97316;
+
+transform:translateY(-6px);
+
+}
+
+.copyright{
+
+text-align:center;
+
+font-size:15px;
+
+color:#E5E7EB;
+
+}
+
+/*================ SCROLL BUTTON ================*/
+
+#topBtn{
+
+position:fixed;
+
+right:25px;
+
+bottom:25px;
+
+width:55px;
+
+height:55px;
+
+border:none;
+
+border-radius:50%;
+
+background:#F97316;
+
+color:white;
+
+font-size:22px;
+
+cursor:pointer;
+
+display:none;
+
+z-index:999;
+
+transition:.35s;
+
+box-shadow:0 10px 25px rgba(0,0,0,.25);
+
+}
+
+#topBtn:hover{
+
+background:#EA580C;
+
+transform:translateY(-6px);
+
+}
+
+@media(max-width:768px){
+
+.footer{
+
+text-align:center;
+
+}
+
+.footer-container{
+
+grid-template-columns:1fr;
+
+}
+
+}
+
+</style>
+
+<script>
+
+/* Scroll Button */
+
+let topBtn=document.getElementById("topBtn");
+
+window.onscroll=function(){
+
+if(document.documentElement.scrollTop>250){
+
+topBtn.style.display="block";
+
+}else{
+
+topBtn.style.display="none";
+
+}
+
+}
+
+topBtn.onclick=function(){
+
+window.scrollTo({
+
+top:0,
+
+behavior:"smooth"
+
+});
+
+}
+
+/* Save Job */
+
+let saveButtons=document.querySelectorAll(".save-btn");
+
+saveButtons.forEach(function(btn){
+
+btn.addEventListener("click",function(){
+
+if(btn.innerHTML=="❤ Save"){
+
+btn.innerHTML="❤ Saved";
+
+btn.style.background="#5B21B6";
+
+btn.style.color="white";
+
+}else{
+
+btn.innerHTML="❤ Save";
+
+btn.style.background="white";
+
+btn.style.color="#5B21B6";
+
+}
+
+});
+
+});
+
+/* Apply Button */
+
+let applyButtons=document.querySelectorAll(".apply-btn");
+
+applyButtons.forEach(function(btn){
+
+btn.addEventListener("click",function(){
+
+alert("Application Submitted Successfully!");
+
+});
+
+});
+
+</script>
+
 </body>
+
 </html>
