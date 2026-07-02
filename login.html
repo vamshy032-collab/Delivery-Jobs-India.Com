@@ -1,672 +1,469 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+<title>Delivery Jobs India | Login with OTP</title>
 
-<title>Login - Delivery Jobs India</title>
-
-<link rel="preconnect"
-href="https://fonts.googleapis.com">
-
-<link rel="preconnect"
-href="https://fonts.gstatic.com"
-crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
-rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
 
 *{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Poppins',sans-serif;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
 }
 
 html{
-scroll-behavior:smooth;
+    scroll-behavior:smooth;
 }
 
 body{
 
-background:
-linear-gradient(rgba(15,23,42,.92),
-rgba(15,23,42,.92)),
-url("background.jpg");
-
-background-size:cover;
-
-background-position:center;
-
-background-attachment:fixed;
-
-min-height:100vh;
-
-overflow-x:hidden;
-
-color:white;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#0f172a,#1e293b,#334155);
+    overflow:hidden;
 
 }
 
-a{
+/*==========================
+        COLORS
+==========================*/
 
-text-decoration:none;
+:root{
 
-}
-
-img{
-
-max-width:100%;
-
-display:block;
-
-}
-
-.container{
-
-width:90%;
-
-max-width:1400px;
-
-margin:auto;
+--primary:#ff7a00;
+--primary-dark:#e56700;
+--white:#ffffff;
+--text:#1f2937;
+--gray:#6b7280;
+--border:#e5e7eb;
+--shadow:0 20px 60px rgba(0,0,0,.25);
 
 }
 
-/* ==========================
-HEADER
-========================== */
+/*==========================
+      BACKGROUND
+==========================*/
 
-header{
+.bg-circle{
 
-position:fixed;
+position:absolute;
+border-radius:50%;
+filter:blur(20px);
+opacity:.25;
 
-top:0;
+}
 
-left:0;
+.bg1{
 
+width:300px;
+height:300px;
+background:#ff7a00;
+top:-100px;
+left:-80px;
+
+}
+
+.bg2{
+
+width:250px;
+height:250px;
+background:#3b82f6;
+bottom:-80px;
+right:-80px;
+
+}
+
+/*==========================
+      LOGIN CARD
+==========================*/
+
+.login-card{
+
+position:relative;
 width:100%;
-
-height:85px;
-
-background:rgba(15,23,42,.95);
-
-backdrop-filter:blur(10px);
-
-z-index:9999;
-
-box-shadow:0 5px 20px rgba(0,0,0,.20);
+max-width:430px;
+background:#fff;
+border-radius:25px;
+padding:40px;
+box-shadow:var(--shadow);
+z-index:5;
+animation:fadeIn .7s ease;
 
 }
 
-.navbar{
+@keyframes fadeIn{
 
-width:90%;
+from{
 
-max-width:1400px;
-
-margin:auto;
-
-height:100%;
-
-display:flex;
-
-justify-content:space-between;
-
-align-items:center;
+opacity:0;
+transform:translateY(30px);
 
 }
+
+to{
+
+opacity:1;
+transform:translateY(0);
+
+}
+
+}
+
+/*==========================
+        LOGO
+==========================*/
+
 .logo{
 
 display:flex;
-
+justify-content:center;
 align-items:center;
-
-gap:12px;
+margin-bottom:30px;
 
 }
 
 .logo img{
 
-width:55px;
-
-height:55px;
+width:140px;
+height:auto;
+display:block;
+object-fit:contain;
 
 }
 
-.logo h2{
+/*==========================
+        TITLE
+==========================*/
 
-font-size:28px;
+.title{
 
+text-align:center;
+margin-bottom:30px;
+
+}
+
+.title h2{
+
+font-size:32px;
 font-weight:700;
-
-color:white;
-
-}
-
-.nav-links{
-
-display:flex;
-
-gap:28px;
-
-align-items:center;
+color:var(--text);
 
 }
 
-.nav-links a{
+.title span{
 
-color:white;
-
-font-size:17px;
-
-transition:.3s;
+color:var(--primary);
 
 }
 
-.nav-links a:hover{
+.title p{
 
-color:#ff9800;
-
-}
-
-.home-btn{
-
-background:#ff6b00;
-
-padding:12px 28px;
-
-border-radius:35px;
-
-color:white;
-
-font-weight:600;
-
-transition:.3s;
-
-}
-
-.home-btn:hover{
-
-background:#ff8c00;
-
-transform:translateY(-3px);
-
-}
-
-/* ==========================
-LOGIN SECTION
-========================== */
-
-.login-section{
-
-min-height:100vh;
-
-display:flex;
-
-justify-content:center;
-
-align-items:center;
-
-padding:140px 20px 60px;
-
-}
-
-.login-container{
-
-width:90%;
-
-max-width:1100px;
-
-display:grid;
-
-grid-template-columns:1fr 0.85fr;
-
-gap:40px;
-
-align-items:center;
-
-}
-
-/* ==========================
-LEFT SIDE
-========================== */
-
-.left{
-
-color:white;
-
-}
-
-.tag{
-
-display:inline-block;
-
-background:#ff6b00;
-
-padding:10px 20px;
-
-border-radius:30px;
-
+margin-top:10px;
 font-size:15px;
-
-font-weight:600;
-
-margin-bottom:20px;
-
-}
-.left h1{
-
-font-size:58px;
-
-line-height:72px;
-
-margin-bottom:20px;
+color:var(--gray);
 
 }
 
-.left h1 span{
+/*==========================
+        FORM
+==========================*/
 
-color:#ff9800;
-
-}
-
-.left p{
-
-font-size:20px;
-
-line-height:34px;
-
-color:#dbe4f0;
-
-margin-bottom:35px;
-
-}
-
-.stats{
-
-display:flex;
-
-flex-wrap:wrap;
-
-gap:20px;
-
-}
-
-.stat{
-
-background:rgba(255,255,255,.12);
-
-padding:18px 24px;
-
-border-radius:15px;
-
-backdrop-filter:blur(8px);
-
-min-width:140px;
-
-text-align:center;
-
-}
-
-.stat h3{
-
-font-size:30px;
-
-color:#ff9800;
-
-margin-bottom:8px;
-
-}
-
-.stat p{
-
-font-size:15px;
-
-color:white;
-
-}
-
-/* ==========================
-RIGHT SIDE LOGIN CARD
-========================== */
-
-.login-card{
-
-background:white;
-
-color:#111827;
-
-padding:30px;
-
-border-radius:20px;
-
-width:100%;
-
-max-width:420px;
-
-margin:auto;
-
-box-shadow:0 15px 35px rgba(0,0,0,.20);
-
-}
-
-.login-card h2{
-
-font-size:28px;
-
-text-align:center;
-
-margin-bottom:8px;
-
-}
-
-.login-card p{
-
-text-align:center;
-
-color:#6b7280;
-
-font-size:14px;
-
-margin-bottom:22px;
-
-}
-
-.input-group{
+.form-group{
 
 margin-bottom:20px;
 
 }
 
-.input-group label{
+.form-group label{
 
 display:block;
-
 margin-bottom:8px;
-
+font-size:15px;
 font-weight:600;
+color:var(--text);
 
 }
-.input-group input{
+
+.form-control{
 
 width:100%;
-
-padding:12px;
-
-border:1px solid #ddd;
-
-border-radius:10px;
-
+height:55px;
+padding:0 18px;
+border:1px solid var(--border);
+border-radius:12px;
 font-size:15px;
-
 outline:none;
-
 transition:.3s;
 
 }
 
-.input-group input:focus{
+.form-control:focus{
 
-border-color:#ff6b00;
-
-box-shadow:0 0 10px rgba(255,107,0,.25);
-
-}
-
-/* Error & Success */
-
-.error-msg{
-
-display:block;
-
-margin-top:6px;
-
-font-size:13px;
-
-color:#e53935;
-
-font-weight:600;
+border-color:var(--primary);
+box-shadow:0 0 0 3px rgba(255,122,0,.15);
 
 }
 
-.input-group input.error{
+/*==========================
+      SEND OTP BUTTON
+==========================*/
 
-border:2px solid #e53935;
-
-}
-
-.input-group input.success{
-
-border:2px solid #2e7d32;
-
-}
-
-/* ==========================
-LOGIN BUTTON
-========================== */
-
-.login-btn{
+.send-btn{
 
 width:100%;
-
-padding:13px;
-
+height:55px;
 border:none;
-
-border-radius:10px;
-
-background:#ff6b00;
-
-color:white;
-
-font-size:16px;
-
+border-radius:12px;
+background:var(--primary);
+color:#fff;
+font-size:17px;
 font-weight:600;
+cursor:pointer;
+transition:.3s;
 
+}
+
+.send-btn:hover{
+
+background:var(--primary-dark);
+
+}
+
+/*==========================
+      ERROR MESSAGE
+==========================*/
+
+.error{
+
+display:none;
+margin-top:10px;
+font-size:14px;
+color:#dc2626;
+font-weight:500;
+
+}
+
+/*==========================
+      OTP SECTION
+==========================*/
+
+.otp-section{
+
+display:none;
+margin-top:30px;
+
+}
+
+.otp-title{
+
+text-align:center;
+margin-bottom:20px;
+
+}
+
+.otp-title h3{
+
+font-size:22px;
+color:var(--text);
+
+}
+
+.otp-title p{
+
+margin-top:8px;
+color:var(--gray);
+
+}
+/*==========================
+        OTP BOXES
+==========================*/
+
+.otp-inputs{
+
+display:flex;
+justify-content:space-between;
+gap:12px;
+margin-bottom:25px;
+
+}
+
+.otp-input{
+
+width:60px;
+height:60px;
+border:2px solid var(--border);
+border-radius:12px;
+text-align:center;
+font-size:24px;
+font-weight:700;
+outline:none;
+transition:.3s;
+
+}
+
+.otp-input:focus{
+
+border-color:var(--primary);
+box-shadow:0 0 0 3px rgba(255,122,0,.15);
+
+}
+
+/*==========================
+      VERIFY BUTTON
+==========================*/
+
+.verify-btn{
+
+width:100%;
+height:55px;
+border:none;
+border-radius:12px;
+background:var(--primary);
+color:#fff;
+font-size:17px;
+font-weight:600;
+cursor:pointer;
+transition:.3s;
+
+}
+
+.verify-btn:hover{
+
+background:var(--primary-dark);
+
+}
+
+/*==========================
+      RESEND OTP
+==========================*/
+
+.resend{
+
+text-align:center;
+margin-top:18px;
+
+}
+
+.resend a{
+
+text-decoration:none;
+color:var(--primary);
+font-weight:600;
 cursor:pointer;
 
-transition:.3s;
+}
+
+.resend a:hover{
+
+text-decoration:underline;
 
 }
 
-.login-btn:hover{
+/*==========================
+      CHANGE NUMBER
+==========================*/
 
-background:#ff8c00;
+.change-number{
 
-transform:translateY(-2px);
-
-}
-
-/* ==========================
-GOOGLE BUTTON
-========================== */
-
-.google-btn{
-
-width:100%;
-
-padding:13px;
-
+text-align:center;
 margin-top:15px;
 
-background:#fff;
+}
 
-border:2px solid #ddd;
+.change-number a{
 
-border-radius:10px;
-
+text-decoration:none;
 font-size:15px;
-
+color:#2563eb;
 font-weight:600;
 
-cursor:pointer;
+}
 
-transition:.3s;
+.change-number a:hover{
+
+text-decoration:underline;
 
 }
 
-.google-btn:hover{
+/*==========================
+        BACK BUTTON
+==========================*/
 
-border-color:#4285F4;
+.back-home{
 
-}
-
-/* ==========================
-OTP BUTTON
-========================== */
-
-.otp-btn{
-
-width:100%;
-
-padding:13px;
-
-margin-top:15px;
-
-border:none;
-
-border-radius:10px;
-
-background:#0f172a;
-
-color:white;
-
-font-size:15px;
-
-font-weight:600;
-
-cursor:pointer;
-
-transition:.3s;
-
-}
-
-.otp-btn:hover{
-
-background:#1e293b;
-
-}
-/* ==========================
-RESPONSIVE
-========================== */
-
-@media(max-width:992px){
-
-.login-container{
-
-grid-template-columns:1fr;
-
-gap:50px;
-
+margin-top:25px;
 text-align:center;
 
 }
 
-.left{
+.back-home a{
 
-order:2;
-
-}
-
-.login-card{
-
-order:1;
-
-max-width:420px;
-
-margin:auto;
+text-decoration:none;
+color:#6b7280;
+font-size:14px;
+font-weight:500;
 
 }
 
-.stats{
+.back-home a:hover{
 
-justify-content:center;
-
-}
-
-.left h1{
-
-font-size:46px;
-
-line-height:60px;
+color:var(--primary);
 
 }
 
+/*==========================
+      FOOTER TEXT
+==========================*/
+
+.footer-text{
+
+margin-top:30px;
+text-align:center;
+font-size:13px;
+color:#9ca3af;
+line-height:22px;
+
 }
+
+/*==========================
+      RESPONSIVE
+==========================*/
 
 @media(max-width:768px){
 
-header{
-
-height:auto;
-
-padding:15px 0;
-
-}
-
-.navbar{
-
-flex-direction:column;
-
-gap:15px;
-
-}
-
-.nav-links{
-
-flex-wrap:wrap;
-
-justify-content:center;
-
-gap:15px;
-
-}
-
-.logo h2{
-
-font-size:22px;
-
-}
-
-.left h1{
-
-font-size:36px;
-
-line-height:48px;
-
-}
-
-.left p{
-
-font-size:17px;
-
-line-height:30px;
-
-}
-
 .login-card{
 
-max-width:360px;
-
-padding:22px;
-
-}
-
-.login-card h2{
-
-font-size:24px;
+width:92%;
+padding:30px 25px;
 
 }
 
-.stat{
+.title h2{
 
-width:140px;
+font-size:28px;
+
+}
+
+.logo img{
+
+width:75px;
+
+}
+
+.otp-input{
+
+width:52px;
+height:52px;
+font-size:22px;
 
 }
 
@@ -674,786 +471,347 @@ width:140px;
 
 @media(max-width:480px){
 
-.logo img{
-
-width:45px;
-
-height:45px;
-
-}
-
-.logo h2{
-
-font-size:18px;
-
-}
-
-.nav-links a{
-
-font-size:14px;
-
-}
-
-.home-btn{
-
-padding:10px 20px;
-
-font-size:14px;
-
-}
-
-.left h1{
-
-font-size:30px;
-
-line-height:40px;
-
-}
-
-.left p{
-
-font-size:15px;
-
-line-height:26px;
-
-}
-
 .login-card{
 
-max-width:320px;
-
-padding:18px;
-
-border-radius:16px;
+padding:25px 20px;
 
 }
 
-.input-group input{
+.title h2{
 
-padding:10px;
-
-font-size:14px;
+font-size:24px;
 
 }
 
-.login-btn,
-.google-btn,
-.otp-btn{
+.form-control,
+.send-btn,
+.verify-btn{
 
-padding:11px;
-
-font-size:14px;
+height:50px;
 
 }
 
-.stats{
+.otp-input{
 
-display:grid;
-
-grid-template-columns:repeat(2,1fr);
-
-gap:12px;
-
-}
-
-.stat{
-
-width:100%;
+width:45px;
+height:50px;
+font-size:20px;
 
 }
 
 }
+
+/*==========================
+      END CSS
+==========================*/
 
 </style>
 
 </head>
-
 <body>
 
-<!-- ==========================
-HEADER
-========================== -->
-<header>
+<!-- Background -->
+<div class="bg-circle bg1"></div>
+<div class="bg-circle bg2"></div>
 
-<div class="navbar">
-
-<div class="logo">
-
-<img src="logo.png" alt="Delivery Jobs India">
-
-<h2>Delivery Jobs India</h2>
-
-</div>
-
-<div class="nav-links">
-
-<a href="index.html">Home</a>
-
-<form id="loginForm" action="main home.html">
-
-<a href="companies.html">Companies</a>
-
-<a href="contact.html">Contact</a>
-
-</div>
-
-<a href="index.html" class="home-btn">
-
-← Back to Home
-
-</a>
-
-</div>
-
-</header>
-
-<!-- ==========================
-LOGIN SECTION STARTS
-========================== -->
-
-<section class="login-section">
-
-<div class="login-container">
-
-<!-- LEFT SIDE -->
-
-<div class="left">
-
-<span class="tag">
-
-🚀 India's Trusted Delivery Job Portal
-
-</span>
-
-<h1>
-
-Welcome Back to
-
-<span>
-
-Delivery Jobs India
-
-</span>
-
-</h1>
-
-<p>
-
-Login to apply for thousands of Delivery Jobs from
-Swiggy, Zomato, Blinkit, Amazon, Flipkart,
-Porter, Shadowfax, Delhivery and many more.
-
-</p>
-
-<div class="stats">
-
-<div class="stat">
-
-<h3>25+</h3>
-
-<p>Companies</p>
-
-</div>
-
-<div class="stat">
-
-<h3>5000+</h3>
-
-<p>Jobs</p>
-
-</div>
-
-<div class="stat">
-
-<h3>28</h3>
-
-<p>States</p>
-
-</div>
-
-<div class="stat">
-
-<h3>24×7</h3>
-
-<p>Support</p>
-
-</div>
-
-</div>
-
-</div>
-
-<!-- ==========================
-RIGHT SIDE LOGIN CARD
-========================== -->
+<!-- ===========================
+        LOGIN CARD
+=========================== -->
 
 <div class="login-card">
 
-<h2>Login</h2>
+    <!-- Logo -->
 
-<p>
+    <div class="logo">
 
-Login to continue your job search.
+        <img src="logo.png" alt="Delivery Jobs India Logo">
+    </div>
 
-</p>
+    <!-- Title -->
 
-<form id="loginForm" action="find jobs.html">
-    <!-- ==========================
-EMAIL / MOBILE
-========================== -->
+    <div class="title">
 
-<div class="input-group">
+        <h2>Welcome <span>Back</span></h2>
 
-<label>Email or Mobile Number</label>
+        <p>Login with your Mobile Number or Email</p>
 
-<input
-type="text"
-id="emailMobile"
-name="emailMobile"
-placeholder="Enter Email or Mobile Number"
-maxlength="50"
-required>
+    </div>
 
-<small
-id="emailMobileError"
-class="error-msg"></small>
+    <!-- ===========================
+            LOGIN FORM
+    =========================== -->
 
-</div>
+    <form id="loginForm">
 
-<!-- ==========================
-PASSWORD
-========================== -->
+        <div class="form-group">
 
-<div class="input-group password-box">
+            <label>Email Address or Mobile Number</label>
 
-<label>Password</label>
+            <input
+                type="text"
+                class="form-control"
+                id="loginInput"
+                placeholder="Enter Email or Mobile Number"
+                required>
 
-<input
-type="password"
-id="password"
-name="password"
-placeholder="Enter Password"
-minlength="8"
-maxlength="20"
-required>
+            <div class="error" id="loginError">
 
-<span
-id="togglePassword"
-class="show-password">
+                Please enter a valid Email or 10 digit Mobile Number.
 
-👁
+            </div>
 
-</span>
+        </div>
 
-<small
-id="passwordError"
-class="error-msg"></small>
+        <button type="submit" class="send-btn">
 
-</div>
+            Send OTP
 
-<!-- ==========================
-REMEMBER ME & FORGOT PASSWORD
-========================== -->
+        </button>
 
-<div
-style="display:flex;
-justify-content:space-between;
-align-items:center;
-margin-bottom:20px;
-font-size:14px;">
+    </form>
 
-<label>
+    <!-- ===========================
+            OTP SECTION
+    =========================== -->
 
-<input
-type="checkbox">
+    <div class="otp-section" id="otpSection">
 
- Remember Me
+        <div class="otp-title">
 
-</label>
+            <h3>OTP Verification</h3>
 
-<a
-href="forgot-password.html"
-style="color:#ff6b00;
-font-weight:600;">
+            <p>
 
-Forgot Password?
+                Enter the 4 digit OTP sent to
 
-</a>
+                <strong id="userValue"></strong>
 
-</div>
+            </p>
 
-<!-- ==========================
-LOGIN BUTTON
-========================== -->
+        </div>
 
-<button
-type="submit"
-class="login-btn">
+        <div class="otp-inputs">
 
-Login
+            <input type="text" maxlength="1" class="otp-input">
 
-</button>
+            <input type="text" maxlength="1" class="otp-input">
 
-<div
-style="text-align:center;
-margin:20px 0;
-font-weight:600;
-color:#777;">
+            <input type="text" maxlength="1" class="otp-input">
 
-──────── OR ────────
+            <input type="text" maxlength="1" class="otp-input">
 
-</div>
+        </div>
 
-<!-- ==========================
-GOOGLE LOGIN
-========================== -->
+        <div class="error" id="otpError">
 
-<button
-type="button"
-class="google-btn">
+            Invalid OTP. Please try again.
 
-<img
-src="google.png"
-style="width:20px;
-height:20px;
-margin-right:10px;
-display:inline-block;
-vertical-align:middle;">
+        </div>
 
-Continue with Google
+        <button class="verify-btn" id="verifyBtn">
 
-</button>
+            Verify OTP
 
-<!-- ==========================
-OTP LOGIN
-========================== -->
+        </button>
 
-<button
-type="button"
-class="otp-btn">
+        <div class="resend">
 
-📱 Continue with OTP
+            <a href="#" id="resendOtp">
 
-</button>
-<!-- ==========================
-SIGNUP LINK
-========================== -->
+                Resend OTP
 
-<p
-style="
-text-align:center;
-margin-top:25px;
-font-size:15px;">
+            </a>
 
-Don't have an account?
+        </div>
 
-<a
-href="signup.html"
-style="
-color:#ff6b00;
-font-weight:700;">
+        <div class="change-number">
 
-Create Account
+            <a href="#" id="changeNumber">
 
-</a>
+                Change Mobile Number / Email
 
-</p>
+            </a>
 
-</form>
+        </div>
+
+    </div>
+
+    <!-- ===========================
+            BACK BUTTON
+    =========================== -->
+
+    <div class="back-home">
+
+        <a href="index.html">
+
+            ← Back to Home
+
+        </a>
+
+    </div>
+
+    <!-- Footer -->
+
+    <div class="footer-text">
+
+        © 2026 Delivery Jobs India <br>
+
+        Secure Login with OTP
+
+    </div>
 
 </div>
-
-</div>
-
-</section>
-
-<!-- ==========================
-FOOTER
-========================== -->
-
-<footer class="footer">
-
-<div class="container">
-
-<div class="footer-grid">
-
-<div>
-
-<h2>Delivery Jobs India</h2>
-
-<p>
-
-India's Trusted Delivery Jobs Portal.
-Find Delivery Jobs across India.
-
-</p>
-
-</div>
-
-<div>
-
-<h3>Quick Links</h3>
-
-<ul>
-
-<li><a href="index.html">Home</a></li>
-
-<li><a href="find jobs.html">Find Jobs</a></li>
-
-<li><a href="companies.html">Companies</a></li>
-
-<li><a href="about.html">About Us</a></li>
-
-<li><a href="contact.html">Contact</a></li>
-
-</ul>
-
-</div>
-
-<div>
-
-<h3>Support</h3>
-
-<ul>
-
-<li><a href="privacy-policy.html">Privacy Policy</a></li>
-
-<li><a href="terms.html">Terms & Conditions</a></li>
-
-<li><a href="faq.html">FAQ</a></li>
-
-<li><a href="help.html">Help Center</a></li>
-
-</ul>
-
-</div>
-
-<div>
-
-<h3>Contact</h3>
-
-<p>📞 +91 98765 43210</p>
-
-<p>📧 support@deliveryjobsindia.com</p>
-
-<p>📍 Hyderabad, Telangana, India</p>
-
-</div>
-
-</div>
-
-<hr>
-
-<p class="copyright">
-
-© 2026 Delivery Jobs India. All Rights Reserved.
-
-</p>
-
-</div>
-
-</footer>
-
-<style>
-
-.footer{
-
-background:#0f172a;
-
-padding:60px 0 30px;
-
-color:white;
-
-}
-
-.footer-grid{
-
-display:grid;
-
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-
-gap:30px;
-
-}
-
-.footer h2,
-.footer h3{
-
-margin-bottom:15px;
-
-}
-
-.footer ul{
-
-list-style:none;
-
-padding:0;
-
-}
-
-.footer li{
-
-margin-bottom:10px;
-
-}
-
-.footer a{
-
-color:#d1d5db;
-
-text-decoration:none;
-
-transition:.3s;
-
-}
-
-.footer a:hover{
-
-color:#ff9800;
-
-}
-
-.footer p{
-
-color:#d1d5db;
-
-line-height:28px;
-
-}
-
-.footer hr{
-
-margin:30px 0;
-
-border:1px solid rgba(255,255,255,.15);
-
-}
-
-.copyright{
-
-text-align:center;
-
-color:#d1d5db;
-
-}
-
-.show-password{
-
-position:absolute;
-
-right:15px;
-
-top:45px;
-
-cursor:pointer;
-
-font-size:18px;
-
-}
-
-.password-box{
-
-position:relative;
-
-}
-
-</style>
 <script>
 
-/* ==========================
-SHOW / HIDE PASSWORD
-========================== */
+// ==============================
+// Email / Mobile Validation
+// ==============================
 
-const togglePassword =
-document.getElementById("togglePassword");
+const loginForm = document.getElementById("loginForm");
+const loginInput = document.getElementById("loginInput");
+const loginError = document.getElementById("loginError");
 
-const password =
-document.getElementById("password");
+const otpSection = document.getElementById("otpSection");
+const userValue = document.getElementById("userValue");
 
-togglePassword.addEventListener("click",function(){
-
-if(password.type==="password"){
-
-password.type="text";
-
-togglePassword.innerHTML="🙈";
-
-}else{
-
-password.type="password";
-
-togglePassword.innerHTML="👁";
-
-}
-
-});
-
-/* ==========================
-LOGIN VALIDATION
-========================== */
-
-const loginForm =
-document.getElementById("loginForm");
-
-const emailMobile =
-document.getElementById("emailMobile");
-
-const passwordField =
-document.getElementById("password");
-
-const emailMobileError =
-document.getElementById("emailMobileError");
-
-const passwordError =
-document.getElementById("passwordError");
+const emailPattern=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const mobilePattern=/^[6-9]\d{9}$/;
 
 loginForm.addEventListener("submit",function(e){
 
-let valid=true;
+e.preventDefault();
 
-emailMobileError.innerHTML="";
-passwordError.innerHTML="";
+const value=loginInput.value.trim();
 
-emailMobile.classList.remove("error","success");
-passwordField.classList.remove("error","success");
+if(emailPattern.test(value) || mobilePattern.test(value)){
 
-const value=emailMobile.value.trim();
+loginError.style.display="none";
 
-const emailRegex =
-/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+userValue.innerHTML=value;
 
-const phoneRegex =
-/^[6-9]\d{9}$/;
+otpSection.style.display="block";
 
-if(value===""){
-
-emailMobileError.innerHTML=
-"Please enter Email or Mobile Number";
-
-emailMobile.classList.add("error");
-
-valid=false;
-
-}
-else if(
-!emailRegex.test(value)
-&&
-!phoneRegex.test(value)
-){
-
-emailMobileError.innerHTML=
-"Enter valid Email or 10 digit Mobile Number";
-
-emailMobile.classList.add("error");
-
-valid=false;
-
-}else{
-
-emailMobile.classList.add("success");
-
-}
-/* ==========================
-PASSWORD VALIDATION
-========================== */
-
-if(passwordField.value.trim()===""){
-
-passwordError.innerHTML=
-"Please enter Password";
-
-passwordField.classList.add("error");
-
-valid=false;
-
-}
-else if(passwordField.value.length<8){
-
-passwordError.innerHTML=
-"Password must contain minimum 8 characters";
-
-passwordField.classList.add("error");
-
-valid=false;
+loginForm.style.display="none";
 
 }
 else{
 
-passwordField.classList.add("success");
+loginError.style.display="block";
 
 }
 
-/* ==========================
-STOP FORM IF INVALID
-========================== */
+});
 
-if(!valid){
+
+// ==============================
+// OTP Auto Move
+// ==============================
+
+const otpInputs=document.querySelectorAll(".otp-input");
+
+otpInputs.forEach((input,index)=>{
+
+input.addEventListener("input",function(){
+
+this.value=this.value.replace(/[^0-9]/g,'');
+
+if(this.value.length==1 && index<otpInputs.length-1){
+
+otpInputs[index+1].focus();
+
+}
+
+});
+
+input.addEventListener("keydown",function(e){
+
+if(e.key==="Backspace" && this.value==="" && index>0){
+
+otpInputs[index-1].focus();
+
+}
+
+});
+
+});
+
+
+// ==============================
+// Verify OTP
+// Demo OTP = 1234
+// ==============================
+
+document.getElementById("verifyBtn").addEventListener("click",function(){
+
+let otp="";
+
+otpInputs.forEach(input=>{
+
+otp+=input.value;
+
+});
+
+if(otp==="1234"){
+
+localStorage.setItem("isLoggedIn","true");
+
+window.location.href="home.html";
+
+}
+else{
+
+document.getElementById("otpError").style.display="block";
+
+}
+
+});
+
+
+// ==============================
+// Resend OTP
+// ==============================
+
+document.getElementById("resendOtp").addEventListener("click",function(e){
 
 e.preventDefault();
 
-}
+alert("OTP Sent Successfully.\n\nDemo OTP : 1234");
 
 });
 
-/* ==========================
-LIVE VALIDATION
-========================== */
 
-emailMobile.addEventListener("input",function(){
+// ==============================
+// Change Number
+// ==============================
 
-const value=this.value.trim();
+document.getElementById("changeNumber").addEventListener("click",function(e){
 
-const emailRegex=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const phoneRegex=/^[6-9]\d{9}$/;
+e.preventDefault();
 
-if(value===""){
+loginForm.reset();
 
-emailMobileError.innerHTML="";
-this.classList.remove("error","success");
+otpInputs.forEach(box=>box.value="");
 
-}
-else if(emailRegex.test(value) || phoneRegex.test(value)){
+otpSection.style.display="none";
 
-emailMobileError.innerHTML="";
-this.classList.remove("error");
-this.classList.add("success");
+loginForm.style.display="block";
 
-}
-else{
-
-emailMobileError.innerHTML=
-"Enter valid Email or 10 digit Mobile Number";
-
-this.classList.remove("success");
-this.classList.add("error");
-
-}
+loginInput.focus();
 
 });
 
-passwordField.addEventListener("input",function(){
 
-if(this.value.length>=8){
+// ==============================
+// Prevent Login Page After Login
+// ==============================
 
-passwordError.innerHTML="";
-this.classList.remove("error");
-this.classList.add("success");
+if(localStorage.getItem("isLoggedIn")=="true"){
 
-}
-else{
-
-passwordError.innerHTML=
-"Minimum 8 characters required";
-
-this.classList.remove("success");
-this.classList.add("error");
+window.location.href="home.html";
 
 }
-
-});
 
 </script>
 
 </body>
-
 </html>

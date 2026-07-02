@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>
+
+My Profile | Delivery Jobs India
+
+</title>
+
+<link rel="preconnect"
+href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+<style>
+
+*{
+
+margin:0;
+
+padding:0;
+
+box-sizing:border-box;
+
+font-family:'Poppins',sans-serif;
+
+}
+
+body{
+
+background:#f5f7fb;
+
+color:#222;
+
+overflow-x:hidden;
+
+}
+
+:root{
+
+--primary:#ff7a00;
+
+--secondary:#111827;
+
+--white:#ffffff;
+
+--gray:#666;
+
+--shadow:0 10px 30px rgba(0,0,0,.08);
+
+}
+/*=========================================
+            WRAPPER
+=========================================*/
+
+.wrapper{
+
+display:flex;
+
+min-height:100vh;
+
+}
+
+/*=========================================
+            SIDEBAR
+=========================================*/
+
+.sidebar{
+
+width:240px;
+
+background:#111827;
+
+color:#fff;
+
+padding:25px 18px;
+
+display:flex;
+
+flex-direction:column;
+
+justify-content:space-between;
+
+}
+
+/*=========================================
+            LOGO
+=========================================*/
+
+.logo{
+
+display:flex;
+
+align-items:center;
+
+gap:12px;
+
+margin-bottom:40px;
+
+}
+
+.logo img{
+
+width:65px;
+
+height:65px;
+
+object-fit:contain;
+
+}
+
+.logo-text h2{
+
+font-size:22px;
+
+font-weight:700;
+
+line-height:28px;
+
+color:#fff;
+
+}
+
+.logo-text span{
+
+color:#ff7a00;
+
+}
+/*=========================================
+                MENU
+=========================================*/
+
+.menu{
+
+list-style:none;
+
+}
+
+.menu li{
+
+margin-bottom:16px;
+
+}
+
+.menu li a{
+
+display:flex;
+
+align-items:center;
+
+gap:12px;
+
+padding:14px 16px;
+
+border-radius:12px;
+
+text-decoration:none;
+
+font-size:16px;
+
+font-weight:600;
+
+color:#fff;
+
+transition:.3s;
+
+}
+
+.menu li a i{
+
+font-size:18px;
+
+width:22px;
+
+text-align:center;
+
+}
+
+.menu li a:hover,
+
+.menu li a.active{
+
+background:#ff7a00;
+
+}
+
+/*=========================================
+            NEED SUPPORT
+=========================================*/
+
+.support-box{
+
+background:#fff;
+
+border-radius:16px;
+
+padding:18px;
+
+box-shadow:0 8px 20px rgba(0,0,0,.08);
+
+}
+
+.support-box h3{
+
+font-size:18px;
+
+color:#111827;
+
+margin-bottom:8px;
+
+}
+
+.support-box p{
+
+font-size:13px;
+
+color:#666;
+
+line-height:22px;
+
+margin-bottom:15px;
+
+}
+/*=========================================
+        SUPPORT DETAILS
+=========================================*/
+
+.support-item{
+
+display:flex;
+
+align-items:center;
+
+gap:10px;
+
+margin-bottom:14px;
+
+font-size:14px;
+
+color:#444;
+
+}
+
+.support-item i{
+
+width:36px;
+
+height:36px;
+
+border-radius:50%;
+
+background:#fff4ea;
+
+color:#ff7a00;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+font-size:16px;
+
+}
+
+/*=========================================
+            CONTENT
+=========================================*/
+
+.content{
+
+flex:1;
+
+padding:35px;
+
+background:#f5f7fb;
+
+}
+
+/*=========================================
+        HEADER CARD
+=========================================*/
+.header-top{
+
+display:flex;
+
+justify-content:flex-end;
+
+margin-bottom:20px;
+
+}
+
+.home-btn{
+
+display:inline-flex;
+
+align-items:center;
+
+gap:8px;
+
+padding:10px 22px;
+
+background:#ff7a00;
+
+color:#fff;
+
+text-decoration:none;
+
+font-size:15px;
+
+font-weight:600;
+
+border-radius:10px;
+
+transition:.3s;
+
+}
+
+.home-btn:hover{
+
+background:#ea6500;
+
+}
+.header-card{
+
+background:#fff;
+
+padding:25px 30px;
+
+border-radius:18px;
+
+box-shadow:var(--shadow);
+
+margin-bottom:25px;
+
+}
+
+.header-card h1{
+
+font-size:32px;
+
+font-weight:700;
+
+color:#111827;
+
+margin-bottom:8px;
+
+}
+
+.header-card p{
+
+font-size:15px;
+
+color:#666;
+
+line-height:24px;
+
+}
+/*=========================================
+            PROFILE CARD
+=========================================*/
+
+.profile-card{
+
+background:#fff;
+
+border-radius:20px;
+
+padding:30px;
+
+box-shadow:var(--shadow);
+
+text-align:center;
+
+}
+
+/*=========================================
+            PROFILE IMAGE
+=========================================*/
+
+.profile-image{
+
+width:90px;
+
+height:90px;
+
+margin:0 auto 15px;
+
+border-radius:50%;
+
+background:#fff4ea;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+overflow:hidden;
+
+border:3px solid #ff7a00;
+
+}
+
+.profile-image img{
+
+width:100%;
+
+height:100%;
+
+object-fit:cover;
+
+}
+
+.profile-image i{
+
+font-size:40px;
+
+color:#ff7a00;
+
+}
+
+/*=========================================
+        PROFILE NAME
+=========================================*/
+
+.profile-name{
+
+font-size:28px;
+
+font-weight:700;
+
+color:#111827;
+
+margin-bottom:5px;
+
+}
+
+.profile-role{
+
+font-size:15px;
+
+color:#666;
+
+margin-bottom:25px;
+
+}
+/*=========================================
+            PROFILE FORM
+=========================================*/
+
+.profile-form{
+
+max-width:450px;
+
+margin:0 auto;
+
+text-align:left;
+
+}
+
+.form-group{
+
+margin-bottom:18px;
+
+}
+
+.form-group label{
+
+display:block;
+
+font-size:15px;
+
+font-weight:600;
+
+margin-bottom:6px;
+
+color:#111827;
+
+}
+
+.form-control{
+
+width:100%;
+
+height:46px;
+
+padding:0 15px;
+
+font-size:15px;
+
+border:1.5px solid #ddd;
+
+border-radius:10px;
+
+outline:none;
+
+transition:.3s;
+
+}
+
+.form-control:focus{
+
+border-color:#ff7a00;
+
+box-shadow:0 0 8px rgba(255,122,0,.15);
+
+}
+
+.counter{
+
+margin-top:5px;
+
+text-align:right;
+
+font-size:12px;
+
+color:#999;
+
+}
+
+/*=========================================
+            SAVE BUTTON
+=========================================*/
+
+.save-btn{
+
+width:220px;
+
+height:48px;
+
+display:block;
+
+margin:25px auto 0;
+
+background:#ff7a00;
+
+color:#fff;
+
+border:none;
+
+border-radius:10px;
+
+font-size:16px;
+
+font-weight:600;
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+.save-btn:hover{
+
+background:#ea6500;
+
+}
+
+/*=========================================
+            FOOTER
+=========================================*/
+
+.footer{
+
+margin-top:25px;
+
+text-align:center;
+
+font-size:14px;
+
+color:#777;
+
+}
+
+/*=========================================
+            RESPONSIVE
+=========================================*/
+
+@media(max-width:768px){
+
+.wrapper{
+
+flex-direction:column;
+
+}
+
+.sidebar{
+
+width:100%;
+
+}
+
+.content{
+
+padding:20px;
+
+}
+
+.profile-form{
+
+max-width:100%;
+
+}
+
+}
+
+</style>
+
+</head>
+<body>
+
+<div class="wrapper">
+
+<!-- =========================================
+                SIDEBAR
+========================================= -->
+
+<div class="sidebar">
+
+<div>
+
+<!-- Logo -->
+
+<div class="logo">
+
+<img src="logo.png" alt="Delivery Jobs India">
+
+<div class="logo-text">
+
+<h2>
+
+Delivery Jobs
+
+<br>
+
+<span>India</span>
+
+</h2>
+
+</div>
+
+</div>
+
+<!-- Menu -->
+
+<ul class="menu">
+
+<li>
+
+<a href="profile.html" class="active">
+
+<i class="fa-solid fa-user"></i>
+
+Profile
+
+</a>
+
+</li>
+
+<li>
+
+<a href="index.html">
+
+<i class="fa-solid fa-right-from-bracket"></i>
+
+Logout
+
+</a>
+
+</li>
+
+</ul>
+
+</div>
+
+<!-- ============================
+        SUPPORT BOX
+============================ -->
+
+<div class="support-box">
+
+<h3>
+
+Need Support?
+
+</h3>
+
+<p>
+
+We're here to help you anytime.
+
+</p>
+
+<div class="support-item">
+
+<i class="fa-solid fa-phone"></i>
+
+<span>
+
++919848012345
+
+</span>
+
+</div>
+
+<div class="support-item">
+
+<i class="fa-solid fa-envelope"></i>
+
+<span>
+
+support@gmail.com
+
+</span>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- =========================================
+                CONTENT
+========================================= -->
+
+<div class="content">
+
+<div class="header-card">
+<div class="header-top">
+
+<a href="home.html" class="home-btn">
+
+<i class="fa-solid fa-house"></i>
+
+&nbsp;
+
+Home
+
+</a>
+
+</div>
+<h1>
+
+My Profile
+
+</h1>
+
+<p>
+
+Update your personal information.
+
+</p>
+
+</div>
+<div class="profile-card">
+
+<div class="profile-image">
+
+<img src="profile.png"
+alt="Profile"
+
+onerror="this.style.display='none';
+this.nextElementSibling.style.display='block';">
+
+<i class="fa-solid fa-user"
+style="display:none;"></i>
+
+</div>
+
+<h2 class="profile-name">
+
+Vamshikrishna
+
+</h2>
+
+<p class="profile-role">
+
+Delivery Job Seeker
+
+</p>
+
+<!-- ===========================
+        PROFILE FORM
+=========================== -->
+
+<form class="profile-form"
+id="profileForm">
+
+<div class="form-group">
+
+<label>
+
+Full Name
+
+</label>
+
+<input
+
+type="text"
+
+id="fullName"
+
+class="form-control"
+
+maxlength="30"
+
+placeholder="Enter Full Name"
+
+required>
+
+<div class="counter">
+
+<span id="nameCount">
+
+0
+
+</span>/30
+
+</div>
+
+</div>
+
+<div class="form-group">
+
+<label>
+
+Email Address
+
+</label>
+
+<input
+
+type="email"
+
+id="email"
+
+class="form-control"
+
+maxlength="30"
+
+placeholder="Enter Email Address"
+
+required>
+
+<div class="counter">
+
+<span id="emailCount">
+
+0
+
+</span>/30
+
+</div>
+
+</div>
+
+<div class="form-group">
+
+<label>
+
+Mobile Number
+
+</label>
+
+<input
+
+type="tel"
+
+id="mobile"
+
+class="form-control"
+
+maxlength="10"
+
+placeholder="Enter Mobile Number"
+
+required>
+
+<div class="counter">
+
+<span id="mobileCount">
+
+0
+
+</span>/10
+
+</div>
+
+</div>
+<button type="submit" class="save-btn">
+
+<i class="fa-solid fa-floppy-disk"></i>
+
+&nbsp;
+
+Save Changes
+
+</button>
+
+</form>
+
+</div>
+
+<div class="footer">
+
+© 2026 Delivery Jobs India | All Rights Reserved.
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+/*==============================
+    CHARACTER COUNTER
+==============================*/
+
+const fullName=document.getElementById("fullName");
+
+const email=document.getElementById("email");
+
+const mobile=document.getElementById("mobile");
+
+const nameCount=document.getElementById("nameCount");
+
+const emailCount=document.getElementById("emailCount");
+
+const mobileCount=document.getElementById("mobileCount");
+
+fullName.addEventListener("input",function(){
+
+nameCount.innerHTML=this.value.length;
+
+});
+
+email.addEventListener("input",function(){
+
+emailCount.innerHTML=this.value.length;
+
+});
+
+mobile.addEventListener("input",function(){
+
+this.value=this.value.replace(/\D/g,'');
+
+mobileCount.innerHTML=this.value.length;
+
+});
+
+/*==============================
+      LOAD SAVED DATA
+==============================*/
+
+window.onload=function(){
+
+if(localStorage.getItem("userName")){
+
+fullName.value=localStorage.getItem("userName");
+
+nameCount.innerHTML=fullName.value.length;
+
+}
+
+if(localStorage.getItem("userEmail")){
+
+email.value=localStorage.getItem("userEmail");
+
+emailCount.innerHTML=email.value.length;
+
+}
+
+if(localStorage.getItem("userMobile")){
+
+mobile.value=localStorage.getItem("userMobile");
+
+mobileCount.innerHTML=mobile.value.length;
+
+}
+
+};
+
+/*==============================
+      SAVE PROFILE
+==============================*/
+
+document.getElementById("profileForm")
+
+.addEventListener("submit",function(e){
+
+e.preventDefault();
+
+const emailPattern=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+const mobilePattern=/^[6-9]\d{9}$/;
+
+if(fullName.value.trim()==""){
+
+alert("Please enter Full Name");
+
+fullName.focus();
+
+return;
+
+}
+
+if(!emailPattern.test(email.value.trim())){
+
+alert("Please enter a valid Email Address");
+
+email.focus();
+
+return;
+
+}
+
+if(!mobilePattern.test(mobile.value.trim())){
+
+alert("Please enter a valid 10 digit Mobile Number");
+
+mobile.focus();
+
+return;
+
+}
+
+localStorage.setItem("userName",fullName.value);
+
+localStorage.setItem("userEmail",email.value);
+
+localStorage.setItem("userMobile",mobile.value);
+
+alert("Profile Updated Successfully.");
+
+});
+
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,1877 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>
+
+Delivery Jobs India
+
+</title>
+
+<!-- Google Font -->
+
+<link rel="preconnect"
+href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+rel="stylesheet">
+
+<!-- Font Awesome -->
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+<style>
+
+*{
+
+margin:0;
+
+padding:0;
+
+box-sizing:border-box;
+
+font-family:'Poppins',sans-serif;
+
+}
+
+html{
+
+scroll-behavior:smooth;
+
+}
+
+body{
+
+background:#f7f8fc;
+
+color:#222;
+
+overflow-x:hidden;
+
+}
+:root{
+
+--primary:#ff7a00;
+
+--secondary:#111827;
+
+--white:#ffffff;
+
+--light:#f7f8fc;
+
+--text:#1f2937;
+
+--gray:#6b7280;
+
+--shadow:0 12px 30px rgba(0,0,0,.08);
+
+}
+
+.container{
+
+width:90%;
+
+max-width:1400px;
+
+margin:auto;
+
+}
+
+a{
+
+text-decoration:none;
+
+}
+
+img{
+
+max-width:100%;
+
+display:block;
+
+}
+
+button{
+
+font-family:'Poppins',sans-serif;
+
+}
+header{
+
+position:fixed;
+
+top:0;
+
+left:0;
+
+width:100%;
+
+height:90px;
+
+background:#fff;
+
+box-shadow:0 3px 15px rgba(0,0,0,.08);
+
+z-index:999;
+
+}
+
+.navbar{
+
+height:90px;
+
+display:flex;
+
+align-items:center;
+
+justify-content:space-between;
+
+}
+.logo{
+
+display:flex;
+
+align-items:center;
+
+gap:15px;
+
+}
+
+.logo img{
+
+width:65px;
+
+height:65px;
+
+object-fit:contain;
+
+}
+
+.logo-text h1{
+
+font-size:24px;
+
+font-weight:800;
+
+color:#111827;
+
+}
+
+.logo-text span{
+
+color:#ff7a00;
+
+}
+
+.logo-text p{
+
+font-size:15px;
+
+color:#777;
+
+margin-top:2px;
+
+}
+/*=========================================
+            LOGIN BUTTON
+=========================================*/
+
+.login-btn{
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+gap:10px;
+
+padding:14px 30px;
+
+background:#ff7a00;
+
+color:#fff;
+
+font-size:16px;
+
+font-weight:600;
+
+border-radius:10px;
+
+transition:.3s;
+
+}
+
+.login-btn:hover{
+
+background:#e66d00;
+
+transform:translateY(-2px);
+
+box-shadow:0 10px 20px rgba(255,122,0,.30);
+
+}
+/*=========================================
+            HERO SECTION
+=========================================*/
+
+.hero{
+
+margin-top:90px;
+
+position:relative;
+
+height:650px;
+
+overflow:hidden;
+
+background:#111827;
+
+}
+
+.slider{
+
+position:relative;
+
+width:100%;
+
+height:100%;
+
+}
+
+.slide{
+
+position:absolute;
+
+top:0;
+
+left:0;
+
+width:100%;
+
+height:100%;
+
+opacity:0;
+
+visibility:hidden;
+
+transition:1s;
+
+}
+
+.slide.active{
+
+opacity:1;
+
+visibility:visible;
+
+}
+
+.slide img{
+
+width:100%;
+
+height:100%;
+
+object-fit:cover;
+
+}
+/*=========================================
+            HERO OVERLAY
+=========================================*/
+
+.slide::before{
+
+content:"";
+
+position:absolute;
+
+top:0;
+
+left:0;
+
+width:100%;
+
+height:100%;
+
+background:linear-gradient(
+
+90deg,
+
+rgba(17,24,39,.82),
+
+rgba(17,24,39,.40),
+
+transparent
+
+);
+
+}
+
+.hero-content{
+
+position:absolute;
+
+top:50%;
+
+left:8%;
+
+transform:translateY(-50%);
+
+max-width:620px;
+
+color:#fff;
+
+z-index:5;
+
+}
+.hero-content h1{
+
+font-size:68px;
+
+font-weight:800;
+
+line-height:78px;
+
+margin-bottom:25px;
+
+}
+
+.hero-content h1 span{
+
+color:#ff7a00;
+
+}
+
+.hero-content p{
+
+font-size:22px;
+
+line-height:36px;
+
+margin-bottom:35px;
+
+color:#f3f4f6;
+
+}
+/*=========================================
+        HERO APPLY BUTTON
+=========================================*/
+
+.hero-btn{
+
+display:inline-flex;
+
+align-items:center;
+
+justify-content:center;
+
+gap:10px;
+
+padding:18px 40px;
+
+background:#ff7a00;
+
+color:#fff;
+
+font-size:18px;
+
+font-weight:700;
+
+border-radius:12px;
+
+transition:.3s;
+
+box-shadow:0 12px 25px rgba(255,122,0,.35);
+
+}
+
+.hero-btn:hover{
+
+background:#ea6500;
+
+transform:translateY(-3px);
+
+box-shadow:0 18px 35px rgba(255,122,0,.40);
+
+}
+/*=========================================
+        SLIDER ARROWS
+=========================================*/
+
+.arrow{
+
+position:absolute;
+
+top:50%;
+
+transform:translateY(-50%);
+
+width:55px;
+
+height:55px;
+
+border-radius:50%;
+
+background:rgba(255,255,255,.18);
+
+backdrop-filter:blur(10px);
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+cursor:pointer;
+
+color:#fff;
+
+font-size:22px;
+
+transition:.3s;
+
+z-index:20;
+
+}
+
+.arrow:hover{
+
+background:#ff7a00;
+
+}
+
+.arrow.left{
+
+left:25px;
+
+}
+
+.arrow.right{
+
+right:25px;
+
+}
+/*=========================================
+            SLIDER DOTS
+=========================================*/
+
+.dots{
+
+position:absolute;
+
+bottom:35px;
+
+left:50%;
+
+transform:translateX(-50%);
+
+display:flex;
+
+gap:12px;
+
+z-index:20;
+
+}
+
+.dot{
+
+width:14px;
+
+height:14px;
+
+border-radius:50%;
+
+background:rgba(255,255,255,.50);
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+.dot.active{
+
+background:#ff7a00;
+
+transform:scale(1.3);
+
+}
+/*=========================================
+        TOP COMPANIES
+=========================================*/
+
+.company-section{
+
+padding:80px 0;
+
+background:#fff;
+
+}
+
+.section-title{
+
+text-align:center;
+
+margin-bottom:50px;
+
+}
+
+.section-title h2{
+
+font-size:42px;
+
+font-weight:800;
+
+color:#111827;
+
+}
+
+.section-title span{
+
+color:#ff7a00;
+
+}
+/*=========================================
+        COMPANY GRID
+=========================================*/
+
+.company-grid{
+
+display:grid;
+
+grid-template-columns:repeat(5,1fr);
+
+gap:25px;
+
+margin-top:20px;
+
+}
+
+.company-card{
+
+background:#fff;
+
+border-radius:18px;
+
+padding:25px 20px;
+
+text-align:center;
+
+border:1px solid #ececec;
+
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+transition:.35s;
+
+cursor:pointer;
+
+}
+
+.company-card:hover{
+
+transform:translateY(-8px);
+
+box-shadow:0 18px 35px rgba(0,0,0,.12);
+
+}
+/*=========================================
+        COMPANY LOGO
+=========================================*/
+
+.company-card img{
+
+width:120px;
+
+height:65px;
+
+object-fit:contain;
+
+margin:0 auto 18px;
+
+}
+
+.company-card h3{
+
+font-size:20px;
+
+font-weight:700;
+
+color:#111827;
+
+margin-bottom:8px;
+
+}
+
+.company-card p{
+
+font-size:15px;
+
+color:#666;
+
+margin-bottom:20px;
+
+line-height:24px;
+
+}
+/*=========================================
+        APPLY BUTTON
+=========================================*/
+
+.apply-btn{
+
+width:100%;
+
+height:48px;
+
+background:#ff7a00;
+
+color:#fff;
+
+border:none;
+
+border-radius:10px;
+
+font-size:16px;
+
+font-weight:600;
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+.apply-btn:hover{
+
+background:#ea6500;
+
+transform:translateY(-2px);
+
+}
+/*=========================================
+            FOOTER
+=========================================*/
+
+footer{
+
+background:#111827;
+
+padding:70px 0 25px;
+
+margin-top:60px;
+
+}
+
+.footer-grid{
+
+display:grid;
+
+grid-template-columns:repeat(4,1fr);
+
+gap:40px;
+
+}
+/*=========================================
+        FOOTER BOX
+=========================================*/
+
+.footer-box h3{
+
+font-size:26px;
+
+font-weight:700;
+
+color:#ff7a00;
+
+margin-bottom:20px;
+
+}
+
+.footer-box p{
+
+font-size:15px;
+
+line-height:30px;
+
+color:#ddd;
+
+margin-bottom:8px;
+
+}
+
+.footer-box ul{
+
+list-style:none;
+
+}
+
+.footer-box ul li{
+
+margin-bottom:14px;
+
+}
+
+.footer-box ul li a{
+
+text-decoration:none;
+
+color:#fff;
+
+font-size:15px;
+
+transition:.3s;
+
+}
+
+.footer-box ul li a:hover{
+
+color:#ff7a00;
+
+padding-left:8px;
+
+}
+
+.footer-bottom{
+
+margin-top:40px;
+
+padding-top:20px;
+
+border-top:1px solid rgba(255,255,255,.15);
+
+text-align:center;
+
+font-size:15px;
+
+color:#ddd;
+
+}
+/*=========================================
+        RESPONSIVE
+=========================================*/
+
+@media(max-width:1200px){
+
+.company-grid{
+
+grid-template-columns:repeat(4,1fr);
+
+}
+
+}
+
+@media(max-width:992px){
+
+.company-grid{
+
+grid-template-columns:repeat(3,1fr);
+
+}
+
+.hero{
+
+height:520px;
+
+}
+
+.hero-content h1{
+
+font-size:48px;
+
+line-height:58px;
+
+}
+
+}
+
+@media(max-width:768px){
+
+.navbar{
+
+height:80px;
+
+}
+
+.logo img{
+
+width:55px;
+
+height:55px;
+
+}
+
+.logo-text h1{
+
+font-size:20px;
+
+}
+
+.hero{
+
+height:420px;
+
+}
+
+.hero-content{
+
+left:6%;
+
+max-width:90%;
+
+}
+
+.hero-content h1{
+
+font-size:36px;
+
+line-height:46px;
+
+}
+
+.company-grid{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+.footer-grid{
+
+grid-template-columns:1fr;
+
+}
+
+}
+
+@media(max-width:480px){
+
+.company-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.hero{
+
+height:350px;
+
+}
+
+.hero-content h1{
+
+font-size:28px;
+
+line-height:38px;
+
+}
+
+.hero-content p{
+
+font-size:15px;
+
+line-height:24px;
+
+}
+
+.login-btn{
+
+padding:10px 20px;
+
+font-size:14px;
+
+}
+
+.hero-btn{
+
+padding:14px 28px;
+
+font-size:16px;
+
+}
+
+}
+</style>
+
+</head>
+<body>
+
+<!-- ==========================================
+                HEADER
+========================================== -->
+
+<header>
+
+<div class="container">
+
+<div class="navbar">
+
+<!-- Logo -->
+
+<a href="index.html" class="logo">
+
+<img src="logo.png" alt="Delivery Jobs India">
+
+<div class="logo-text">
+
+<h1>
+
+Delivery Jobs <span>India</span>
+
+</h1>
+
+<p>
+
+Find Your Dream Delivery Job
+
+</p>
+
+</div>
+
+</a>
+
+<!-- Login Button -->
+
+<a href="login.html" class="login-btn">
+
+<i class="fa-solid fa-right-to-bracket"></i>
+
+Login
+
+</a>
+
+</div>
+
+</div>
+
+</header>
+
+<!-- ==========================================
+            HERO SLIDER
+========================================== -->
+
+<section class="hero">
+
+<div class="slider">
+
+<!-- ================= Banner 1 ================= -->
+
+<div class="slide active">
+
+<img src="banner1.jpg" alt="Banner 1">
+
+<div class="hero-content">
+
+<h1>
+
+India's Largest
+
+<span>
+
+Delivery Jobs
+
+</span>
+
+Platform
+
+</h1>
+
+<p>
+
+Find Delivery Partner jobs from India's top delivery companies.
+
+</p>
+
+<button class="hero-btn" onclick="window.location.href='login.html'">
+
+Apply Now
+
+</button>
+
+</div>
+
+</div>
+
+<!-- ================= Banner 2 ================= -->
+
+<div class="slide">
+
+<img src="banner2.jpg" alt="Banner 2">
+
+<div class="hero-content">
+
+<h1>
+
+Join
+
+<span>
+
+Swiggy
+
+</span>
+
+Today
+
+</h1>
+
+<p>
+
+Flexible working hours with attractive earnings.
+
+</p>
+
+<button class="hero-btn" onclick="window.location.href='login.html'">
+
+Apply Now
+
+</button>
+
+</div>
+
+</div>
+<!-- ================= Banner 3 ================= -->
+
+<div class="slide">
+
+<img src="banner3.jpg" alt="Banner 3">
+
+<div class="hero-content">
+
+<h1>
+
+Work With
+
+<span>
+
+Amazon
+
+</span>
+
+Flipkart
+
+</h1>
+
+<p>
+
+Join India's leading logistics companies and start earning today.
+
+</p>
+
+<button class="hero-btn"
+onclick="window.location.href='login.html'">
+
+Apply Now
+
+</button>
+
+</div>
+
+</div>
+
+<!-- ================= Banner 4 ================= -->
+
+<div class="slide">
+
+<img src="banner4.jpg" alt="Banner 4">
+
+<div class="hero-content">
+
+<h1>
+
+Top
+
+<span>
+
+25 Companies
+
+</span>
+
+Hiring
+
+</h1>
+
+<p>
+
+Login now and apply for Delivery Executive jobs across India.
+
+</p>
+
+<button class="hero-btn"
+onclick="window.location.href='login.html'">
+
+Apply Now
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ===================
+    Previous Button
+=================== -->
+
+<div class="arrow left" id="prevBtn">
+
+<i class="fa-solid fa-chevron-left"></i>
+
+</div>
+
+<!-- ===================
+      Next Button
+=================== -->
+
+<div class="arrow right" id="nextBtn">
+
+<i class="fa-solid fa-chevron-right"></i>
+
+</div>
+
+<!-- ===================
+      Slider Dots
+=================== -->
+
+<div class="dots">
+
+<span class="dot active"></span>
+
+<span class="dot"></span>
+
+<span class="dot"></span>
+
+<span class="dot"></span>
+
+</div>
+
+</section>
+
+<!-- ==========================================
+        TOP DELIVERY COMPANIES
+========================================== -->
+
+<section class="company-section">
+
+<div class="container">
+
+<div class="section-title">
+
+<h2>
+
+Top
+
+<span>
+
+Delivery Companies
+
+</span>
+
+</h2>
+
+<p>
+
+Click <strong>Apply Now</strong> to login and apply for jobs.
+
+</p>
+
+</div>
+
+<div class="company-grid">
+<!-- ================= ROW 1 ================= -->
+
+<div class="company-card">
+
+<img src="logos/zepto.png" alt="Zepto">
+
+<h3>Zepto</h3>
+
+<p>Instant Grocery Delivery</p>
+
+<button class="apply-btn"
+onclick="window.location.href='login.html'">
+
+Apply Now
+
+</button>
+
+</div>
+
+<div class="company-card">
+
+<img src="logos/zomato.png" alt="Zomato">
+
+<h3>Zomato</h3>
+
+<p>Food Delivery Partner</p>
+
+<button class="apply-btn"
+onclick="window.location.href='login.html'">
+
+Apply Now
+
+</button>
+
+</div>
+
+<div class="company-card">
+
+<img src="logos/swiggy.png" alt="Swiggy">
+
+<h3>Swiggy</h3>
+
+<p>Food Delivery Executive</p>
+
+<button class="apply-btn"
+onclick="window.location.href='login.html'">
+
+Apply Now
+
+</button>
+
+</div>
+
+<div class="company-card">
+
+<img src="logos/blinkit.png" alt="Blinkit">
+
+<h3>Blinkit</h3>
+
+<p>10 Minutes Grocery Delivery</p>
+
+<button class="apply-btn"
+onclick="window.location.href='login.html'">
+
+Apply Now
+
+</button>
+
+</div>
+
+<div class="company-card">
+
+<img src="logos/ubereats.png" alt="Uber Eats">
+
+<h3>Uber Eats</h3>
+
+<p>Food Delivery</p>
+
+<button class="apply-btn"
+onclick="window.location.href='login.html'">
+
+Apply Now
+
+</button>
+
+</div>
+
+<!-- ================= ROW 2 ================= -->
+
+<div class="company-card">
+
+<img src="logos/amazon.png" alt="Amazon">
+
+<h3>Amazon</h3>
+
+<p>Package Delivery</p>
+
+<button class="apply-btn"
+onclick="window.location.href='login.html'">
+
+Apply Now
+
+</button>
+
+</div>
+
+<div class="company-card">
+
+<img src="logos/flipkart.png" alt="Flipkart">
+
+<h3>Flipkart</h3>
+
+<p>E-Commerce Delivery</p>
+
+<button class="apply-btn"
+onclick="window.location.href='login.html'">
+
+Apply Now
+
+</button>
+
+</div>
+
+<div class="company-card">
+
+<img src="logos/delhivery.png" alt="Delhivery">
+
+<h3>Delhivery</h3>
+
+<p>Courier Delivery</p>
+
+<button class="apply-btn"
+onclick="window.location.href='login.html'">
+
+Apply Now
+
+</button>
+
+</div>
+
+<div class="company-card">
+
+<img src="logos/porter.png" alt="Porter">
+
+<h3>Porter</h3>
+
+<p>Logistics Delivery</p>
+
+<button class="apply-btn"
+onclick="window.location.href='login.html'">
+
+Apply Now
+
+</button>
+
+</div>
+
+<div class="company-card">
+
+<img src="logos/bigbasket.png" alt="BigBasket">
+
+<h3>BigBasket</h3>
+
+<p>Grocery Delivery</p>
+
+<button class="apply-btn"
+onclick="window.location.href='login.html'">
+
+Apply Now
+
+</button>
+
+</div>
+<!-- ================= ROW 3 ================= -->
+
+<div class="company-card">
+
+<img src="logos/dunzo.png" alt="Dunzo">
+
+<h3>Dunzo</h3>
+
+<p>Hyperlocal Delivery</p>
+
+<button class="apply-btn"
+onclick="window.location.href='login.html'">
+
+Apply Now
+
+</button>
+
+</div>
+
+<div class="company-card">
+
+<img src="logos/rapido.png" alt="Rapido">
+
+<h3>Rapido</h3>
+
+<p>Bike Delivery Partner</p>
+
+<button class="apply-btn"
+onclick="window.location.href='login.html'">
+
+Apply Now
+
+</button>
+
+</div>
+
+<div class="company-card">
+
+<img src="logos/shadowfax.png" alt="Shadowfax">
+
+<h3>Shadowfax</h3>
+
+<p>Courier Partner</p>
+
+<button class="apply-btn"
+onclick="window.location.href='login.html'">
+
+Apply Now
+
+</button>
+
+</div>
+
+<div class="company-card">
+
+<img src="logos/ecomexpress.png" alt="Ecom Express">
+
+<h3>Ecom Express</h3>
+
+<p>E-Commerce Delivery</p>
+
+<button class="apply-btn"
+onclick="window.location.href='login.html'">
+
+Apply Now
+
+</button>
+
+</div>
+
+<div class="company-card">
+
+<img src="logos/bluedart.png" alt="Blue Dart">
+
+<h3>Blue Dart</h3>
+
+<p>Express Delivery</p>
+
+<button class="apply-btn"
+onclick="window.location.href='login.html'">
+
+Apply Now
+
+</button>
+
+</div>
+
+<!-- ================= ROW 4 ================= -->
+
+<div class="company-card">
+
+<img src="logos/dtdc.png" alt="DTDC">
+
+<h3>DTDC</h3>
+
+<p>Courier Services</p>
+
+<button class="apply-btn"
+onclick="window.location.href='login.html'">
+
+Apply Now
+
+</button>
+
+</div>
+
+<div class="company-card">
+
+<img src="logos/xpressbees.png" alt="XpressBees">
+
+<h3>XpressBees</h3>
+
+<p>Last Mile Delivery</p>
+
+<button class="apply-btn"
+onclick="window.location.href='login.html'">
+
+Apply Now
+
+</button>
+
+</div>
+
+<div class="company-card">
+
+<img src="logos/safexpress.png" alt="Safexpress">
+
+<h3>Safexpress</h3>
+
+<p>Logistics Services</p>
+
+<button class="apply-btn"
+onclick="window.location.href='login.html'">
+
+Apply Now
+
+</button>
+
+</div>
+
+<div class="company-card">
+
+<img src="logos/lalamove.png" alt="Lalamove">
+
+<h3>Lalamove</h3>
+
+<p>Vehicle Delivery</p>
+
+<button class="apply-btn"
+onclick="window.location.href='login.html'">
+
+Apply Now
+
+</button>
+
+</div>
+
+<div class="company-card">
+
+<img src="logos/jiomart.png" alt="JioMart">
+
+<h3>JioMart</h3>
+
+<p>Retail Delivery</p>
+
+<button class="apply-btn"
+onclick="window.location.href='login.html'">
+
+Apply Now
+
+</button>
+
+</div>
+<!-- ================= ROW 5 ================= -->
+
+<div class="company-card">
+
+<img src="logos/meesho.png" alt="Meesho">
+
+<h3>Meesho</h3>
+
+<p>Online Delivery</p>
+
+<button class="apply-btn"
+onclick="window.location.href='login.html'">
+
+Apply Now
+
+</button>
+
+</div>
+
+<div class="company-card">
+
+<img src="logos/firstcry.png" alt="FirstCry">
+
+<h3>FirstCry</h3>
+
+<p>Baby Products Delivery</p>
+
+<button class="apply-btn"
+onclick="window.location.href='login.html'">
+
+Apply Now
+
+</button>
+
+</div>
+
+<div class="company-card">
+
+<img src="logos/tata1mg.png" alt="Tata 1mg">
+
+<h3>Tata 1mg</h3>
+
+<p>Medicine Delivery</p>
+
+<button class="apply-btn"
+onclick="window.location.href='login.html'">
+
+Apply Now
+
+</button>
+
+</div>
+
+<div class="company-card">
+
+<img src="logos/netmeds.png" alt="NetMeds">
+
+<h3>NetMeds</h3>
+
+<p>Pharmacy Delivery</p>
+
+<button class="apply-btn"
+onclick="window.location.href='login.html'">
+
+Apply Now
+
+</button>
+
+</div>
+
+<div class="company-card">
+
+<img src="logos/instamart.png" alt="Swiggy Instamart">
+
+<h3>Swiggy Instamart</h3>
+
+<p>Instant Grocery Delivery</p>
+
+<button class="apply-btn"
+onclick="window.location.href='login.html'">
+
+Apply Now
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ==========================================
+                FOOTER
+========================================== -->
+
+<footer>
+
+<div class="container">
+
+<div class="footer-grid">
+
+<!-- Delivery Jobs India -->
+
+<div class="footer-box">
+
+<h3>
+
+Delivery Jobs India
+
+</h3>
+
+<p>
+
+Delivery Jobs India is India's trusted platform to find Delivery Jobs from leading companies.
+
+</p>
+
+<p>
+
+Apply for Delivery Partner jobs from Swiggy, Zomato, Blinkit, Zepto, Amazon, Flipkart and many more.
+
+</p>
+
+</div>
+
+<!-- Support -->
+
+<div class="footer-box">
+
+<h3>
+
+Support
+
+</h3>
+
+<p>
+
+📧 support@deliveryjobsindia.in
+
+</p>
+
+<p>
+
+📧 help@deliveryjobsindia.in
+
+</p>
+
+<p>
+
+📞 +91 98765 43210
+
+</p>
+
+<p>
+
+📞 +91 91234 56789
+
+</p>
+
+<p>
+
+🕘 Monday - Saturday
+
+9:00 AM - 6:00 PM
+
+</p>
+
+</div>
+<!-- ======================
+      Office Address
+====================== -->
+
+<div class="footer-box">
+
+<h3>
+
+Office Address
+
+</h3>
+
+<p>Delivery Jobs India</p>
+
+<p>Hanamkonda</p>
+
+<p>Warangal</p>
+
+<p>Telangana - 506001</p>
+
+<p>India</p>
+
+</div>
+
+<!-- ======================
+      Quick Links
+====================== -->
+
+<div class="footer-box">
+
+<h3>
+
+Quick Links
+
+</h3>
+
+<ul>
+
+<li><a href="careers.html">Careers</a></li>
+
+<li><a href="privacy-policy.html">Privacy Policy</a></li>
+
+<li><a href="terms-and-conditions.html">Terms & Conditions</a></li>
+
+<li><a href="contact.html">Contact Us</a></li>
+
+</ul>
+
+</div>
+
+</div>
+
+<div class="footer-bottom">
+
+© 2026 Delivery Jobs India. All Rights Reserved.
+
+</div>
+
+</div>
+
+</footer>
+
+<!-- ==========================================
+            JAVASCRIPT
+========================================== -->
+
+<script>
+
+/*==============================
+        HERO SLIDER
+==============================*/
+
+const slides=document.querySelectorAll(".slide");
+
+const dots=document.querySelectorAll(".dot");
+
+let currentSlide=0;
+
+function showSlide(index){
+
+slides.forEach(slide=>slide.classList.remove("active"));
+
+dots.forEach(dot=>dot.classList.remove("active"));
+
+slides[index].classList.add("active");
+
+dots[index].classList.add("active");
+
+}
+
+/* Auto Slide Every 5 Seconds */
+
+setInterval(function(){
+
+currentSlide++;
+
+if(currentSlide>=slides.length){
+
+currentSlide=0;
+
+}
+
+showSlide(currentSlide);
+
+},5000);
+
+/* Dot Navigation */
+
+dots.forEach((dot,index)=>{
+
+dot.addEventListener("click",function(){
+
+currentSlide=index;
+
+showSlide(currentSlide);
+
+});
+
+});
+
+/* Previous Button */
+
+document.getElementById("prevBtn").onclick=function(){
+
+currentSlide--;
+
+if(currentSlide<0){
+
+currentSlide=slides.length-1;
+
+}
+
+showSlide(currentSlide);
+
+};
+
+/* Next Button */
+
+document.getElementById("nextBtn").onclick=function(){
+
+currentSlide++;
+
+if(currentSlide>=slides.length){
+
+currentSlide=0;
+
+}
+
+showSlide(currentSlide);
+
+};
+
+/*=================================
+    APPLY NOW & HERO BUTTON
+=================================*/
+
+document.querySelectorAll(".apply-btn,.hero-btn").forEach(button=>{
+
+button.onclick=function(){
+
+window.location.href="login.html";
+
+};
+
+});
+
+</script>
+
+</body>
+
+</html>
