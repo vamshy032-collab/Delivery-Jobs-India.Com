@@ -3,716 +3,872 @@
 
 <head>
 
-<meta charset="UTF-8">
+    <!-- ==========================================
+                    META TAGS
+    =========================================== -->
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
 
-<title>Delivery Jobs India | Home</title>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
+    <title>Delivery Jobs India | Home</title>
 
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- ==========================================
+                    GOOGLE FONTS
+    =========================================== -->
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
 
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
 
-<style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+          rel="stylesheet">
 
+    <!-- ==========================================
+                FONT AWESOME
+    =========================================== -->
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- ==========================================
+                SUPABASE SDK
+    =========================================== -->
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <!-- ==========================================
+                    CSS START
+    =========================================== -->
+
+    <style>
+
+    /*==================================================
+                    RESET
+    ==================================================*/
+
+    *{
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
+        font-family:'Poppins',sans-serif;
+    }
+
+    html{
+        scroll-behavior:smooth;
+    }
+
+    body{
+        background:#f8f9fc;
+        color:#222;
+        overflow-x:hidden;
+    }
+
+    img{
+        max-width:100%;
+        display:block;
+    }
+
+    a{
+        text-decoration:none;
+    }
+
+    button{
+        cursor:pointer;
+        border:none;
+        outline:none;
+    }
+
+    ul{
+        list-style:none;
+    }
+
+    /*==================================================
+                    ROOT COLORS
+    ==================================================*/
+
+    :root{
+
+        --primary:#ff7a00;
+
+        --primary-dark:#ea6500;
+
+        --secondary:#111827;
+
+        --white:#ffffff;
+
+        --light:#f8f9fc;
+
+        --gray:#6b7280;
+
+        --border:#ececec;
+
+        --shadow:0 10px 30px rgba(0,0,0,.08);
+
+        --radius:18px;
+
+        --transition:.35s ease;
+
+    }
+
+    /*==================================================
+                    CONTAINER
+    ==================================================*/
+
+    .container{
+
+        width:92%;
+
+        max-width:1450px;
+
+        margin:auto;
+
+    }
+
+    /*==================================================
+                    HEADER
+    ==================================================*/
+
+    header{
+
+        position:fixed;
+
+        top:0;
+
+        left:0;
+
+        width:100%;
+
+        height:90px;
+
+        background:#fff;
+
+        box-shadow:0 3px 15px rgba(0,0,0,.08);
+
+        z-index:999;
+
+    }
+
+    .navbar{
+
+        height:90px;
+
+        display:flex;
+
+        justify-content:space-between;
+
+        align-items:center;
+
+    }
+
+    /*==================================================
+                        LOGO
+    ==================================================*/
+
+    .logo{
+
+        display:flex;
+
+        align-items:center;
+
+        gap:14px;
+
+    }
+
+    .logo img{
+
+        width:72px;
+
+        height:72px;
+
+        object-fit:contain;
+
+    }
+
+    .logo-text h2{
+
+        font-size:34px;
+
+        font-weight:700;
+
+        color:#111827;
+
+        line-height:36px;
+
+    }
+
+    .logo-text span{
+
+        color:var(--primary);
+
+    }
+
+    .logo-text p{
+
+        font-size:13px;
+
+        color:#666;
+
+        margin-top:5px;
+
+        letter-spacing:1px;
+
+    }
+
+    /*==================================================
+                    PROFILE
+    ==================================================*/
+
+    .profile-box{
+
+        position:relative;
+
+        display:flex;
+
+        align-items:center;
+
+        gap:15px;
+
+        cursor:pointer;
+
+    }
+
+    .profile-img{
+
+        width:50px;
+
+        height:50px;
+
+        border-radius:50%;
+
+        background:#f3f3f3;
+
+        display:flex;
+
+        justify-content:center;
+
+        align-items:center;
+
+        font-size:24px;
+
+        color:#111827;
+
+    }
+
+    .profile-info h3{
+
+        font-size:18px;
+
+        color:#111827;
+
+    }
+
+    .profile-info p{
+
+        color:var(--primary);
+
+        font-size:14px;
+
+    }
+
+    .profile-arrow{
+
+        font-size:18px;
+
+        color:#444;
+
+    }
 /*==================================================
-                RESET
-==================================================*/
-
-*{
-
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Poppins',sans-serif;
-
-}
-
-html{
-
-scroll-behavior:smooth;
-
-}
-
-body{
-
-background:#f8f9fc;
-overflow-x:hidden;
-color:#222;
-
-}
-
-/*==================================================
-                ROOT COLORS
-==================================================*/
-
-:root{
-
---primary:#ff7a00;
-
---primary-dark:#ea6500;
-
---secondary:#111827;
-
---white:#ffffff;
-
---light:#f8f9fc;
-
---gray:#6b7280;
-
---border:#ececec;
-
---shadow:0 10px 30px rgba(0,0,0,.08);
-
-}
-
-/*==================================================
-                CONTAINER
-==================================================*/
-
-.container{
-
-width:92%;
-max-width:1450px;
-
-margin:auto;
-
-}
-
-/*==================================================
-                HEADER
-==================================================*/
-
-header{
-
-position:fixed;
-
-top:0;
-left:0;
-
-width:100%;
-
-background:#fff;
-
-box-shadow:0 3px 15px rgba(0,0,0,.08);
-
-z-index:999;
-
-}
-
-.navbar{
-
-height:90px;
-
-display:flex;
-
-align-items:center;
-
-justify-content:space-between;
-
-}
-
-/*==================================================
-                LOGO
-==================================================*/
-
-.logo{
-
-display:flex;
-
-align-items:center;
-
-text-decoration:none;
-
-gap:12px;
-
-}
-
-.logo img{
-
-width:75px;
-
-height:75px;
-
-object-fit:contain;
-
-}
-
-.logo-text h2{
-
-font-size:34px;
-
-font-weight:700;
-
-color:#111827;
-
-line-height:36px;
-
-}
-
-.logo-text span{
-
-color:var(--primary);
-
-}
-
-.logo-text p{
-
-font-size:13px;
-
-letter-spacing:1px;
-
-color:#666;
-
-margin-top:3px;
-
-}
-
-/*==================================================
-            PROFILE SECTION
-==================================================*/
-
-.profile-box{
-
-display:flex;
-
-align-items:center;
-
-gap:15px;
-
-cursor:pointer;
-
-position:relative;
-
-}
-
-.profile-img{
-
-width:48px;
-
-height:48px;
-
-border-radius:50%;
-
-background:#f3f3f3;
-
-display:flex;
-
-align-items:center;
-
-justify-content:center;
-
-font-size:25px;
-
-color:#111827;
-
-}
-
-.profile-info h3{
-
-font-size:18px;
-
-color:#111827;
-
-}
-
-.profile-info p{
-
-font-size:14px;
-
-color:var(--primary);
-
-}
-
-.profile-arrow{
-
-font-size:18px;
-
-color:#333;
-
-}
-
-/*==================================================
-            PROFILE DROPDOWN
+                PROFILE DROPDOWN
 ==================================================*/
 
 .dropdown{
 
-position:absolute;
+    position:absolute;
 
-top:100%;
+    top:100%;
 
-right:0;
+    right:0;
 
-width:220px;
+    width:230px;
 
-background:#fff;
+    background:#fff;
 
-border-radius:15px;
+    border-radius:15px;
 
-box-shadow:var(--shadow);
-z-index:9999;
-display:none;
+    overflow:hidden;
 
-overflow:hidden;
+    box-shadow:0 10px 25px rgba(0,0,0,.12);
+
+    display:none;
+
+    z-index:9999;
+
+}
+
+.profile-box:hover .dropdown{
+
+    display:block;
 
 }
 
 .dropdown a{
 
-display:block;
+    display:flex;
 
-padding:15px 20px;
+    align-items:center;
 
-text-decoration:none;
+    gap:10px;
 
-color:#222;
+    padding:16px 20px;
 
-font-weight:500;
+    color:#222;
 
-transition:.3s;
+    font-size:15px;
+
+    font-weight:500;
+
+    transition:.3s;
 
 }
 
 .dropdown a:hover{
 
-background:#ff7a00;
+    background:#ff7a00;
 
-color:#fff;
-
-}
-
-.profile-box:hover .dropdown,
-.dropdown:hover{
-
-display:block;
+    color:#fff;
 
 }
 
 /*==================================================
-                HERO
+                    HERO
 ==================================================*/
 
 .hero{
 
-margin-top:90px;
+    margin-top:90px;
 
-width:100%;
+    width:100%;
 
-height:520px;
+    height:520px;
 
-position:relative;
+    overflow:hidden;
 
-overflow:hidden;
-
-border-radius:0;
+    position:relative;
 
 }
 
 .slider{
 
-display:flex;
+    width:400%;
 
-width:400%;
+    height:100%;
 
-height:100%;
+    display:flex;
 
-transition:1s;
+    transition:1s ease;
 
 }
 
 .slide{
 
-min-width:100%;
+    width:100%;
 
-height:100%;
+    height:100%;
 
-position:relative;
+    position:relative;
 
 }
 
 .slide img{
 
-width:100%;
+    width:100%;
 
-height:100%;
+    height:100%;
 
-object-fit:cover;
+    object-fit:cover;
 
 }
 
 .overlay{
 
-position:absolute;
+    position:absolute;
 
-top:0;
+    top:0;
 
-left:0;
+    left:0;
 
-width:100%;
+    width:100%;
 
-height:100%;
+    height:100%;
 
-background:linear-gradient(to right,
-rgba(0,0,0,.75),
-rgba(0,0,0,.20));
+    background:linear-gradient(to right,
+    rgba(0,0,0,.75),
+    rgba(0,0,0,.25));
 
-display:flex;
+    display:flex;
 
-align-items:center;
+    align-items:center;
 
-padding-left:80px;
+    padding-left:80px;
 
 }
 
 .hero-text{
 
-max-width:650px;
+    max-width:650px;
 
-color:#fff;
+    color:#fff;
 
 }
 
 .hero-text h1{
 
-font-size:68px;
+    font-size:68px;
 
-line-height:78px;
+    font-weight:800;
 
-font-weight:800;
+    line-height:78px;
 
-margin-bottom:20px;
+    margin-bottom:20px;
 
 }
 
 .hero-text span{
 
-color:#ff7a00;
+    color:#ff7a00;
 
 }
 
 .hero-text p{
 
-font-size:22px;
+    font-size:22px;
 
-line-height:38px;
+    line-height:38px;
 
-margin-bottom:30px;
+    margin-bottom:30px;
 
 }
 
 .hero-btn{
 
-padding:18px 40px;
+    padding:18px 40px;
 
-border:none;
+    background:#ff7a00;
 
-background:#ff7a00;
+    color:#fff;
 
-color:#fff;
+    border-radius:12px;
 
-font-size:18px;
+    font-size:18px;
 
-font-weight:600;
+    font-weight:600;
 
-border-radius:12px;
-
-cursor:pointer;
-
-transition:.3s;
+    transition:.3s;
 
 }
 
 .hero-btn:hover{
 
-background:#ea6500;
+    background:#ea6500;
+
+    transform:translateY(-3px);
 
 }
 
 /*==================================================
-        END PART 1A
-==================================================*/
-/*==================================================
-            HERO DOTS
+                SLIDER DOTS
 ==================================================*/
 
 .dots{
 
-position:absolute;
+    position:absolute;
 
-bottom:25px;
+    bottom:25px;
 
-left:50%;
+    left:50%;
 
-transform:translateX(-50%);
+    transform:translateX(-50%);
 
-display:flex;
+    display:flex;
 
-gap:12px;
-
-z-index:10;
+    gap:12px;
 
 }
 
 .dot{
 
-width:14px;
+    width:14px;
 
-height:14px;
+    height:14px;
 
-border-radius:50%;
+    border-radius:50%;
 
-background:rgba(255,255,255,.5);
+    background:rgba(255,255,255,.5);
 
-cursor:pointer;
+    cursor:pointer;
 
-transition:.3s;
+    transition:.3s;
 
 }
 
 .dot.active{
 
-background:#ff7a00;
+    background:#ff7a00;
 
-transform:scale(1.2);
+    transform:scale(1.2);
 
 }
 
 /*==================================================
-        SECTION TITLE
+                SECTION TITLE
 ==================================================*/
 
 .section-title{
 
-padding:55px 0 35px;
+    padding:60px 0 40px;
 
-text-align:center;
+    text-align:center;
 
 }
 
 .section-title h2{
 
-font-size:42px;
+    font-size:42px;
 
-font-weight:700;
+    font-weight:700;
 
-color:#111827;
+    color:#111827;
 
 }
 
 .section-title span{
 
-color:#ff7a00;
+    color:#ff7a00;
 
 }
-
 /*==================================================
-        COMPANY GRID
+                COMPANY SECTION
 ==================================================*/
 
 .company-section{
 
-padding-bottom:70px;
+    background:#fff;
 
-background:#fff;
+    padding-bottom:80px;
 
 }
 
 .company-grid{
 
-display:grid;
+    display:grid;
 
-grid-template-columns:repeat(5,1fr);
+    grid-template-columns:repeat(5,1fr);
 
-gap:25px;
+    gap:25px;
 
 }
 
 .company-card{
 
-background:#fff;
+    background:#fff;
 
-border-radius:18px;
+    border-radius:18px;
 
-padding:30px 20px;
+    padding:28px 20px;
 
-text-align:center;
+    text-align:center;
 
-box-shadow:0 10px 25px rgba(0,0,0,.08);
+    border:1px solid #eee;
 
-border:1px solid #eee;
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
 
-transition:.35s;
+    transition:.35s;
 
 }
 
 .company-card:hover{
 
-transform:translateY(-8px);
+    transform:translateY(-8px);
+
+    box-shadow:0 15px 35px rgba(0,0,0,.12);
 
 }
 
 .company-card img{
 
-width:140px;
+    width:140px;
 
-height:70px;
+    height:70px;
 
-object-fit:contain;
+    object-fit:contain;
 
-margin-bottom:20px;
+    margin:0 auto 20px;
 
 }
 
 .company-card h3{
 
-font-size:20px;
+    font-size:22px;
 
-color:#222;
+    color:#111827;
 
-margin-bottom:8px;
+    margin-bottom:8px;
 
 }
 
 .company-card p{
 
-font-size:15px;
+    color:#666;
 
-color:#666;
+    font-size:15px;
 
-margin-bottom:20px;
+    line-height:26px;
+
+}
+
+.salary{
+
+    color:#ff7a00 !important;
+
+    font-size:16px !important;
+
+    font-weight:700;
+
+    margin:12px 0;
 
 }
 
 .apply-btn{
 
-width:100%;
+    width:100%;
 
-height:48px;
+    height:50px;
 
-border:none;
+    margin-top:18px;
 
-background:#ff7a00;
+    background:#ff7a00;
 
-color:#fff;
+    color:#fff;
 
-font-size:16px;
+    border-radius:10px;
 
-font-weight:600;
+    font-size:16px;
 
-border-radius:10px;
+    font-weight:600;
 
-cursor:pointer;
-
-transition:.3s;
+    transition:.3s;
 
 }
 
 .apply-btn:hover{
 
-background:#ea6500;
+    background:#ea6500;
+
+}
+
+.apply-btn:disabled{
+
+    background:#28a745;
+
+    cursor:not-allowed;
 
 }
 
 /*==================================================
-            FOOTER
+                    FOOTER
 ==================================================*/
 
 footer{
 
-background:#111827;
+    background:#111827;
 
-padding:70px 0 20px;
+    margin-top:60px;
 
-margin-top:40px;
+    padding:70px 0 25px;
 
 }
 
 .footer-grid{
 
-display:grid;
+    display:grid;
 
-grid-template-columns:repeat(4,1fr);
+    grid-template-columns:repeat(4,1fr);
 
-gap:45px;
+    gap:40px;
 
 }
 
 .footer-box h3{
 
-color:#ff7a00;
+    color:#ff7a00;
 
-font-size:28px;
+    font-size:26px;
 
-margin-bottom:22px;
+    margin-bottom:20px;
 
 }
 
 .footer-box p{
 
-color:#ddd;
+    color:#ddd;
 
-font-size:16px;
+    font-size:15px;
 
-line-height:34px;
+    line-height:30px;
+
+    margin-bottom:10px;
 
 }
 
 .footer-box ul{
 
-list-style:none;
+    list-style:none;
 
 }
 
 .footer-box ul li{
 
-margin-bottom:18px;
+    margin-bottom:14px;
 
 }
 
 .footer-box ul li a{
 
-text-decoration:none;
+    color:#fff;
 
-color:#fff;
-
-font-size:17px;
-
-transition:.3s;
+    transition:.3s;
 
 }
 
 .footer-box ul li a:hover{
 
-color:#ff7a00;
+    color:#ff7a00;
 
-padding-left:8px;
+    padding-left:6px;
 
 }
 
 .footer-bottom{
 
-margin-top:40px;
+    margin-top:45px;
 
-padding-top:20px;
+    border-top:1px solid rgba(255,255,255,.15);
 
-border-top:1px solid rgba(255,255,255,.15);
+    padding-top:20px;
 
-text-align:center;
+    color:#ddd;
 
-color:#ddd;
+    text-align:center;
 
-font-size:16px;
+    font-size:15px;
 
 }
 
 /*==================================================
-            RESPONSIVE
+                SUPPORT BUTTON
+==================================================*/
+
+.support-box{
+
+    position:fixed;
+
+    right:25px;
+
+    bottom:25px;
+
+    z-index:999;
+
+}
+
+.support-btn{
+
+    width:65px;
+
+    height:65px;
+
+    border-radius:50%;
+
+    background:#ff7a00;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    color:#fff;
+
+    font-size:28px;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.25);
+
+    animation:floatSupport 2s infinite;
+
+}
+
+@keyframes floatSupport{
+
+    0%{transform:translateY(0);}
+
+    50%{transform:translateY(-10px);}
+
+    100%{transform:translateY(0);}
+
+}
+
+.support-popup{
+
+    position:absolute;
+
+    right:80px;
+
+    bottom:0;
+
+    width:260px;
+
+    background:#fff;
+
+    border-radius:12px;
+
+    padding:18px;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.18);
+
+    display:none;
+
+}
+
+.support-box:hover .support-popup{
+
+    display:block;
+
+}
+
+.support-popup h4{
+
+    color:#ff7a00;
+
+    margin-bottom:10px;
+
+}
+
+.support-popup p{
+
+    font-size:14px;
+
+    color:#555;
+
+    margin:8px 0;
+
+}
+
+/*==================================================
+                RESPONSIVE
 ==================================================*/
 
 @media(max-width:1200px){
@@ -726,12 +882,6 @@ grid-template-columns:repeat(4,1fr);
 }
 
 @media(max-width:992px){
-
-.company-grid{
-
-grid-template-columns:repeat(3,1fr);
-
-}
 
 .hero{
 
@@ -747,19 +897,29 @@ line-height:60px;
 
 }
 
+.company-grid{
+
+grid-template-columns:repeat(3,1fr);
+
 }
 
-@media(max-width:768px){
-
-.company-grid{
+.footer-grid{
 
 grid-template-columns:repeat(2,1fr);
 
 }
 
-.logo-text h2{
+}
 
-font-size:24px;
+@media(max-width:768px){
+
+.navbar{
+
+flex-direction:column;
+
+height:auto;
+
+padding:15px;
 
 }
 
@@ -769,25 +929,31 @@ height:360px;
 
 }
 
-.hero-text{
+.overlay{
 
-padding-right:20px;
+padding:30px;
 
 }
 
 .hero-text h1{
 
-font-size:36px;
+font-size:38px;
 
-line-height:46px;
+line-height:48px;
 
 }
 
 .hero-text p{
 
-font-size:16px;
+font-size:17px;
 
 line-height:28px;
+
+}
+
+.company-grid{
+
+grid-template-columns:repeat(2,1fr);
 
 }
 
@@ -807,37 +973,17 @@ grid-template-columns:1fr;
 
 }
 
-.logo img{
-
-width:60px;
-
-height:60px;
-
-}
-
-.logo-text h2{
-
-font-size:20px;
-
-}
-
 .hero{
 
 height:300px;
 
 }
 
-.hero-text{
-
-padding-right:15px;
-
-}
-
 .hero-text h1{
 
-font-size:28px;
+font-size:30px;
 
-line-height:38px;
+line-height:40px;
 
 }
 
@@ -855,11 +1001,13 @@ width:100%;
 
 }
 
+.logo-text h2{
+
+font-size:22px;
+
 }
 
-/*==================================================
-            END CSS
-==================================================*/
+}
 
 </style>
 
@@ -872,290 +1020,289 @@ width:100%;
 
 <header>
 
-<div class="container">
+    <div class="container">
 
-<div class="navbar">
+        <div class="navbar">
 
-<!-- Logo -->
+            <!-- ================= LOGO ================= -->
 
-<a href="home.html" class="logo">
+            <a href="home.html" class="logo">
 
-<img src="logo.png" alt="Delivery Jobs India">
+                <img src="logo.png" alt="Delivery Jobs India">
 
-<div class="logo-text">
+                <div class="logo-text">
 
-<h2>
+                    <h2>
 
-Delivery Jobs <span>India</span>
+                        Delivery Jobs <span>India</span>
 
-</h2>
+                    </h2>
 
-<p>
+                    <p>
 
-Jobs | Earn | Grow
+                        Jobs | Earn | Grow
 
-</p>
+                    </p>
 
-</div>
+                </div>
 
-</a>
+            </a>
 
-<!-- Profile -->
+            <!-- ================= PROFILE ================= -->
 
-<div class="profile-box" onclick="window.location.href='profile.html'">
+            <div class="profile-box" id="profileBox">
 
-<div class="profile-img">
+                <div class="profile-img">
 
-<i class="fa-solid fa-user"></i>
+                    <i class="fa-solid fa-user"></i>
 
-</div>
+                </div>
 
-<div class="profile-info">
+                <div class="profile-info">
 
-<h3>
+                    <h3 id="userName">
 
-Hi, Vamshikrishna
+                        Hi, User
 
-</h3>
+                    </h3>
 
-<p>
+                    <p>
 
-View Profile
+                        View Profile
 
-</p>
+                    </p>
 
-</div>
+                </div>
 
-<div class="profile-arrow">
+                <div class="profile-arrow">
 
-<i class="fa-solid fa-chevron-down"></i>
+                    <i class="fa-solid fa-chevron-down"></i>
 
-</div>
+                </div>
 
-<!-- Dropdown -->
+                <!-- ================= DROPDOWN ================= -->
 
-<div class="dropdown">
+                <div class="dropdown">
 
-<a href="profile.html" id="profileLink">
+                    <a href="profile.html" id="profileLink">
 
-<i class="fa-solid fa-user"></i>
+                        <i class="fa-solid fa-user"></i>
 
-&nbsp;&nbsp; Profile
+                        Profile
 
-</a>
+                    </a>
 
+                    <a href="applied-jobs.html">
 
-</a>
+                        <i class="fa-solid fa-clipboard-check"></i>
 
+                        Applied Jobs
 
-<a href="index.html" id="logoutLink">
+                    </a>
 
-<i class="fa-solid fa-right-from-bracket"></i>
+                    <a href="#" id="logoutLink">
 
-&nbsp;&nbsp; Logout
+                        <i class="fa-solid fa-right-from-bracket"></i>
 
-</a>
+                        Logout
 
-</a>
+                    </a>
 
-</div>
+                </div>
 
-</div>
+            </div>
 
-</div>
+        </div>
 
-</div>
+    </div>
 
 </header>
 
 <!-- ==========================================
-                HERO SLIDER
+                HERO SECTION
 ========================================== -->
 
 <section class="hero">
 
-<div class="slider" id="slider">
+    <div class="slider" id="slider">
 
-<!-- Banner 1 -->
+        <!-- ================= Banner 1 ================= -->
 
-<div class="slide">
+        <div class="slide">
 
-<img src="banner1.jpg">
+            <img src="banner1.jpg" alt="Banner 1">
 
-<div class="overlay">
+            <div class="overlay">
 
-<div class="hero-text">
+                <div class="hero-text">
 
-<h1>
+                    <h1>
 
-India's Largest Platform For
+                        India's Largest Platform For
 
-<span>
+                        <span>
 
-Delivery Jobs
+                            Delivery Jobs
 
-</span>
+                        </span>
 
-</h1>
+                    </h1>
 
-<p>
+                    <p>
 
-Find Delivery Partner Jobs from India's
-leading companies.
+                        Find delivery jobs from India's leading companies.
 
-</p>
+                    </p>
 
-<button class="hero-btn">
+                    <button class="hero-btn">
 
-Apply Jobs
+                        Apply Jobs
 
-</button>
+                    </button>
 
-</div>
+                </div>
 
-</div>
+            </div>
 
-</div>
+        </div>
 
-<!-- Banner 2 -->
+        <!-- ================= Banner 2 ================= -->
 
-<div class="slide">
+        <div class="slide">
 
-<img src="banner2.jpg">
+            <img src="banner2.jpg" alt="Banner 2">
 
-<div class="overlay">
+            <div class="overlay">
 
-<div class="hero-text">
+                <div class="hero-text">
 
-<h1>
+                    <h1>
 
-Work With
+                        Work With
 
-<span>
+                        <span>
 
-Swiggy
+                            Swiggy
 
-</span>
+                        </span>
 
-</h1>
+                    </h1>
 
-<p>
+                    <p>
 
-Flexible shifts with attractive earnings.
+                        Flexible timings with attractive earnings.
 
-</p>
+                    </p>
 
-<button class="hero-btn">
+                    <button class="hero-btn">
 
-Apply Now
+                        Apply Now
 
-</button>
+                    </button>
 
-</div>
+                </div>
 
-</div>
+            </div>
 
-</div>
+        </div>
 
-<!-- Banner 3 -->
+        <!-- ================= Banner 3 ================= -->
 
-<div class="slide">
+        <div class="slide">
 
-<img src="banner3.jpg">
+            <img src="banner3.jpg" alt="Banner 3">
 
-<div class="overlay">
+            <div class="overlay">
 
-<div class="hero-text">
+                <div class="hero-text">
 
-<h1>
+                    <h1>
 
-Join
+                        Join
 
-<span>
+                        <span>
 
-Zomato
+                            Zomato
 
-</span>
+                        </span>
 
-</h1>
+                    </h1>
 
-<p>
+                    <p>
 
-Become a delivery partner and earn daily.
+                        Daily earnings with weekly incentives.
 
-</p>
+                    </p>
 
-<button class="hero-btn">
+                    <button class="hero-btn">
 
-Apply Now
+                        Apply Now
 
-</button>
+                    </button>
 
-</div>
+                </div>
 
-</div>
+            </div>
 
-</div>
+        </div>
 
-<!-- Banner 4 -->
+        <!-- ================= Banner 4 ================= -->
 
-<div class="slide">
+        <div class="slide">
 
-<img src="banner4.jpg">
+            <img src="banner4.jpg" alt="Banner 4">
 
-<div class="overlay">
+            <div class="overlay">
 
-<div class="hero-text">
+                <div class="hero-text">
 
-<h1>
+                    <h1>
 
-Top Delivery
+                        Top Delivery
 
-<span>
+                        <span>
 
-Companies
+                            Companies
 
-</span>
+                        </span>
 
-</h1>
+                    </h1>
 
-<p>
+                    <p>
 
-Amazon, Blinkit, Zepto, Porter,
-Delhivery and more.
+                        Amazon, Zepto, Blinkit, Porter, Delhivery and many more.
 
-</p>
+                    </p>
 
-<button class="hero-btn">
+                    <button class="hero-btn">
 
-Explore Jobs
+                        Explore Jobs
 
-</button>
+                    </button>
 
-</div>
+                </div>
 
-</div>
+            </div>
 
-</div>
+        </div>
 
-</div>
+    </div>
 
-<!-- Slider Dots -->
+    <!-- ================= SLIDER DOTS ================= -->
 
-<div class="dots">
+    <div class="dots">
 
-<span class="dot active"></span>
+        <span class="dot active"></span>
 
-<span class="dot"></span>
+        <span class="dot"></span>
 
-<span class="dot"></span>
+        <span class="dot"></span>
 
-<span class="dot"></span>
+        <span class="dot"></span>
 
-</div>
+    </div>
 
 </section>
-
 <!-- ==========================================
         TOP DELIVERY COMPANIES
 ========================================== -->
@@ -1179,9 +1326,10 @@ Companies
 </h2>
 
 </div>
+
 <div class="company-grid">
 
-<!-- ================= Row 1 ================= -->
+<!-- ================= Card 1 ================= -->
 
 <div class="company-card">
 
@@ -1191,9 +1339,24 @@ Companies
 
 <p>Instant Grocery Delivery</p>
 
-<button class="apply-btn">Apply Now</button>
+<p class="salary">
+💰 ₹28,000 - ₹42,000 / Month
+</p>
+
+<button class="apply-btn"
+data-job-id="1"
+data-company="Zepto"
+data-title="Instant Grocery Delivery"
+data-location="Hyderabad"
+data-salary="₹28,000 - ₹42,000 / Month">
+
+Apply Now
+
+</button>
 
 </div>
+
+<!-- ================= Card 2 ================= -->
 
 <div class="company-card">
 
@@ -1203,9 +1366,24 @@ Companies
 
 <p>Food Delivery Partner</p>
 
-<button class="apply-btn">Apply Now</button>
+<p class="salary">
+💰 ₹25,000 - ₹40,000 / Month
+</p>
+
+<button class="apply-btn"
+data-job-id="2"
+data-company="Zomato"
+data-title="Food Delivery Partner"
+data-location="Hyderabad"
+data-salary="₹25,000 - ₹40,000 / Month">
+
+Apply Now
+
+</button>
 
 </div>
+
+<!-- ================= Card 3 ================= -->
 
 <div class="company-card">
 
@@ -1215,9 +1393,24 @@ Companies
 
 <p>Food Delivery Executive</p>
 
-<button class="apply-btn">Apply Now</button>
+<p class="salary">
+💰 ₹26,000 - ₹42,000 / Month
+</p>
+
+<button class="apply-btn"
+data-job-id="3"
+data-company="Swiggy"
+data-title="Food Delivery Executive"
+data-location="Hyderabad"
+data-salary="₹26,000 - ₹42,000 / Month">
+
+Apply Now
+
+</button>
 
 </div>
+
+<!-- ================= Card 4 ================= -->
 
 <div class="company-card">
 
@@ -1227,9 +1420,24 @@ Companies
 
 <p>10 Minutes Delivery</p>
 
-<button class="apply-btn">Apply Now</button>
+<p class="salary">
+💰 ₹24,000 - ₹38,000 / Month
+</p>
+
+<button class="apply-btn"
+data-job-id="4"
+data-company="Blinkit"
+data-title="10 Minutes Delivery"
+data-location="Hyderabad"
+data-salary="₹24,000 - ₹38,000 / Month">
+
+Apply Now
+
+</button>
 
 </div>
+
+<!-- ================= Card 5 ================= -->
 
 <div class="company-card">
 
@@ -1239,673 +1447,917 @@ Companies
 
 <p>Food Delivery</p>
 
-<button class="apply-btn">Apply Now</button>
+<p class="salary">
+💰 ₹25,000 - ₹38,000 / Month
+</p>
+
+<button class="apply-btn"
+data-job-id="5"
+data-company="Uber Eats"
+data-title="Food Delivery"
+data-location="Hyderabad"
+data-salary="₹25,000 - ₹38,000 / Month">
+
+Apply Now
+
+</button>
 
 </div>
-
-<!-- ================= Row 2 ================= -->
+<!-- ================= Card 6 ================= -->
 
 <div class="company-card">
 
-<img src="logos/amazon.png" alt="Amazon">
+    <img src="logos/amazon.png" alt="Amazon">
 
-<h3>Amazon</h3>
+    <h3>Amazon</h3>
 
-<p>Package Delivery</p>
+    <p>Package Delivery</p>
 
-<button class="apply-btn">Apply Now</button>
+    <p class="salary">
+        💰 ₹24,000 - ₹45,000 / Month
+    </p>
+
+    <button class="apply-btn"
+        data-job-id="6"
+        data-company="Amazon"
+        data-title="Package Delivery"
+        data-location="Hyderabad"
+        data-salary="₹24,000 - ₹45,000 / Month">
+
+        Apply Now
+
+    </button>
 
 </div>
+
+<!-- ================= Card 7 ================= -->
 
 <div class="company-card">
 
-<img src="logos/flipkart.png" alt="Flipkart">
+    <img src="logos/flipkart.png" alt="Flipkart">
 
-<h3>Flipkart</h3>
+    <h3>Flipkart</h3>
 
-<p>E-Commerce Delivery</p>
+    <p>E-Commerce Delivery</p>
 
-<button class="apply-btn">Apply Now</button>
+    <p class="salary">
+        💰 ₹25,000 - ₹40,000 / Month
+    </p>
+
+    <button class="apply-btn"
+        data-job-id="7"
+        data-company="Flipkart"
+        data-title="E-Commerce Delivery"
+        data-location="Hyderabad"
+        data-salary="₹25,000 - ₹40,000 / Month">
+
+        Apply Now
+
+    </button>
 
 </div>
+
+<!-- ================= Card 8 ================= -->
 
 <div class="company-card">
 
-<img src="logos/delhivery.png" alt="Delhivery">
+    <img src="logos/delhivery.png" alt="Delhivery">
 
-<h3>Delhivery</h3>
+    <h3>Delhivery</h3>
 
-<p>Courier Delivery</p>
+    <p>Courier Delivery</p>
 
-<button class="apply-btn">Apply Now</button>
+    <p class="salary">
+        💰 ₹24,000 - ₹40,000 / Month
+    </p>
+
+    <button class="apply-btn"
+        data-job-id="8"
+        data-company="Delhivery"
+        data-title="Courier Delivery"
+        data-location="Hyderabad"
+        data-salary="₹24,000 - ₹40,000 / Month">
+
+        Apply Now
+
+    </button>
 
 </div>
+
+<!-- ================= Card 9 ================= -->
 
 <div class="company-card">
 
-<img src="logos/porter.png" alt="Porter">
+    <img src="logos/porter.png" alt="Porter">
 
-<h3>Porter</h3>
+    <h3>Porter</h3>
 
-<p>Logistics Delivery</p>
+    <p>Logistics Delivery</p>
 
-<button class="apply-btn">Apply Now</button>
+    <p class="salary">
+        💰 ₹24,000 - ₹38,000 / Month
+    </p>
+
+    <button class="apply-btn"
+        data-job-id="9"
+        data-company="Porter"
+        data-title="Logistics Delivery"
+        data-location="Hyderabad"
+        data-salary="₹24,000 - ₹38,000 / Month">
+
+        Apply Now
+
+    </button>
 
 </div>
+
+<!-- ================= Card 10 ================= -->
 
 <div class="company-card">
 
-<img src="logos/bigbasket.png" alt="BigBasket">
+    <img src="logos/bigbasket.png" alt="BigBasket">
 
-<h3>BigBasket</h3>
+    <h3>BigBasket</h3>
 
-<p>Grocery Delivery</p>
+    <p>Grocery Delivery</p>
 
-<button class="apply-btn">Apply Now</button>
+    <p class="salary">
+        💰 ₹24,000 - ₹38,000 / Month
+    </p>
+
+    <button class="apply-btn"
+        data-job-id="10"
+        data-company="BigBasket"
+        data-title="Grocery Delivery"
+        data-location="Hyderabad"
+        data-salary="₹24,000 - ₹38,000 / Month">
+
+        Apply Now
+
+    </button>
 
 </div>
-
-<!-- ================= Row 3 ================= -->
+<!-- ================= Card 11 ================= -->
 
 <div class="company-card">
 
-<img src="logos/dunzo.png" alt="Dunzo">
+    <img src="logos/dunzo.png" alt="Dunzo">
 
-<h3>Dunzo</h3>
+    <h3>Dunzo</h3>
 
-<p>Hyperlocal Delivery</p>
+    <p>Hyperlocal Delivery</p>
 
-<button class="apply-btn">Apply Now</button>
+    <p class="salary">
+        💰 ₹24,000 - ₹36,000 / Month
+    </p>
+
+    <button class="apply-btn"
+        data-job-id="11"
+        data-company="Dunzo"
+        data-title="Hyperlocal Delivery"
+        data-location="Hyderabad"
+        data-salary="₹24,000 - ₹36,000 / Month">
+
+        Apply Now
+
+    </button>
 
 </div>
+
+<!-- ================= Card 12 ================= -->
 
 <div class="company-card">
 
-<img src="logos/rapido.png" alt="Rapido">
+    <img src="logos/rapido.png" alt="Rapido">
 
-<h3>Rapido</h3>
+    <h3>Rapido</h3>
 
-<p>Bike Delivery</p>
+    <p>Bike Delivery</p>
 
-<button class="apply-btn">Apply Now</button>
+    <p class="salary">
+        💰 ₹24,000 - ₹44,000 / Month
+    </p>
+
+    <button class="apply-btn"
+        data-job-id="12"
+        data-company="Rapido"
+        data-title="Bike Delivery"
+        data-location="Hyderabad"
+        data-salary="₹24,000 - ₹44,000 / Month">
+
+        Apply Now
+
+    </button>
 
 </div>
+
+<!-- ================= Card 13 ================= -->
 
 <div class="company-card">
 
-<img src="logos/shadowfax.png" alt="Shadowfax">
+    <img src="logos/shadowfax.png" alt="Shadowfax">
 
-<h3>Shadowfax</h3>
+    <h3>Shadowfax</h3>
 
-<p>Courier Partner</p>
+    <p>Courier Partner</p>
 
-<button class="apply-btn">Apply Now</button>
+    <p class="salary">
+        💰 ₹24,000 - ₹38,000 / Month
+    </p>
+
+    <button class="apply-btn"
+        data-job-id="13"
+        data-company="Shadowfax"
+        data-title="Courier Partner"
+        data-location="Hyderabad"
+        data-salary="₹24,000 - ₹38,000 / Month">
+
+        Apply Now
+
+    </button>
 
 </div>
+
+<!-- ================= Card 14 ================= -->
 
 <div class="company-card">
 
-<img src="logos/ecomexpress.png" alt="Ecom Express">
+    <img src="logos/ecomexpress.png" alt="Ecom Express">
 
-<h3>Ecom Express</h3>
+    <h3>Ecom Express</h3>
 
-<p>E-Commerce Delivery</p>
+    <p>E-Commerce Delivery</p>
 
-<button class="apply-btn">Apply Now</button>
+    <p class="salary">
+        💰 ₹24,000 - ₹38,000 / Month
+    </p>
+
+    <button class="apply-btn"
+        data-job-id="14"
+        data-company="Ecom Express"
+        data-title="E-Commerce Delivery"
+        data-location="Hyderabad"
+        data-salary="₹24,000 - ₹38,000 / Month">
+
+        Apply Now
+
+    </button>
 
 </div>
+
+<!-- ================= Card 15 ================= -->
 
 <div class="company-card">
 
-<img src="logos/bluedart.png" alt="Blue Dart">
+    <img src="logos/bluedart.png" alt="Blue Dart">
 
-<h3>Blue Dart</h3>
+    <h3>Blue Dart</h3>
 
-<p>Express Delivery</p>
+    <p>Express Delivery</p>
 
-<button class="apply-btn">Apply Now</button>
+    <p class="salary">
+        💰 ₹24,000 - ₹48,000 / Month
+    </p>
+
+    <button class="apply-btn"
+        data-job-id="15"
+        data-company="Blue Dart"
+        data-title="Express Delivery"
+        data-location="Hyderabad"
+        data-salary="₹24,000 - ₹48,000 / Month">
+
+        Apply Now
+
+    </button>
 
 </div>
-
-<!-- ================= Row 4 ================= -->
+<!-- ================= Card 16 ================= -->
 
 <div class="company-card">
 
-<img src="logos/dtdc.png" alt="DTDC">
+    <img src="logos/dtdc.png" alt="DTDC">
 
-<h3>DTDC</h3>
+    <h3>DTDC</h3>
 
-<p>Courier Services</p>
+    <p>Courier Services</p>
 
-<button class="apply-btn">Apply Now</button>
+    <p class="salary">
+        💰 ₹24,000 - ₹40,000 / Month
+    </p>
+
+    <button class="apply-btn"
+        data-job-id="16"
+        data-company="DTDC"
+        data-title="Courier Services"
+        data-location="Hyderabad"
+        data-salary="₹24,000 - ₹40,000 / Month">
+
+        Apply Now
+
+    </button>
 
 </div>
+
+<!-- ================= Card 17 ================= -->
 
 <div class="company-card">
 
-<img src="logos/xpressbees.png" alt="XpressBees">
+    <img src="logos/xpressbees.png" alt="XpressBees">
 
-<h3>XpressBees</h3>
+    <h3>XpressBees</h3>
 
-<p>Last Mile Delivery</p>
+    <p>Last Mile Delivery</p>
 
-<button class="apply-btn">Apply Now</button>
+    <p class="salary">
+        💰 ₹24,000 - ₹38,000 / Month
+    </p>
+
+    <button class="apply-btn"
+        data-job-id="17"
+        data-company="XpressBees"
+        data-title="Last Mile Delivery"
+        data-location="Hyderabad"
+        data-salary="₹24,000 - ₹38,000 / Month">
+
+        Apply Now
+
+    </button>
 
 </div>
+
+<!-- ================= Card 18 ================= -->
 
 <div class="company-card">
 
-<img src="logos/safexpress.png" alt="Safexpress">
+    <img src="logos/safexpress.png" alt="Safexpress">
 
-<h3>Safexpress</h3>
+    <h3>Safexpress</h3>
 
-<p>Logistics Services</p>
+    <p>Logistics Services</p>
 
-<button class="apply-btn">Apply Now</button>
+    <p class="salary">
+        💰 ₹25,000 - ₹60,000 / Month
+    </p>
+
+    <button class="apply-btn"
+        data-job-id="18"
+        data-company="Safexpress"
+        data-title="Logistics Services"
+        data-location="Hyderabad"
+        data-salary="₹25,000 - ₹60,000 / Month">
+
+        Apply Now
+
+    </button>
 
 </div>
+
+<!-- ================= Card 19 ================= -->
 
 <div class="company-card">
 
-<img src="logos/lalamove.png" alt="Lalamove">
+    <img src="logos/lalamove.png" alt="Lalamove">
 
-<h3>Lalamove</h3>
+    <h3>Lalamove</h3>
 
-<p>Vehicle Delivery</p>
+    <p>Vehicle Delivery</p>
 
-<button class="apply-btn">Apply Now</button>
+    <p class="salary">
+        💰 ₹25,000 - ₹50,000 / Month
+    </p>
+
+    <button class="apply-btn"
+        data-job-id="19"
+        data-company="Lalamove"
+        data-title="Vehicle Delivery"
+        data-location="Hyderabad"
+        data-salary="₹25,000 - ₹50,000 / Month">
+
+        Apply Now
+
+    </button>
 
 </div>
+
+<!-- ================= Card 20 ================= -->
 
 <div class="company-card">
 
-<img src="logos/jiomart.png" alt="JioMart">
+    <img src="logos/jiomart.png" alt="JioMart">
 
-<h3>JioMart</h3>
+    <h3>JioMart</h3>
 
-<p>Retail Delivery</p>
+    <p>Retail Delivery</p>
 
-<button class="apply-btn">Apply Now</button>
+    <p class="salary">
+        💰 ₹25,000 - ₹50,000 / Month
+    </p>
+
+    <button class="apply-btn"
+        data-job-id="20"
+        data-company="JioMart"
+        data-title="Retail Delivery"
+        data-location="Hyderabad"
+        data-salary="₹25,000 - ₹50,000 / Month">
+
+        Apply Now
+
+    </button>
 
 </div>
-
-<!-- ================= Row 5 ================= -->
+<!-- ================= Card 21 ================= -->
 
 <div class="company-card">
 
-<img src="logos/meesho.png" alt="Meesho">
+    <img src="logos/meesho.png" alt="Meesho">
 
-<h3>Meesho</h3>
+    <h3>Meesho</h3>
 
-<p>Online Delivery</p>
+    <p>Online Delivery</p>
 
-<button class="apply-btn">Apply Now</button>
+    <p class="salary">
+        💰 ₹25,000 - ₹45,000 / Month
+    </p>
+
+    <button class="apply-btn"
+        data-job-id="21"
+        data-company="Meesho"
+        data-title="Online Delivery"
+        data-location="Hyderabad"
+        data-salary="₹25,000 - ₹45,000 / Month">
+
+        Apply Now
+
+    </button>
 
 </div>
+
+<!-- ================= Card 22 ================= -->
 
 <div class="company-card">
 
-<img src="logos/firstcry.png" alt="FirstCry">
+    <img src="logos/firstcry.png" alt="FirstCry">
 
-<h3>FirstCry</h3>
+    <h3>FirstCry</h3>
 
-<p>Baby Products Delivery</p>
+    <p>Baby Products Delivery</p>
 
-<button class="apply-btn">Apply Now</button>
+    <p class="salary">
+        💰 ₹25,000 - ₹40,000 / Month
+    </p>
+
+    <button class="apply-btn"
+        data-job-id="22"
+        data-company="FirstCry"
+        data-title="Baby Products Delivery"
+        data-location="Hyderabad"
+        data-salary="₹25,000 - ₹40,000 / Month">
+
+        Apply Now
+
+    </button>
 
 </div>
+
+<!-- ================= Card 23 ================= -->
 
 <div class="company-card">
 
-<img src="logos/tata1mg.png" alt="Tata 1mg">
+    <img src="logos/tata1mg.png" alt="Tata 1mg">
 
-<h3>Tata 1mg</h3>
+    <h3>Tata 1mg</h3>
 
-<p>Medicine Delivery</p>
+    <p>Medicine Delivery</p>
 
-<button class="apply-btn">Apply Now</button>
+    <p class="salary">
+        💰 ₹23,000 - ₹43,000 / Month
+    </p>
+
+    <button class="apply-btn"
+        data-job-id="23"
+        data-company="Tata 1mg"
+        data-title="Medicine Delivery"
+        data-location="Hyderabad"
+        data-salary="₹23,000 - ₹43,000 / Month">
+
+        Apply Now
+
+    </button>
 
 </div>
+
+<!-- ================= Card 24 ================= -->
 
 <div class="company-card">
 
-<img src="logos/netmeds.png" alt="NetMeds">
+    <img src="logos/netmeds.png" alt="NetMeds">
 
-<h3>NetMeds</h3>
+    <h3>NetMeds</h3>
 
-<p>Pharmacy Delivery</p>
+    <p>Pharmacy Delivery</p>
 
-<button class="apply-btn">Apply Now</button>
+    <p class="salary">
+        💰 ₹25,000 - ₹42,000 / Month
+    </p>
+
+    <button class="apply-btn"
+        data-job-id="24"
+        data-company="NetMeds"
+        data-title="Pharmacy Delivery"
+        data-location="Hyderabad"
+        data-salary="₹25,000 - ₹42,000 / Month">
+
+        Apply Now
+
+    </button>
 
 </div>
+
+<!-- ================= Card 25 ================= -->
 
 <div class="company-card">
 
-<img src="logos/instamart.png" alt="Swiggy Instamart">
+    <img src="logos/instamart.png" alt="Swiggy Instamart">
 
-<h3>Swiggy Instamart</h3>
+    <h3>Swiggy Instamart</h3>
 
-<p>Instant Grocery Delivery</p>
+    <p>Instant Grocery Delivery</p>
 
-<button class="apply-btn">Apply Now</button>
+    <p class="salary">
+        💰 ₹25,000 - ₹50,000 / Month
+    </p>
+
+    <button class="apply-btn"
+        data-job-id="25"
+        data-company="Swiggy Instamart"
+        data-title="Instant Grocery Delivery"
+        data-location="Hyderabad"
+        data-salary="₹25,000 - ₹50,000 / Month">
+
+        Apply Now
+
+    </button>
 
 </div>
 
 </div>
+
 </div>
 
 </section>
-
 <!-- ==========================================
                 FOOTER
 ========================================== -->
 
 <footer>
 
-<div class="container">
+    <div class="container">
 
-<div class="footer-grid">
+        <div class="footer-grid">
 
-<!-- Company -->
+            <!-- ================= Company ================= -->
 
-<div class="footer-box">
+            <div class="footer-box">
 
-<h3>
+                <h3>
 
-Delivery Jobs India
+                    Delivery Jobs India
 
-</h3>
+                </h3>
 
-<p>
+                <p>
 
-Delivery Jobs India is India's trusted platform
-to find Delivery Jobs from leading companies.
+                    Delivery Jobs India is India's trusted platform
+                    to find Delivery Partner Jobs from leading companies.
 
-</p>
+                </p>
 
-<p>
+                <p>
 
-Apply for Delivery Partner jobs from
-Swiggy, Zomato, Blinkit, Zepto,
-Amazon, Flipkart and many more.
+                    Apply for jobs in Swiggy, Zomato,
+                    Blinkit, Zepto, Amazon, Flipkart,
+                    Porter, Delhivery and many more.
 
-</p>
+                </p>
 
-</div>
+            </div>
 
-<!-- Support -->
+            <!-- ================= Support ================= -->
 
-<div class="footer-box">
+            <div class="footer-box">
 
-<h3>
+                <h3>
 
-Support
+                    Support
 
-</h3>
+                </h3>
 
-<p>
+                <p>
 
-📧 support@deliveryjobsindia.in
+                    📧 support@deliveryjobsindia.in
 
-</p>
+                </p>
 
-<p>
+                <p>
 
-📧 help@deliveryjobsindia.in
+                    📧 help@deliveryjobsindia.in
 
-</p>
+                </p>
 
-<p>
+                <p>
 
-📞 +91 98765 43210
+                    📞 +91 98765 43210
 
-</p>
+                </p>
 
-<p>
+                <p>
 
-📞 +91 91234 56789
+                    📞 +91 91234 56789
 
-</p>
+                </p>
 
-<p>
+                <p>
 
-🕘 Monday - Saturday
+                    Monday - Saturday
 
-9:00 AM - 6:00 PM
+                </p>
 
-</p>
+                <p>
 
-</div>
+                    9:00 AM - 6:00 PM
 
-<!-- Address -->
+                </p>
 
-<div class="footer-box">
+            </div>
 
-<h3>
+            <!-- ================= Address ================= -->
 
-Office Address
+            <div class="footer-box">
 
-</h3>
+                <h3>
 
-<p>
+                    Office Address
 
-Delivery Jobs India
+                </h3>
 
-</p>
+                <p>
 
-<p>
+                    Delivery Jobs India
 
-Hanamkonda
+                </p>
 
-</p>
+                <p>
 
-<p>
+                    Hanamkonda
 
-Warangal
+                </p>
 
-</p>
+                <p>
 
-<p>
+                    Warangal
 
-Telangana - 506001
+                </p>
 
-</p>
+                <p>
 
-<p>
+                    Telangana - 506001
 
-India
+                </p>
 
-</p>
+                <p>
 
-</div>
+                    India
 
-<!-- Quick Links -->
+                </p>
 
-<div class="footer-box">
+            </div>
 
-<h3>
+            <!-- ================= Quick Links ================= -->
 
-Quick Links
+            <div class="footer-box">
 
-</h3>
+                <h3>
 
-<ul>
+                    Quick Links
 
-<li>
+                </h3>
 
-<a href="profile.html">
+                <ul>
 
-My Profile
+                    <li>
 
-</a>
+                        <a href="profile.html">
 
-</li>
+                            My Profile
 
-<li>
+                        </a>
 
-<a href="careers.html">
+                    </li>
 
-Careers
+                    <li>
 
-</a>
+                        <a href="applied-jobs.html">
 
-</li>
+                            Applied Jobs
 
-<li>
+                        </a>
 
-<a href="privacy-policy.html">
+                    </li>
 
-Privacy Policy
+                    <li>
 
-</a>
+                        <a href="privacy-policy.html">
 
-</li>
+                            Privacy Policy
 
-<li>
+                        </a>
 
-<a href="terms-and-conditions.html">
+                    </li>
 
-Terms & Conditions
+                    <li>
 
-</a>
+                        <a href="terms-and-conditions.html">
 
-</li>
+                            Terms & Conditions
 
-<li>
+                        </a>
 
-<a href="contact.html">
+                    </li>
 
-Contact Us
+                    <li>
 
-</a>
+                        <a href="contact.html">
 
-</li>
+                            Contact Us
 
-</ul>
+                        </a>
 
-</div>
+                    </li>
 
-</div>
+                </ul>
 
-<!-- Footer Bottom -->
+            </div>
 
-<div class="footer-bottom">
+        </div>
 
-© 2026 Delivery Jobs India.
+        <!-- ================= Footer Bottom ================= -->
 
-All Rights Reserved.
+        <div class="footer-bottom">
 
-</div>
+            © 2026 Delivery Jobs India.
 
-</div>
+            All Rights Reserved.
+
+        </div>
+
+    </div>
 
 </footer>
+
 <!-- ==========================================
-            JAVASCRIPT
+        FLOATING SUPPORT BUTTON
 ========================================== -->
 
+<div class="support-box">
+
+    <div class="support-popup">
+
+        <h4>
+
+            Contact Support
+
+        </h4>
+
+        <p>
+
+            📧 support@deliveryjobsindia.in
+
+        </p>
+
+        <p>
+
+            📞 +91 98765 43210
+
+        </p>
+
+        <p>
+
+            📞 +91 91234 56789
+
+        </p>
+
+    </div>
+
+    <div class="support-btn">
+
+        <i class="fa-solid fa-headset"></i>
+
+    </div>
+
+</div>
+</body>
 <script>
 
 /*=========================================
-        AUTO BANNER SLIDER
+        SUPABASE CONNECTION
 =========================================*/
 
-const slider = document.getElementById("slider");
+const SUPABASE_URL = "https://xeraljvxmfpwyenkiebb.supabase.co";
 
-const dots = document.querySelectorAll(".dot");
+const SUPABASE_ANON_KEY = "sb_publishable_Zypr-BL-TfIInUlHt6FhKw_Svt8baSU";
 
-let currentSlide = 0;
+const sb = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_ANON_KEY
+);
 
-const totalSlides = 4;
-
-function showSlide(index){
-
-slider.style.transform =
-`translateX(-${index * 100}%)`;
-
-dots.forEach(dot=>dot.classList.remove("active"));
-
-dots[index].classList.add("active");
-
-}
-
-setInterval(()=>{
-
-currentSlide++;
-
-if(currentSlide>=totalSlides){
-
-currentSlide=0;
-
-}
-
-showSlide(currentSlide);
-
-},4000);
-
-
-/*=========================================
-        DOT CLICK
-=========================================*/
-
-dots.forEach((dot,index)=>{
-
-dot.addEventListener("click",()=>{
-
-currentSlide=index;
-
-showSlide(currentSlide);
-
-});
-
-});
-
+console.log("Supabase Connected");
 
 /*=========================================
         APPLY BUTTON
 =========================================*/
 
-document.querySelectorAll(".apply-btn").forEach(button=>{
+document.querySelectorAll(".apply-btn").forEach(button => {
 
-button.addEventListener("click",function(){
+    button.addEventListener("click", async function () {
 
-window.location.href="apply.html";
+        try {
 
-});
+            const userId = localStorage.getItem("userId");
 
-});
+            if (!userId) {
+                alert("Please Login First");
+                window.location.href = "login.html";
+                return;
+            }
 
+            const jobId = parseInt(this.dataset.jobId);
 
-/*=========================================
-        HERO BUTTON
-=========================================*/
+            const company = this.dataset.company;
+            const title = this.dataset.title;
+            const location = this.dataset.location;
+            const salary = this.dataset.salary;
 
-document.querySelectorAll(".hero-btn").forEach(button=>{
+            // Already Applied Check
+            const { data: existing, error: checkError } = await sb
+                .from("job_applications")
+                .select("id")
+                .eq("user_id", userId)
+                .eq("job_id", jobId);
 
-button.addEventListener("click",function(){
+            if (checkError) {
+                console.error(checkError);
+                alert(checkError.message);
+                return;
+            }
 
-document.querySelector(".company-section")
-.scrollIntoView({
+            if (existing.length > 0) {
 
-behavior:"smooth"
+                alert("You already applied.");
 
-});
+                this.innerHTML = "✅ Applied";
+                this.disabled = true;
 
-});
+                return;
+            }
 
-});
+            // Insert Application
+            const { error } = await sb
+                .from("job_applications")
+                .insert([
+                    {
+                        user_id: userId,
+                        job_id: jobId,
+                        company_name: company,
+                        job_title: title,
+                        location: location,
+                        salary: salary,
+                        status: "Applied"
+                    }
+                ]);
 
+            if (error) {
+                console.error(error);
+                alert(error.message);
+                return;
+            }
 
-/*=========================================
-        PROFILE
-=========================================*/
+            this.innerHTML = "✅ Applied";
+            this.disabled = true;
 
-document.querySelector(".profile-info h3").innerHTML=
+            alert("Application Submitted Successfully");
 
-localStorage.getItem("userName") ||
+        } catch (err) {
 
-"Vamshikrishna";
+            console.error(err);
+            alert("Unexpected Error");
 
+        }
 
-/*/*=========================================
-        PROFILE
-=========================================*/
-
-document.getElementById("profileLink").addEventListener("click",function(){
-
-window.location.href="profile.html";
-
-});
-
-
-/*=========================================
-        LOGOUT
-=========================================*/
-
-document.getElementById("logoutLink").addEventListener("click", function(e){
-
-    e.preventDefault();
-
-    const logout = confirm("Are you sure you want to logout?");
-
-    if(logout){
-
-        // User data clear cheyyi
-        localStorage.clear();
-        sessionStorage.clear();
-
-        // Before Login Home Page
-        window.location.replace("index.html");
-
-    }
-
-});
-
-
-/*=========================================
-        SCROLL HEADER
-=========================================*/
-
-window.addEventListener("scroll",function(){
-
-const header=document.querySelector("header");
-
-if(window.scrollY>30){
-
-header.style.boxShadow="0 8px 25px rgba(0,0,0,.12)";
-
-}else{
-
-header.style.boxShadow="0 3px 15px rgba(0,0,0,.08)";
-
-}
+    });
 
 });
 
-
-/*=========================================
-        FADE IN CARDS
-=========================================*/
-
-const cards=document.querySelectorAll(".company-card");
-
-const observer=new IntersectionObserver(entries=>{
-
-entries.forEach(entry=>{
-
-if(entry.isIntersecting){
-
-entry.target.style.opacity="1";
-
-entry.target.style.transform="translateY(0)";
-
-}
-
-});
-
-});
-
-cards.forEach(card=>{
-
-card.style.opacity="0";
-
-card.style.transform="translateY(40px)";
-
-card.style.transition=".5s";
-
-observer.observe(card);
-
-});
-document.getElementById("profileBox").addEventListener("click", function(e){
-
-    // Dropdown meeda click ayithe redirect avvakunda undali
-    if (e.target.closest(".dropdown")) {
-        return;
-    }
-
-    window.location.href = "profile.html";
-
-});
 </script>
 
 </body>

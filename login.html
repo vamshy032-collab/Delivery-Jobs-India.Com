@@ -30,6 +30,7 @@ body{
     align-items:center;
     background:linear-gradient(135deg,#0f172a,#1e293b,#334155);
     overflow:hidden;
+    overflow-x: hidden;
 
 }
 
@@ -507,7 +508,14 @@ font-size:20px;
 
 </style>
 
+
+
 </head>
+
+<script>
+
+</script>
+
 <body>
 
 <!-- Background -->
@@ -533,7 +541,7 @@ font-size:20px;
 
         <h2>Welcome <span>Back</span></h2>
 
-        <p>Login with your Mobile Number or Email</p>
+        <p>Login with your Mobile Number</p>
 
     </div>
 
@@ -545,18 +553,18 @@ font-size:20px;
 
         <div class="form-group">
 
-            <label>Email Address or Mobile Number</label>
+           <label>Mobile Number</label>
 
             <input
                 type="text"
                 class="form-control"
                 id="loginInput"
-                placeholder="Enter Email or Mobile Number"
+                placeholder="Enter Mobile Number"
                 required>
 
             <div class="error" id="loginError">
 
-                Please enter a valid Email or 10 digit Mobile Number.
+                Please enter a valid 10 digit Mobile Number.
 
             </div>
 
@@ -628,7 +636,7 @@ font-size:20px;
 
             <a href="#" id="changeNumber">
 
-                Change Mobile Number / Email
+                Change Mobile Number 
 
             </a>
 
@@ -660,45 +668,45 @@ font-size:20px;
 
     </div>
 
+
 </div>
+
 <script>
 
+   
 // ==============================
-// Email / Mobile Validation
+// Mobile Validation
 // ==============================
 
 const loginForm = document.getElementById("loginForm");
 const loginInput = document.getElementById("loginInput");
 const loginError = document.getElementById("loginError");
 
-const otpSection = document.getElementById("otpSection");
 const userValue = document.getElementById("userValue");
+const otpSection = document.getElementById("otpSection");
 
-const emailPattern=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+
 const mobilePattern=/^[6-9]\d{9}$/;
+loginForm.addEventListener("submit", function (e) {
 
-loginForm.addEventListener("submit",function(e){
+    e.preventDefault();
 
-e.preventDefault();
+    const mobile = loginInput.value.trim();
 
-const value=loginInput.value.trim();
+    if (!mobilePattern.test(mobile)) {
+        loginError.style.display = "block";
+        return;
+    }
 
-if(emailPattern.test(value) || mobilePattern.test(value)){
+    loginError.style.display = "none";
 
-loginError.style.display="none";
+    userValue.innerHTML = "+91 " + mobile;
 
-userValue.innerHTML=value;
+    loginForm.style.display = "none";
+    otpSection.style.display = "block";
 
-otpSection.style.display="block";
-
-loginForm.style.display="none";
-
-}
-else{
-
-loginError.style.display="block";
-
-}
+    alert("Demo OTP : 1234");
 
 });
 
@@ -736,35 +744,7 @@ otpInputs[index-1].focus();
 });
 
 
-// ==============================
-// Verify OTP
-// Demo OTP = 1234
-// ==============================
 
-document.getElementById("verifyBtn").addEventListener("click",function(){
-
-let otp="";
-
-otpInputs.forEach(input=>{
-
-otp+=input.value;
-
-});
-
-if(otp==="1234"){
-
-localStorage.setItem("isLoggedIn","true");
-
-window.location.href="home.html";
-
-}
-else{
-
-document.getElementById("otpError").style.display="block";
-
-}
-
-});
 
 
 // ==============================
@@ -804,13 +784,30 @@ loginInput.focus();
 // ==============================
 // Prevent Login Page After Login
 // ==============================
+document.getElementById("verifyBtn").addEventListener("click", function () {
 
-if(localStorage.getItem("isLoggedIn")=="true"){
+    const otp = [...document.querySelectorAll(".otp-input")]
+        .map(x => x.value)
+        .join("");
 
-window.location.href="home.html";
+    if (otp !== "1234") {
 
-}
+        document.getElementById("otpError").style.display = "block";
+        return;
 
+    }
+document.getElementById("otpError").style.display = "none";
+
+    localStorage.setItem("isLoggedIn", "true");
+localStorage.setItem("userId", crypto.randomUUID());
+localStorage.setItem("userMobile", loginInput.value);
+localStorage.setItem("userName", "Delivery Partner");
+
+    alert("Login Successful");
+
+    window.location.href = "home.html";
+
+});
 </script>
 
 </body>
