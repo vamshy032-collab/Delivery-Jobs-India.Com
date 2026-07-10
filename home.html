@@ -2458,12 +2458,19 @@ async function checkAppliedJobsOnLoad() {
             return;
         }
 
-        // Create a Set of applied job IDs for fast lookup
-        const appliedJobIds = new Set(applications.map(app => app.job_id));
+        console.log("Applied jobs found:", applications);
+
+        // Create a Set of applied job IDs as STRINGS for fast lookup
+        const appliedJobIds = new Set(applications.map(app => String(app.job_id)));
+
+        console.log("Applied job IDs (as strings):", appliedJobIds);
 
         // Update all apply buttons
         document.querySelectorAll(".apply-btn").forEach(button => {
-            const jobId = parseInt(button.dataset.jobId);
+            // Keep job_id as STRING to match database
+            const jobId = String(button.dataset.jobId);
+            
+            console.log("Checking button jobId:", jobId, "in appliedJobIds:", appliedJobIds.has(jobId));
             
             if (appliedJobIds.has(jobId)) {
                 button.innerHTML = "✅ Applied";
@@ -2498,7 +2505,8 @@ document.querySelectorAll(".apply-btn").forEach(button => {
                 return;
             }
 
-            const jobId = parseInt(this.dataset.jobId);
+            // Keep as STRING to match database
+            const jobId = String(this.dataset.jobId);
 
             const company = this.dataset.company;
             const title = this.dataset.title;
