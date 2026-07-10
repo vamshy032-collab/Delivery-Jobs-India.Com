@@ -1769,6 +1769,45 @@ Quick Links
 </footer>
 
 <!-- ==========================================
+            SUPABASE CONFIG
+========================================== -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+const supabaseUrl = 'https://xeraljvxmfpwyenkiebb.supabase.co';
+const supabaseKey = 'sb_publishable_Zypr-BL-TfIInUlHt6FhKw_Svt8baSU';
+const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
+
+/*==============================
+        VISITOR TRACKING
+==============================*/
+
+async function trackVisitor(pageName) {
+    try {
+        const { data, error } = await supabase
+            .from('visitors')
+            .insert([{
+                page_name: pageName,
+                visited_at: new Date().toISOString(),
+                user_agent: navigator.userAgent,
+                referrer: document.referrer || 'direct'
+            }]);
+        
+        if (error) {
+            console.log('Visitor tracking error:', error.message);
+        }
+    } catch (err) {
+        console.log('Visitor tracking failed:', err);
+    }
+}
+
+// Track visitor on page load
+trackVisitor('index');
+
+</script>
+
+<!-- ==========================================
             JAVASCRIPT
 ========================================== -->
 
