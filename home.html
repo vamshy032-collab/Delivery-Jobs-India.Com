@@ -2234,8 +2234,8 @@ async function trackVisitor(pageName) {
         const { data, error } = await supabase
             .from('visitors')
             .insert([{
-                page_name: pageName,
-                visited_at: new Date().toISOString(),
+                visited_page: pageName,
+                visit_date: new Date().toISOString(),
                 user_agent: navigator.userAgent,
                 referrer: document.referrer || 'direct'
             }]);
