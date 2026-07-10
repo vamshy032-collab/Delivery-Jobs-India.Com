@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Delivery Jobs India | Login with OTP</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#0f172a,#1e293b,#334155);
+    overflow:hidden;
+    overflow-x: hidden;
+
+}
+
+/*==========================
+        COLORS
+==========================*/
+
+:root{
+
+--primary:#ff7a00;
+--primary-dark:#e56700;
+--white:#ffffff;
+--text:#1f2937;
+--gray:#6b7280;
+--border:#e5e7eb;
+--shadow:0 20px 60px rgba(0,0,0,.25);
+
+}
+
+/*==========================
+      BACKGROUND
+==========================*/
+
+.bg-circle{
+
+position:absolute;
+border-radius:50%;
+filter:blur(20px);
+opacity:.25;
+
+}
+
+.bg1{
+
+width:300px;
+height:300px;
+background:#ff7a00;
+top:-100px;
+left:-80px;
+
+}
+
+.bg2{
+
+width:250px;
+height:250px;
+background:#3b82f6;
+bottom:-80px;
+right:-80px;
+
+}
+
+/*==========================
+      LOGIN CARD
+==========================*/
+
+.login-card{
+
+position:relative;
+width:100%;
+max-width:430px;
+background:#fff;
+border-radius:25px;
+padding:40px;
+box-shadow:var(--shadow);
+z-index:5;
+animation:fadeIn .7s ease;
+
+}
+
+@keyframes fadeIn{
+
+from{
+
+opacity:0;
+transform:translateY(30px);
+
+}
+
+to{
+
+opacity:1;
+transform:translateY(0);
+
+}
+
+}
+
+/*==========================
+        LOGO
+==========================*/
+
+.logo{
+
+display:flex;
+justify-content:center;
+align-items:center;
+margin-bottom:30px;
+
+}
+
+.logo img{
+
+width:140px;
+height:auto;
+display:block;
+object-fit:contain;
+
+}
+
+/*==========================
+        TITLE
+==========================*/
+
+.title{
+
+text-align:center;
+margin-bottom:30px;
+
+}
+
+.title h2{
+
+font-size:32px;
+font-weight:700;
+color:var(--text);
+
+}
+
+.title span{
+
+color:var(--primary);
+
+}
+
+.title p{
+
+margin-top:10px;
+font-size:15px;
+color:var(--gray);
+
+}
+
+/*==========================
+        FORM
+==========================*/
+
+.form-group{
+
+margin-bottom:20px;
+
+}
+
+.form-group label{
+
+display:block;
+margin-bottom:8px;
+font-size:15px;
+font-weight:600;
+color:var(--text);
+
+}
+
+.form-control{
+
+width:100%;
+height:55px;
+padding:0 18px;
+border:1px solid var(--border);
+border-radius:12px;
+font-size:15px;
+outline:none;
+transition:.3s;
+
+}
+
+.form-control:focus{
+
+border-color:var(--primary);
+box-shadow:0 0 0 3px rgba(255,122,0,.15);
+
+}
+
+/*==========================
+      SEND OTP BUTTON
+==========================*/
+
+.send-btn{
+
+width:100%;
+height:55px;
+border:none;
+border-radius:12px;
+background:var(--primary);
+color:#fff;
+font-size:17px;
+font-weight:600;
+cursor:pointer;
+transition:.3s;
+
+}
+
+.send-btn:hover{
+
+background:var(--primary-dark);
+
+}
+
+/*==========================
+      ERROR MESSAGE
+==========================*/
+
+.error{
+
+display:none;
+margin-top:10px;
+font-size:14px;
+color:#dc2626;
+font-weight:500;
+
+}
+
+/*==========================
+      OTP SECTION
+==========================*/
+
+.otp-section{
+
+display:none;
+margin-top:30px;
+
+}
+
+.otp-title{
+
+text-align:center;
+margin-bottom:20px;
+
+}
+
+.otp-title h3{
+
+font-size:22px;
+color:var(--text);
+
+}
+
+.otp-title p{
+
+margin-top:8px;
+color:var(--gray);
+
+}
+/*==========================
+        OTP BOXES
+==========================*/
+
+.otp-inputs{
+
+display:flex;
+justify-content:space-between;
+gap:12px;
+margin-bottom:25px;
+
+}
+
+.otp-input{
+
+width:60px;
+height:60px;
+border:2px solid var(--border);
+border-radius:12px;
+text-align:center;
+font-size:24px;
+font-weight:700;
+outline:none;
+transition:.3s;
+
+}
+
+.otp-input:focus{
+
+border-color:var(--primary);
+box-shadow:0 0 0 3px rgba(255,122,0,.15);
+
+}
+
+/*==========================
+      VERIFY BUTTON
+==========================*/
+
+.verify-btn{
+
+width:100%;
+height:55px;
+border:none;
+border-radius:12px;
+background:var(--primary);
+color:#fff;
+font-size:17px;
+font-weight:600;
+cursor:pointer;
+transition:.3s;
+
+}
+
+.verify-btn:hover{
+
+background:var(--primary-dark);
+
+}
+
+/*==========================
+      RESEND OTP
+==========================*/
+
+.resend{
+
+text-align:center;
+margin-top:18px;
+
+}
+
+.resend a{
+
+text-decoration:none;
+color:var(--primary);
+font-weight:600;
+cursor:pointer;
+
+}
+
+.resend a:hover{
+
+text-decoration:underline;
+
+}
+
+/*==========================
+      CHANGE NUMBER
+==========================*/
+
+.change-number{
+
+text-align:center;
+margin-top:15px;
+
+}
+
+.change-number a{
+
+text-decoration:none;
+font-size:15px;
+color:#2563eb;
+font-weight:600;
+
+}
+
+.change-number a:hover{
+
+text-decoration:underline;
+
+}
+
+/*==========================
+        BACK BUTTON
+==========================*/
+
+.back-home{
+
+margin-top:25px;
+text-align:center;
+
+}
+
+.back-home a{
+
+text-decoration:none;
+color:#6b7280;
+font-size:14px;
+font-weight:500;
+
+}
+
+.back-home a:hover{
+
+color:var(--primary);
+
+}
+
+/*==========================
+      FOOTER TEXT
+==========================*/
+
+.footer-text{
+
+margin-top:30px;
+text-align:center;
+font-size:13px;
+color:#9ca3af;
+line-height:22px;
+
+}
+
+/*==========================
+      RESPONSIVE
+==========================*/
+
+@media(max-width:768px){
+
+.login-card{
+
+width:92%;
+padding:30px 25px;
+
+}
+
+.title h2{
+
+font-size:28px;
+
+}
+
+.logo img{
+
+width:75px;
+
+}
+
+.otp-input{
+
+width:52px;
+height:52px;
+font-size:22px;
+
+}
+
+}
+
+@media(max-width:480px){
+
+.login-card{
+
+padding:25px 20px;
+
+}
+
+.title h2{
+
+font-size:24px;
+
+}
+
+.form-control,
+.send-btn,
+.verify-btn{
+
+height:50px;
+
+}
+
+.otp-input{
+
+width:45px;
+height:50px;
+font-size:20px;
+
+}
+
+}
+
+/*==========================
+      END CSS
+==========================*/
+
+</style>
+
+
+
+</head>
+
+<script>
+
+</script>
+
+<body>
+
+<!-- Background -->
+<div class="bg-circle bg1"></div>
+<div class="bg-circle bg2"></div>
+
+<!-- ===========================
+        LOGIN CARD
+=========================== -->
+
+<div class="login-card">
+
+    <!-- Logo -->
+
+    <div class="logo">
+
+        <img src="logo.png" alt="Delivery Jobs India Logo">
+    </div>
+
+    <!-- Title -->
+
+    <div class="title">
+
+        <h2>Welcome <span>Back</span></h2>
+
+        <p>Login with your Mobile Number</p>
+
+    </div>
+
+    <!-- ===========================
+            LOGIN FORM
+    =========================== -->
+
+    <form id="loginForm">
+
+        <div class="form-group">
+
+           <label>Mobile Number</label>
+
+            <input
+                type="text"
+                class="form-control"
+                id="loginInput"
+                placeholder="Enter Mobile Number"
+                required>
+
+            <div class="error" id="loginError">
+
+                Please enter a valid 10 digit Mobile Number.
+
+            </div>
+
+        </div>
+
+        <button type="submit" class="send-btn">
+
+            Send OTP
+
+        </button>
+
+    </form>
+
+    <!-- ===========================
+            OTP SECTION
+    =========================== -->
+
+    <div class="otp-section" id="otpSection">
+
+        <div class="otp-title">
+
+            <h3>OTP Verification</h3>
+
+            <p>
+
+                Enter the 4 digit OTP sent to
+
+                <strong id="userValue"></strong>
+
+            </p>
+
+        </div>
+
+        <div class="otp-inputs">
+
+            <input type="text" maxlength="1" class="otp-input">
+
+            <input type="text" maxlength="1" class="otp-input">
+
+            <input type="text" maxlength="1" class="otp-input">
+
+            <input type="text" maxlength="1" class="otp-input">
+
+        </div>
+
+        <div class="error" id="otpError">
+
+            Invalid OTP. Please try again.
+
+        </div>
+
+        <button class="verify-btn" id="verifyBtn">
+
+            Verify OTP
+
+        </button>
+
+        <div class="resend">
+
+            <a href="#" id="resendOtp">
+
+                Resend OTP
+
+            </a>
+
+        </div>
+
+        <div class="change-number">
+
+            <a href="#" id="changeNumber">
+
+                Change Mobile Number 
+
+            </a>
+
+        </div>
+
+    </div>
+
+    <!-- ===========================
+            BACK BUTTON
+    =========================== -->
+
+    <div class="back-home">
+
+        <a href="index.html">
+
+            ← Back to Home
+
+        </a>
+
+    </div>
+
+    <!-- Footer -->
+
+    <div class="footer-text">
+
+        © 2026 Delivery Jobs India <br>
+
+        Secure Login with OTP
+
+    </div>
+
+
+</div>
+
+<script>
+
+   
+// ==============================
+// Supabase Connection
+// ==============================
+
+const SUPABASE_URL = "https://xeraljvxmfpwyenkiebb.supabase.co";
+const SUPABASE_KEY = "sb_publishable_Zypr-BL-TfIInUlHt6FhKw_Svt8baSU";
+
+const sb = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+);
+
+// ==============================
+// Mobile Validation + OTP Create
+// ==============================
+
+const loginForm = document.getElementById("loginForm");
+const loginInput = document.getElementById("loginInput");
+const loginError = document.getElementById("loginError");
+const otpError = document.getElementById("otpError");
+const sendBtn = document.querySelector(".send-btn");
+const verifyBtn = document.getElementById("verifyBtn");
+
+const userValue = document.getElementById("userValue");
+const otpSection = document.getElementById("otpSection");
+const otpInputs = document.querySelectorAll(".otp-input");
+
+let generatedOtp = "";
+let currentUser = null;
+
+const mobilePattern = /^[6-9]\d{9}$/;
+
+function setButtonLoading(button, text, isLoading) {
+    button.disabled = isLoading;
+    button.dataset.originalText = button.dataset.originalText || button.innerText;
+    button.innerText = isLoading ? text : button.dataset.originalText;
+}
+
+function showError(element, message) {
+    element.innerText = message;
+    element.style.display = "block";
+}
+
+function hideError(element) {
+    element.style.display = "none";
+}
+
+function createOtp() {
+    return Math.floor(1000 + Math.random() * 9000).toString();
+}
+
+async function findOrCreateUser(mobile) {
+    const { data: existingUser, error: findError } = await sb
+        .from("users")
+        .select("id, phone, email, login_type, is_verified, last_login")
+        .eq("phone", mobile)
+        .maybeSingle();
+
+    if (findError) throw findError;
+    if (existingUser) return existingUser;
+
+    const newUser = {
+        phone: mobile,
+        email: `${mobile}@deliveryjobsindia.local`,
+        login_type: "PHONE",
+        is_verified: false
+    };
+
+    const { data: createdUser, error: createError } = await sb
+        .from("users")
+        .insert([newUser])
+        .select("id, phone, email, login_type, is_verified, last_login")
+        .single();
+
+    if (createError) throw createError;
+    return createdUser;
+}
+
+async function saveOtpLog(tableName, payload) {
+    const { error } = await sb
+        .from(tableName)
+        .insert([payload]);
+
+    if (error) {
+        console.warn(`${tableName} log skipped:`, error.message);
+    }
+}
+
+async function startOtpLogin(mobile) {
+    currentUser = await findOrCreateUser(mobile);
+    generatedOtp = createOtp();
+
+    userValue.innerHTML = "+91 " + mobile;
+    loginForm.style.display = "none";
+    otpSection.style.display = "block";
+    otpInputs[0].focus();
+
+    alert("OTP Sent Successfully.\n\nYour OTP : " + generatedOtp);
+}
+
+loginForm.addEventListener("submit", async function (e) {
+    e.preventDefault();
+
+    const mobile = loginInput.value.trim();
+
+    if (!mobilePattern.test(mobile)) {
+        showError(loginError, "Please enter a valid 10 digit Mobile Number.");
+        return;
+    }
+
+    hideError(loginError);
+    hideError(otpError);
+    setButtonLoading(sendBtn, "Sending...", true);
+
+    try {
+        await startOtpLogin(mobile);
+    } catch (error) {
+        console.error(error);
+        showError(loginError, error.message || "Supabase connection failed. Please try again.");
+    } finally {
+        setButtonLoading(sendBtn, "Sending...", false);
+    }
+});
+
+// ==============================
+// OTP Auto Move
+// ==============================
+
+otpInputs.forEach((input,index)=>{
+
+input.addEventListener("input",function(){
+
+this.value=this.value.replace(/[^0-9]/g,'');
+
+if(this.value.length==1 && index<otpInputs.length-1){
+
+otpInputs[index+1].focus();
+
+}
+
+});
+
+input.addEventListener("keydown",function(e){
+
+if(e.key==="Backspace" && this.value==="" && index>0){
+
+otpInputs[index-1].focus();
+
+}
+
+});
+
+});
+
+// ==============================
+// Resend OTP
+// ==============================
+
+document.getElementById("resendOtp").addEventListener("click",function(e){
+
+e.preventDefault();
+
+const mobile = loginInput.value.trim();
+
+if (!mobilePattern.test(mobile)) return;
+
+generatedOtp = createOtp();
+
+alert("OTP Sent Successfully.\n\nYour OTP : " + generatedOtp);
+
+});
+
+// ==============================
+// Change Number
+// ==============================
+
+document.getElementById("changeNumber").addEventListener("click",function(e){
+
+e.preventDefault();
+
+loginForm.reset();
+
+otpInputs.forEach(box=>box.value="");
+
+otpSection.style.display="none";
+
+loginForm.style.display="block";
+
+generatedOtp="";
+
+currentUser=null;
+
+hideError(otpError);
+
+loginInput.focus();
+
+});
+
+// ==============================
+// Verify OTP + Save Login
+// ==============================
+
+document.getElementById("verifyBtn").addEventListener("click", async function () {
+
+    const otp = [...document.querySelectorAll(".otp-input")]
+        .map(x => x.value)
+        .join("");
+
+    if (otp !== generatedOtp) {
+
+        showError(otpError, "Invalid OTP. Please try again.");
+
+        await saveOtpLog("otp_failed_logs", {
+            phone: loginInput.value.trim(),
+            email: currentUser && currentUser.email ? currentUser.email : `${loginInput.value.trim()}@deliveryjobsindia.local`,
+            entered_otp: otp,
+            otp_type: "login",
+            reason: "Invalid OTP",
+            failed_at: new Date().toISOString()
+        });
+
+        return;
+
+    }
+
+    hideError(otpError);
+    setButtonLoading(verifyBtn, "Verifying...", true);
+
+    try {
+        if (!currentUser) {
+            currentUser = await findOrCreateUser(loginInput.value.trim());
+        }
+
+        const { error: updateError } = await sb
+            .from("users")
+            .update({
+                is_verified: true,
+                last_login: new Date().toISOString()
+            })
+            .eq("id", currentUser.id);
+
+        if (updateError) throw updateError;
+
+        localStorage.setItem("isLoggedIn", "true");
+        localStorage.setItem("userId", currentUser.id);
+        localStorage.setItem("userMobile", currentUser.phone || loginInput.value.trim());
+        localStorage.setItem("userName", "Delivery Partner");
+        localStorage.setItem("userEmail", currentUser.email || "");
+
+        alert("Login Successful");
+
+        window.location.href = "home.html";
+    } catch (error) {
+        console.error(error);
+        showError(otpError, error.message || "Login failed. Please try again.");
+    } finally {
+        setButtonLoading(verifyBtn, "Verifying...", false);
+    }
+
+});</script>
+
+</body>
+</html>

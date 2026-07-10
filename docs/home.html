@@ -1,0 +1,2574 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!-- ==========================================
+                    META TAGS
+    =========================================== -->
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Delivery Jobs India | Home</title>
+
+    <!-- ==========================================
+                    GOOGLE FONTS
+    =========================================== -->
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <!-- ==========================================
+                FONT AWESOME
+    =========================================== -->
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- ==========================================
+                SUPABASE SDK
+    =========================================== -->
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <!-- ==========================================
+                    CSS START
+    =========================================== -->
+
+    <style>
+
+    /*==================================================
+                    RESET
+    ==================================================*/
+
+    *{
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
+        font-family:'Poppins',sans-serif;
+    }
+
+    html{
+        scroll-behavior:smooth;
+    }
+
+    body{
+        background:#f8f9fc;
+        color:#222;
+        overflow-x:hidden;
+    }
+
+    img{
+        max-width:100%;
+        display:block;
+    }
+
+    a{
+        text-decoration:none;
+    }
+
+    button{
+        cursor:pointer;
+        border:none;
+        outline:none;
+    }
+
+    ul{
+        list-style:none;
+    }
+
+    /*==================================================
+                    ROOT COLORS
+    ==================================================*/
+
+    :root{
+
+        --primary:#ff7a00;
+
+        --primary-dark:#ea6500;
+
+        --secondary:#111827;
+
+        --white:#ffffff;
+
+        --light:#f8f9fc;
+
+        --gray:#6b7280;
+
+        --border:#ececec;
+
+        --shadow:0 10px 30px rgba(0,0,0,.08);
+
+        --radius:18px;
+
+        --transition:.35s ease;
+
+    }
+
+    /*==================================================
+                    CONTAINER
+    ==================================================*/
+
+    .container{
+
+        width:92%;
+
+        max-width:1450px;
+
+        margin:auto;
+
+    }
+
+    /*==================================================
+                    HEADER
+    ==================================================*/
+
+    header{
+
+        position:fixed;
+
+        top:0;
+
+        left:0;
+
+        width:100%;
+
+        height:90px;
+
+        background:#fff;
+
+        box-shadow:0 3px 15px rgba(0,0,0,.08);
+
+        z-index:999;
+
+    }
+
+    .navbar{
+
+        height:90px;
+
+        display:flex;
+
+        justify-content:space-between;
+
+        align-items:center;
+
+    }
+
+    /*==================================================
+                        LOGO
+    ==================================================*/
+
+    .logo{
+
+        display:flex;
+
+        align-items:center;
+
+        gap:14px;
+
+    }
+
+    .logo img{
+
+        width:72px;
+
+        height:72px;
+
+        object-fit:contain;
+
+    }
+
+    .logo-text h2{
+
+        font-size:34px;
+
+        font-weight:700;
+
+        color:#111827;
+
+        line-height:36px;
+
+    }
+
+    .logo-text span{
+
+        color:var(--primary);
+
+    }
+
+    .logo-text p{
+
+        font-size:13px;
+
+        color:#666;
+
+        margin-top:5px;
+
+        letter-spacing:1px;
+
+    }
+
+    /*==================================================
+                    PROFILE
+    ==================================================*/
+
+    .profile-box{
+
+        position:relative;
+
+        display:flex;
+
+        align-items:center;
+
+        gap:15px;
+
+        cursor:pointer;
+
+    }
+
+    .profile-img{
+
+        width:50px;
+
+        height:50px;
+
+        border-radius:50%;
+
+        background:#f3f3f3;
+
+        display:flex;
+
+        justify-content:center;
+
+        align-items:center;
+
+        font-size:24px;
+
+        color:#111827;
+
+    }
+
+    .profile-info h3{
+
+        font-size:18px;
+
+        color:#111827;
+
+    }
+
+    .profile-info p{
+
+        color:var(--primary);
+
+        font-size:14px;
+
+    }
+
+    .profile-arrow{
+
+        font-size:18px;
+
+        color:#444;
+
+    }
+/*==================================================
+                PROFILE DROPDOWN
+==================================================*/
+
+.dropdown{
+
+    position:absolute;
+
+    top:100%;
+
+    right:0;
+
+    width:230px;
+
+    background:#fff;
+
+    border-radius:15px;
+
+    overflow:hidden;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.12);
+
+    display:none;
+
+    z-index:9999;
+
+}
+
+.profile-box:hover .dropdown{
+
+    display:block;
+
+}
+
+.dropdown a{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    padding:16px 20px;
+
+    color:#222;
+
+    font-size:15px;
+
+    font-weight:500;
+
+    transition:.3s;
+
+}
+
+.dropdown a:hover{
+
+    background:#ff7a00;
+
+    color:#fff;
+
+}
+
+/*==================================================
+                    HERO
+==================================================*/
+
+.hero{
+
+    margin-top:90px;
+
+    width:100%;
+
+    height:520px;
+
+    overflow:hidden;
+
+    position:relative;
+
+}
+
+.slider{
+
+    width:100%;
+
+    height:100%;
+
+    display:flex;
+
+    transition:1s ease;
+
+}
+
+.slide{
+
+    min-width:100%;
+
+    height:100%;
+
+    position:relative;
+
+}
+
+.slide img{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+}
+
+.overlay{
+
+    position:absolute;
+
+    top:0;
+
+    left:0;
+
+    width:100%;
+
+    height:100%;
+
+    background:linear-gradient(to right,
+    rgba(0,0,0,.75),
+    rgba(0,0,0,.25));
+
+    display:flex;
+
+    align-items:center;
+
+    padding-left:80px;
+
+}
+
+.hero-text{
+
+    max-width:650px;
+
+    color:#fff;
+
+}
+
+.hero-text h1{
+
+    font-size:68px;
+
+    font-weight:800;
+
+    line-height:78px;
+
+    margin-bottom:20px;
+
+}
+
+.hero-text span{
+
+    color:#ff7a00;
+
+}
+
+.hero-text p{
+
+    font-size:22px;
+
+    line-height:38px;
+
+    margin-bottom:30px;
+
+}
+
+.hero-btn{
+
+    padding:18px 40px;
+
+    background:#ff7a00;
+
+    color:#fff;
+
+    border-radius:12px;
+
+    font-size:18px;
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+.hero-btn:hover{
+
+    background:#ea6500;
+
+    transform:translateY(-3px);
+
+}
+
+/*==================================================
+                SLIDER DOTS
+==================================================*/
+
+.dots{
+
+    position:absolute;
+
+    bottom:25px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    display:flex;
+
+    gap:12px;
+
+}
+
+.dot{
+
+    width:14px;
+
+    height:14px;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.5);
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.dot.active{
+
+    background:#ff7a00;
+
+    transform:scale(1.2);
+
+}
+
+/*==================================================
+                SECTION TITLE
+==================================================*/
+
+.section-title{
+
+    padding:60px 0 40px;
+
+    text-align:center;
+
+}
+
+.section-title h2{
+
+    font-size:42px;
+
+    font-weight:700;
+
+    color:#111827;
+
+}
+
+.section-title span{
+
+    color:#ff7a00;
+
+}
+/*==================================================
+                COMPANY SECTION
+==================================================*/
+
+.company-section{
+
+    background:#fff;
+
+    padding-bottom:80px;
+
+}
+
+.company-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(5,1fr);
+
+    gap:25px;
+
+}
+
+.company-card{
+
+    background:#fff;
+
+    border-radius:18px;
+
+    padding:28px 20px;
+
+    text-align:center;
+
+    border:1px solid #eee;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+    transition:.35s;
+
+}
+
+.company-card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:0 15px 35px rgba(0,0,0,.12);
+
+}
+
+.company-card img{
+
+    width:140px;
+
+    height:70px;
+
+    object-fit:contain;
+
+    margin:0 auto 20px;
+
+}
+
+.company-card h3{
+
+    font-size:22px;
+
+    color:#111827;
+
+    margin-bottom:8px;
+
+}
+
+.company-card p{
+
+    color:#666;
+
+    font-size:15px;
+
+    line-height:26px;
+
+}
+
+.salary{
+
+    color:#ff7a00 !important;
+
+    font-size:16px !important;
+
+    font-weight:700;
+
+    margin:12px 0;
+
+}
+
+.apply-btn{
+
+    width:100%;
+
+    height:50px;
+
+    margin-top:18px;
+
+    background:#ff7a00;
+
+    color:#fff;
+
+    border-radius:10px;
+
+    font-size:16px;
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+.apply-btn:hover{
+
+    background:#ea6500;
+
+}
+
+.apply-btn:disabled{
+
+    background:#28a745;
+
+    cursor:not-allowed;
+
+}
+
+.applied-btn{
+
+    background:#28a745 !important;
+
+    cursor:default;
+
+}
+
+/*==================================================
+                    FOOTER
+==================================================*/
+
+footer{
+
+    background:#111827;
+
+    margin-top:60px;
+
+    padding:70px 0 25px;
+
+}
+
+.footer-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:40px;
+
+}
+
+.footer-box h3{
+
+    color:#ff7a00;
+
+    font-size:26px;
+
+    margin-bottom:20px;
+
+}
+
+.footer-box p{
+
+    color:#ddd;
+
+    font-size:15px;
+
+    line-height:30px;
+
+    margin-bottom:10px;
+
+}
+
+.footer-box ul{
+
+    list-style:none;
+
+}
+
+.footer-box ul li{
+
+    margin-bottom:14px;
+
+}
+
+.footer-box ul li a{
+
+    color:#fff;
+
+    transition:.3s;
+
+}
+
+.footer-box ul li a:hover{
+
+    color:#ff7a00;
+
+    padding-left:6px;
+
+}
+
+.footer-bottom{
+
+    margin-top:45px;
+
+    border-top:1px solid rgba(255,255,255,.15);
+
+    padding-top:20px;
+
+    color:#ddd;
+
+    text-align:center;
+
+    font-size:15px;
+
+}
+
+/*==================================================
+                SUPPORT BUTTON
+==================================================*/
+
+.support-box{
+
+    position:fixed;
+
+    right:25px;
+
+    bottom:25px;
+
+    z-index:999;
+
+}
+
+.support-btn{
+
+    width:65px;
+
+    height:65px;
+
+    border-radius:50%;
+
+    background:#ff7a00;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    color:#fff;
+
+    font-size:28px;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.25);
+
+    animation:floatSupport 2s infinite;
+
+}
+
+@keyframes floatSupport{
+
+    0%{transform:translateY(0);}
+
+    50%{transform:translateY(-10px);}
+
+    100%{transform:translateY(0);}
+
+}
+
+.support-popup{
+
+    position:absolute;
+
+    right:80px;
+
+    bottom:0;
+
+    width:260px;
+
+    background:#fff;
+
+    border-radius:12px;
+
+    padding:18px;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.18);
+
+    display:none;
+
+}
+
+.support-box:hover .support-popup{
+
+    display:block;
+
+}
+
+.support-popup h4{
+
+    color:#ff7a00;
+
+    margin-bottom:10px;
+
+}
+
+.support-popup p{
+
+    font-size:14px;
+
+    color:#555;
+
+    margin:8px 0;
+
+}
+
+/*==================================================
+                RESPONSIVE
+==================================================*/
+
+@media(max-width:1200px){
+
+.company-grid{
+
+grid-template-columns:repeat(4,1fr);
+
+}
+
+}
+
+@media(max-width:992px){
+
+.hero{
+
+height:420px;
+
+}
+
+.hero-text h1{
+
+font-size:48px;
+
+line-height:60px;
+
+}
+
+.company-grid{
+
+grid-template-columns:repeat(3,1fr);
+
+}
+
+.footer-grid{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+}
+
+@media(max-width:768px){
+
+.navbar{
+
+flex-direction:column;
+
+height:auto;
+
+padding:15px;
+
+}
+
+.hero{
+
+height:360px;
+
+}
+
+.overlay{
+
+padding:30px;
+
+}
+
+.hero-text h1{
+
+font-size:38px;
+
+line-height:48px;
+
+}
+
+.hero-text p{
+
+font-size:17px;
+
+line-height:28px;
+
+}
+
+.company-grid{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+.footer-grid{
+
+grid-template-columns:1fr;
+
+}
+
+}
+
+@media(max-width:480px){
+
+.company-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.hero{
+
+height:300px;
+
+}
+
+.hero-text h1{
+
+font-size:30px;
+
+line-height:40px;
+
+}
+
+.hero-text p{
+
+font-size:15px;
+
+line-height:24px;
+
+}
+
+.hero-btn{
+
+width:100%;
+
+}
+
+.logo-text h2{
+
+font-size:22px;
+
+}
+
+}
+
+</style>
+
+</head>
+<body>
+
+<!-- ==========================================
+                HEADER
+========================================== -->
+
+<header>
+
+    <div class="container">
+
+        <div class="navbar">
+
+            <!-- ================= LOGO ================= -->
+
+            <a href="home.html" class="logo">
+
+                <img src="logo.png" alt="Delivery Jobs India">
+
+                <div class="logo-text">
+
+                    <h2>
+
+                        Delivery Jobs <span>India</span>
+
+                    </h2>
+
+                    <p>
+
+                        Jobs | Earn | Grow
+
+                    </p>
+
+                </div>
+
+            </a>
+
+            <!-- ================= PROFILE ================= -->
+
+            <div class="profile-box" id="profileBox">
+
+                <div class="profile-img">
+
+                    <i class="fa-solid fa-user"></i>
+
+                </div>
+
+                <div class="profile-info">
+
+                    <h3 id="userName">
+
+                        Hi, User
+
+                    </h3>
+
+                    <p>
+
+                        View Profile
+
+                    </p>
+
+                </div>
+
+                <div class="profile-arrow">
+
+                    <i class="fa-solid fa-chevron-down"></i>
+
+                </div>
+
+                <!-- ================= DROPDOWN ================= -->
+
+                <div class="dropdown">
+
+                    <a href="profile.html" id="profileLink">
+
+                        <i class="fa-solid fa-user"></i>
+
+                        Profile
+
+                    </a>
+
+                    <a href="applied-jobs.html">
+
+                        <i class="fa-solid fa-clipboard-check"></i>
+
+                        Applied Jobs
+
+                    </a>
+
+                    <a href="#" id="logoutLink">
+
+                        <i class="fa-solid fa-right-from-bracket"></i>
+
+                        Logout
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</header>
+
+<!-- ==========================================
+                HERO SECTION
+========================================== -->
+
+<section class="hero">
+
+    <div class="slider" id="slider">
+
+        <!-- ================= Banner 1 ================= -->
+
+        <div class="slide">
+
+            <img src="banner1.jpg" alt="Banner 1">
+
+            <div class="overlay">
+
+                <div class="hero-text">
+
+                    <h1>
+
+                        India's Largest Platform For
+
+                        <span>
+
+                            Delivery Jobs
+
+                        </span>
+
+                    </h1>
+
+                    <p>
+
+                        Find delivery jobs from India's leading companies.
+
+                    </p>
+
+                    <button class="hero-btn">
+
+                        Apply Jobs
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- ================= Banner 2 ================= -->
+
+        <div class="slide">
+
+            <img src="banner2.jpg" alt="Banner 2">
+
+            <div class="overlay">
+
+                <div class="hero-text">
+
+                    <h1>
+
+                        Work With
+
+                        <span>
+
+                            Swiggy
+
+                        </span>
+
+                    </h1>
+
+                    <p>
+
+                        Flexible timings with attractive earnings.
+
+                    </p>
+
+                    <button class="hero-btn">
+
+                        Apply Now
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- ================= Banner 3 ================= -->
+
+        <div class="slide">
+
+            <img src="banner3.jpg" alt="Banner 3">
+
+            <div class="overlay">
+
+                <div class="hero-text">
+
+                    <h1>
+
+                        Join
+
+                        <span>
+
+                            Zomato
+
+                        </span>
+
+                    </h1>
+
+                    <p>
+
+                        Daily earnings with weekly incentives.
+
+                    </p>
+
+                    <button class="hero-btn">
+
+                        Apply Now
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- ================= Banner 4 ================= -->
+
+        <div class="slide">
+
+            <img src="banner4.jpg" alt="Banner 4">
+
+            <div class="overlay">
+
+                <div class="hero-text">
+
+                    <h1>
+
+                        Top Delivery
+
+                        <span>
+
+                            Companies
+
+                        </span>
+
+                    </h1>
+
+                    <p>
+
+                        Amazon, Zepto, Blinkit, Porter, Delhivery and many more.
+
+                    </p>
+
+                    <button class="hero-btn">
+
+                        Explore Jobs
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- ================= SLIDER DOTS ================= -->
+
+    <div class="dots">
+
+        <span class="dot active"></span>
+
+        <span class="dot"></span>
+
+        <span class="dot"></span>
+
+        <span class="dot"></span>
+
+    </div>
+
+</section>
+<!-- ==========================================
+        TOP DELIVERY COMPANIES
+========================================== -->
+
+<section class="company-section">
+
+<div class="container">
+
+<div class="section-title">
+
+<h2>
+
+Top Delivery
+
+<span>
+
+Companies
+
+</span>
+
+</h2>
+
+</div>
+
+<div class="company-grid">
+
+<!-- ================= Card 1 ================= -->
+
+<div class="company-card">
+
+<img src="logos/zepto.png" alt="Zepto">
+
+<h3>Zepto</h3>
+
+<p>Instant Grocery Delivery</p>
+
+<p class="salary">
+💰 ₹28,000 - ₹42,000 / Month
+</p>
+
+<button class="apply-btn"
+data-job-id="1"
+data-company="Zepto"
+data-title="Instant Grocery Delivery"
+data-location="Hyderabad"
+data-salary="₹28,000 - ₹42,000 / Month">
+
+Apply Now
+
+</button>
+
+</div>
+
+<!-- ================= Card 2 ================= -->
+
+<div class="company-card">
+
+<img src="logos/zomato.png" alt="Zomato">
+
+<h3>Zomato</h3>
+
+<p>Food Delivery Partner</p>
+
+<p class="salary">
+💰 ₹25,000 - ₹40,000 / Month
+</p>
+
+<button class="apply-btn"
+data-job-id="2"
+data-company="Zomato"
+data-title="Food Delivery Partner"
+data-location="Hyderabad"
+data-salary="₹25,000 - ₹40,000 / Month">
+
+Apply Now
+
+</button>
+
+</div>
+
+<!-- ================= Card 3 ================= -->
+
+<div class="company-card">
+
+<img src="logos/swiggy.png" alt="Swiggy">
+
+<h3>Swiggy</h3>
+
+<p>Food Delivery Executive</p>
+
+<p class="salary">
+💰 ₹26,000 - ₹42,000 / Month
+</p>
+
+<button class="apply-btn"
+data-job-id="3"
+data-company="Swiggy"
+data-title="Food Delivery Executive"
+data-location="Hyderabad"
+data-salary="₹26,000 - ₹42,000 / Month">
+
+Apply Now
+
+</button>
+
+</div>
+
+<!-- ================= Card 4 ================= -->
+
+<div class="company-card">
+
+<img src="logos/blinkit.png" alt="Blinkit">
+
+<h3>Blinkit</h3>
+
+<p>10 Minutes Delivery</p>
+
+<p class="salary">
+💰 ₹24,000 - ₹38,000 / Month
+</p>
+
+<button class="apply-btn"
+data-job-id="4"
+data-company="Blinkit"
+data-title="10 Minutes Delivery"
+data-location="Hyderabad"
+data-salary="₹24,000 - ₹38,000 / Month">
+
+Apply Now
+
+</button>
+
+</div>
+
+<!-- ================= Card 5 ================= -->
+
+<div class="company-card">
+
+<img src="logos/ubereats.png" alt="Uber Eats">
+
+<h3>Uber Eats</h3>
+
+<p>Food Delivery</p>
+
+<p class="salary">
+💰 ₹25,000 - ₹38,000 / Month
+</p>
+
+<button class="apply-btn"
+data-job-id="5"
+data-company="Uber Eats"
+data-title="Food Delivery"
+data-location="Hyderabad"
+data-salary="₹25,000 - ₹38,000 / Month">
+
+Apply Now
+
+</button>
+
+</div>
+<!-- ================= Card 6 ================= -->
+
+<div class="company-card">
+
+    <img src="logos/amazon.png" alt="Amazon">
+
+    <h3>Amazon</h3>
+
+    <p>Package Delivery</p>
+
+    <p class="salary">
+        💰 ₹24,000 - ₹45,000 / Month
+    </p>
+
+    <button class="apply-btn"
+        data-job-id="6"
+        data-company="Amazon"
+        data-title="Package Delivery"
+        data-location="Hyderabad"
+        data-salary="₹24,000 - ₹45,000 / Month">
+
+        Apply Now
+
+    </button>
+
+</div>
+
+<!-- ================= Card 7 ================= -->
+
+<div class="company-card">
+
+    <img src="logos/flipkart.png" alt="Flipkart">
+
+    <h3>Flipkart</h3>
+
+    <p>E-Commerce Delivery</p>
+
+    <p class="salary">
+        💰 ₹25,000 - ₹40,000 / Month
+    </p>
+
+    <button class="apply-btn"
+        data-job-id="7"
+        data-company="Flipkart"
+        data-title="E-Commerce Delivery"
+        data-location="Hyderabad"
+        data-salary="₹25,000 - ₹40,000 / Month">
+
+        Apply Now
+
+    </button>
+
+</div>
+
+<!-- ================= Card 8 ================= -->
+
+<div class="company-card">
+
+    <img src="logos/delhivery.png" alt="Delhivery">
+
+    <h3>Delhivery</h3>
+
+    <p>Courier Delivery</p>
+
+    <p class="salary">
+        💰 ₹24,000 - ₹40,000 / Month
+    </p>
+
+    <button class="apply-btn"
+        data-job-id="8"
+        data-company="Delhivery"
+        data-title="Courier Delivery"
+        data-location="Hyderabad"
+        data-salary="₹24,000 - ₹40,000 / Month">
+
+        Apply Now
+
+    </button>
+
+</div>
+
+<!-- ================= Card 9 ================= -->
+
+<div class="company-card">
+
+    <img src="logos/porter.png" alt="Porter">
+
+    <h3>Porter</h3>
+
+    <p>Logistics Delivery</p>
+
+    <p class="salary">
+        💰 ₹24,000 - ₹38,000 / Month
+    </p>
+
+    <button class="apply-btn"
+        data-job-id="9"
+        data-company="Porter"
+        data-title="Logistics Delivery"
+        data-location="Hyderabad"
+        data-salary="₹24,000 - ₹38,000 / Month">
+
+        Apply Now
+
+    </button>
+
+</div>
+
+<!-- ================= Card 10 ================= -->
+
+<div class="company-card">
+
+    <img src="logos/bigbasket.png" alt="BigBasket">
+
+    <h3>BigBasket</h3>
+
+    <p>Grocery Delivery</p>
+
+    <p class="salary">
+        💰 ₹24,000 - ₹38,000 / Month
+    </p>
+
+    <button class="apply-btn"
+        data-job-id="10"
+        data-company="BigBasket"
+        data-title="Grocery Delivery"
+        data-location="Hyderabad"
+        data-salary="₹24,000 - ₹38,000 / Month">
+
+        Apply Now
+
+    </button>
+
+</div>
+<!-- ================= Card 11 ================= -->
+
+<div class="company-card">
+
+    <img src="logos/dunzo.png" alt="Dunzo">
+
+    <h3>Dunzo</h3>
+
+    <p>Hyperlocal Delivery</p>
+
+    <p class="salary">
+        💰 ₹24,000 - ₹36,000 / Month
+    </p>
+
+    <button class="apply-btn"
+        data-job-id="11"
+        data-company="Dunzo"
+        data-title="Hyperlocal Delivery"
+        data-location="Hyderabad"
+        data-salary="₹24,000 - ₹36,000 / Month">
+
+        Apply Now
+
+    </button>
+
+</div>
+
+<!-- ================= Card 12 ================= -->
+
+<div class="company-card">
+
+    <img src="logos/rapido.png" alt="Rapido">
+
+    <h3>Rapido</h3>
+
+    <p>Bike Delivery</p>
+
+    <p class="salary">
+        💰 ₹24,000 - ₹44,000 / Month
+    </p>
+
+    <button class="apply-btn"
+        data-job-id="12"
+        data-company="Rapido"
+        data-title="Bike Delivery"
+        data-location="Hyderabad"
+        data-salary="₹24,000 - ₹44,000 / Month">
+
+        Apply Now
+
+    </button>
+
+</div>
+
+<!-- ================= Card 13 ================= -->
+
+<div class="company-card">
+
+    <img src="logos/shadowfax.png" alt="Shadowfax">
+
+    <h3>Shadowfax</h3>
+
+    <p>Courier Partner</p>
+
+    <p class="salary">
+        💰 ₹24,000 - ₹38,000 / Month
+    </p>
+
+    <button class="apply-btn"
+        data-job-id="13"
+        data-company="Shadowfax"
+        data-title="Courier Partner"
+        data-location="Hyderabad"
+        data-salary="₹24,000 - ₹38,000 / Month">
+
+        Apply Now
+
+    </button>
+
+</div>
+
+<!-- ================= Card 14 ================= -->
+
+<div class="company-card">
+
+    <img src="logos/ecomexpress.png" alt="Ecom Express">
+
+    <h3>Ecom Express</h3>
+
+    <p>E-Commerce Delivery</p>
+
+    <p class="salary">
+        💰 ₹24,000 - ₹38,000 / Month
+    </p>
+
+    <button class="apply-btn"
+        data-job-id="14"
+        data-company="Ecom Express"
+        data-title="E-Commerce Delivery"
+        data-location="Hyderabad"
+        data-salary="₹24,000 - ₹38,000 / Month">
+
+        Apply Now
+
+    </button>
+
+</div>
+
+<!-- ================= Card 15 ================= -->
+
+<div class="company-card">
+
+    <img src="logos/bluedart.png" alt="Blue Dart">
+
+    <h3>Blue Dart</h3>
+
+    <p>Express Delivery</p>
+
+    <p class="salary">
+        💰 ₹24,000 - ₹48,000 / Month
+    </p>
+
+    <button class="apply-btn"
+        data-job-id="15"
+        data-company="Blue Dart"
+        data-title="Express Delivery"
+        data-location="Hyderabad"
+        data-salary="₹24,000 - ₹48,000 / Month">
+
+        Apply Now
+
+    </button>
+
+</div>
+<!-- ================= Card 16 ================= -->
+
+<div class="company-card">
+
+    <img src="logos/dtdc.png" alt="DTDC">
+
+    <h3>DTDC</h3>
+
+    <p>Courier Services</p>
+
+    <p class="salary">
+        💰 ₹24,000 - ₹40,000 / Month
+    </p>
+
+    <button class="apply-btn"
+        data-job-id="16"
+        data-company="DTDC"
+        data-title="Courier Services"
+        data-location="Hyderabad"
+        data-salary="₹24,000 - ₹40,000 / Month">
+
+        Apply Now
+
+    </button>
+
+</div>
+
+<!-- ================= Card 17 ================= -->
+
+<div class="company-card">
+
+    <img src="logos/xpressbees.png" alt="XpressBees">
+
+    <h3>XpressBees</h3>
+
+    <p>Last Mile Delivery</p>
+
+    <p class="salary">
+        💰 ₹24,000 - ₹38,000 / Month
+    </p>
+
+    <button class="apply-btn"
+        data-job-id="17"
+        data-company="XpressBees"
+        data-title="Last Mile Delivery"
+        data-location="Hyderabad"
+        data-salary="₹24,000 - ₹38,000 / Month">
+
+        Apply Now
+
+    </button>
+
+</div>
+
+<!-- ================= Card 18 ================= -->
+
+<div class="company-card">
+
+    <img src="logos/safexpress.png" alt="Safexpress">
+
+    <h3>Safexpress</h3>
+
+    <p>Logistics Services</p>
+
+    <p class="salary">
+        💰 ₹25,000 - ₹60,000 / Month
+    </p>
+
+    <button class="apply-btn"
+        data-job-id="18"
+        data-company="Safexpress"
+        data-title="Logistics Services"
+        data-location="Hyderabad"
+        data-salary="₹25,000 - ₹60,000 / Month">
+
+        Apply Now
+
+    </button>
+
+</div>
+
+<!-- ================= Card 19 ================= -->
+
+<div class="company-card">
+
+    <img src="logos/lalamove.png" alt="Lalamove">
+
+    <h3>Lalamove</h3>
+
+    <p>Vehicle Delivery</p>
+
+    <p class="salary">
+        💰 ₹25,000 - ₹50,000 / Month
+    </p>
+
+    <button class="apply-btn"
+        data-job-id="19"
+        data-company="Lalamove"
+        data-title="Vehicle Delivery"
+        data-location="Hyderabad"
+        data-salary="₹25,000 - ₹50,000 / Month">
+
+        Apply Now
+
+    </button>
+
+</div>
+
+<!-- ================= Card 20 ================= -->
+
+<div class="company-card">
+
+    <img src="logos/jiomart.png" alt="JioMart">
+
+    <h3>JioMart</h3>
+
+    <p>Retail Delivery</p>
+
+    <p class="salary">
+        💰 ₹25,000 - ₹50,000 / Month
+    </p>
+
+    <button class="apply-btn"
+        data-job-id="20"
+        data-company="JioMart"
+        data-title="Retail Delivery"
+        data-location="Hyderabad"
+        data-salary="₹25,000 - ₹50,000 / Month">
+
+        Apply Now
+
+    </button>
+
+</div>
+<!-- ================= Card 21 ================= -->
+
+<div class="company-card">
+
+    <img src="logos/meesho.png" alt="Meesho">
+
+    <h3>Meesho</h3>
+
+    <p>Online Delivery</p>
+
+    <p class="salary">
+        💰 ₹25,000 - ₹45,000 / Month
+    </p>
+
+    <button class="apply-btn"
+        data-job-id="21"
+        data-company="Meesho"
+        data-title="Online Delivery"
+        data-location="Hyderabad"
+        data-salary="₹25,000 - ₹45,000 / Month">
+
+        Apply Now
+
+    </button>
+
+</div>
+
+<!-- ================= Card 22 ================= -->
+
+<div class="company-card">
+
+    <img src="logos/firstcry.png" alt="FirstCry">
+
+    <h3>FirstCry</h3>
+
+    <p>Baby Products Delivery</p>
+
+    <p class="salary">
+        💰 ₹25,000 - ₹40,000 / Month
+    </p>
+
+    <button class="apply-btn"
+        data-job-id="22"
+        data-company="FirstCry"
+        data-title="Baby Products Delivery"
+        data-location="Hyderabad"
+        data-salary="₹25,000 - ₹40,000 / Month">
+
+        Apply Now
+
+    </button>
+
+</div>
+
+<!-- ================= Card 23 ================= -->
+
+<div class="company-card">
+
+    <img src="logos/tata1mg.png" alt="Tata 1mg">
+
+    <h3>Tata 1mg</h3>
+
+    <p>Medicine Delivery</p>
+
+    <p class="salary">
+        💰 ₹23,000 - ₹43,000 / Month
+    </p>
+
+    <button class="apply-btn"
+        data-job-id="23"
+        data-company="Tata 1mg"
+        data-title="Medicine Delivery"
+        data-location="Hyderabad"
+        data-salary="₹23,000 - ₹43,000 / Month">
+
+        Apply Now
+
+    </button>
+
+</div>
+
+<!-- ================= Card 24 ================= -->
+
+<div class="company-card">
+
+    <img src="logos/netmeds.png" alt="NetMeds">
+
+    <h3>NetMeds</h3>
+
+    <p>Pharmacy Delivery</p>
+
+    <p class="salary">
+        💰 ₹25,000 - ₹42,000 / Month
+    </p>
+
+    <button class="apply-btn"
+        data-job-id="24"
+        data-company="NetMeds"
+        data-title="Pharmacy Delivery"
+        data-location="Hyderabad"
+        data-salary="₹25,000 - ₹42,000 / Month">
+
+        Apply Now
+
+    </button>
+
+</div>
+
+<!-- ================= Card 25 ================= -->
+
+<div class="company-card">
+
+    <img src="logos/instamart.png" alt="Swiggy Instamart">
+
+    <h3>Swiggy Instamart</h3>
+
+    <p>Instant Grocery Delivery</p>
+
+    <p class="salary">
+        💰 ₹25,000 - ₹50,000 / Month
+    </p>
+
+    <button class="apply-btn"
+        data-job-id="25"
+        data-company="Swiggy Instamart"
+        data-title="Instant Grocery Delivery"
+        data-location="Hyderabad"
+        data-salary="₹25,000 - ₹50,000 / Month">
+
+        Apply Now
+
+    </button>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+<!-- ==========================================
+                FOOTER
+========================================== -->
+
+<footer>
+
+    <div class="container">
+
+        <div class="footer-grid">
+
+            <!-- ================= Company ================= -->
+
+            <div class="footer-box">
+
+                <h3>
+
+                    Delivery Jobs India
+
+                </h3>
+
+                <p>
+
+                    Delivery Jobs India is India's trusted platform
+                    to find Delivery Partner Jobs from leading companies.
+
+                </p>
+
+                <p>
+
+                    Apply for jobs in Swiggy, Zomato,
+                    Blinkit, Zepto, Amazon, Flipkart,
+                    Porter, Delhivery and many more.
+
+                </p>
+
+            </div>
+
+            <!-- ================= Support ================= -->
+
+            <div class="footer-box">
+
+                <h3>
+
+                    Support
+
+                </h3>
+
+                <p>
+
+                    📧 support@deliveryjobsindia.in
+
+                </p>
+
+                <p>
+
+                    📧 help@deliveryjobsindia.in
+
+                </p>
+
+                <p>
+
+                    📞 +91 98765 43210
+
+                </p>
+
+                <p>
+
+                    📞 +91 91234 56789
+
+                </p>
+
+                <p>
+
+                    Monday - Saturday
+
+                </p>
+
+                <p>
+
+                    9:00 AM - 6:00 PM
+
+                </p>
+
+            </div>
+
+            <!-- ================= Address ================= -->
+
+            <div class="footer-box">
+
+                <h3>
+
+                    Office Address
+
+                </h3>
+
+                <p>
+
+                    Delivery Jobs India
+
+                </p>
+
+                <p>
+
+                    Hanamkonda
+
+                </p>
+
+                <p>
+
+                    Warangal
+
+                </p>
+
+                <p>
+
+                    Telangana - 506001
+
+                </p>
+
+                <p>
+
+                    India
+
+                </p>
+
+            </div>
+
+            <!-- ================= Quick Links ================= -->
+
+            <div class="footer-box">
+
+                <h3>
+
+                    Quick Links
+
+                </h3>
+
+                <ul>
+
+                    <li>
+
+                        <a href="profile.html">
+
+                            My Profile
+
+                        </a>
+
+                    </li>
+
+                    <li>
+
+                        <a href="applied-jobs.html">
+
+                            Applied Jobs
+
+                        </a>
+
+                    </li>
+
+                    <li>
+
+                        <a href="privacy-policy.html">
+
+                            Privacy Policy
+
+                        </a>
+
+                    </li>
+
+                    <li>
+
+                        <a href="terms-and-conditions.html">
+
+                            Terms & Conditions
+
+                        </a>
+
+                    </li>
+
+                    <li>
+
+                        <a href="contact.html">
+
+                            Contact Us
+
+                        </a>
+
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+        <!-- ================= Footer Bottom ================= -->
+
+        <div class="footer-bottom">
+
+            © 2026 Delivery Jobs India.
+
+            All Rights Reserved.
+
+        </div>
+
+    </div>
+
+</footer>
+
+<!-- ==========================================
+            SUPABASE CONFIG
+========================================== -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+const supabaseUrl = 'https://xeraljvxmfpwyenkiebb.supabase.co';
+const supabaseKey = 'sb_publishable_Zypr-BL-TfIInUlHt6FhKw_Svt8baSU';
+const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
+
+/*==============================
+        VISITOR TRACKING
+==============================*/
+
+async function trackVisitor(pageName) {
+    try {
+        const { data, error } = await supabase
+            .from('visitors')
+            .insert([{
+                full_name: 'Anonymous Visitor',
+                visited_page: pageName,
+                visit_date: new Date().toISOString(),
+                user_agent: navigator.userAgent,
+                referrer: document.referrer || 'direct'
+            }]);
+        
+        if (error) {
+            console.log('Visitor tracking error:', error.message);
+        }
+    } catch (err) {
+        console.log('Visitor tracking failed:', err);
+    }
+}
+
+// Track visitor on page load
+trackVisitor('home');
+
+</script>
+
+<!-- ==========================================
+            JAVASCRIPT
+========================================== -->
+
+<div class="support-box">
+
+    <div class="support-popup">
+
+        <h4>
+
+            Contact Support
+
+        </h4>
+
+        <p>
+
+            📧 support@deliveryjobsindia.in
+
+        </p>
+
+        <p>
+
+            📞 +91 98765 43210
+
+        </p>
+
+        <p>
+
+            📞 +91 91234 56789
+
+        </p>
+
+    </div>
+
+    <div class="support-btn">
+
+        <i class="fa-solid fa-headset"></i>
+
+    </div>
+
+</div>
+</body>
+<script>
+
+/*=========================================
+        SUPABASE CONNECTION
+=========================================*/
+
+const SUPABASE_URL = "https://xeraljvxmfpwyenkiebb.supabase.co";
+
+const SUPABASE_ANON_KEY = "sb_publishable_Zypr-BL-TfIInUlHt6FhKw_Svt8baSU";
+
+const sb = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_ANON_KEY
+);
+
+console.log("Supabase Connected");
+
+/*=========================================
+        LOGIN CHECK + LOGOUT
+=========================================*/
+
+const loggedInUserId = localStorage.getItem("userId");
+
+if (!loggedInUserId) {
+    window.location.href = "login.html";
+}
+
+const storedUserName = localStorage.getItem("userName");
+
+if (storedUserName) {
+    document.getElementById("userName").innerText = "Hi, " + storedUserName;
+}
+
+document.getElementById("logoutLink").addEventListener("click", function(e) {
+    e.preventDefault();
+
+    localStorage.removeItem("isLoggedIn");
+    localStorage.removeItem("userId");
+    localStorage.removeItem("userMobile");
+    localStorage.removeItem("userName");
+    localStorage.removeItem("userEmail");
+
+    alert("Logged out successfully");
+    window.location.href = "index.html";
+});
+
+/*=========================================
+        VISITOR DEVICE SAVE
+=========================================*/
+
+function getDeviceType() {
+    const ua = navigator.userAgent.toLowerCase();
+
+    if (/tablet|ipad/.test(ua)) return "tablet";
+    if (/mobile|android|iphone|ipod/.test(ua)) return "mobile";
+
+    return "desktop";
+}
+
+function getVisitorDeviceId() {
+    let deviceId = localStorage.getItem("visitorDeviceId");
+
+    if (!deviceId) {
+        deviceId = crypto.randomUUID ? crypto.randomUUID() : "device-" + Date.now() + "-" + Math.random().toString(16).slice(2);
+        localStorage.setItem("visitorDeviceId", deviceId);
+    }
+
+    return deviceId;
+}
+
+async function saveVisitorDevice(pageName) {
+    const deviceId = getVisitorDeviceId();
+    const visitCount = Number(localStorage.getItem("visitorVisitCount") || "0") + 1;
+
+    localStorage.setItem("visitorVisitCount", String(visitCount));
+    localStorage.setItem("lastVisitedPage", pageName);
+
+    const { error } = await sb
+        .from("visitor_logs")
+        .insert([{
+            device_id: deviceId,
+            page: pageName,
+            device_type: getDeviceType(),
+            user_agent: navigator.userAgent,
+            visit_count: visitCount,
+            visited_at: new Date().toISOString()
+        }]);
+
+    if (error) {
+        console.warn("Visitor save skipped:", error.message);
+    }
+}
+
+saveVisitorDevice("home.html");
+
+/*=========================================
+        HERO SLIDER
+=========================================*/
+
+const slider = document.getElementById("slider");
+const slides = document.querySelectorAll(".slide");
+const dots = document.querySelectorAll(".dot");
+let currentSlide = 0;
+
+function showSlide(index) {
+    if (!slider || slides.length === 0) return;
+
+    currentSlide = index;
+    slider.style.transform = "translateX(-" + (currentSlide * 100) + "%)";
+
+    dots.forEach(dot => dot.classList.remove("active"));
+
+    if (dots[currentSlide]) {
+        dots[currentSlide].classList.add("active");
+    }
+}
+
+function nextSlide() {
+    showSlide((currentSlide + 1) % slides.length);
+}
+
+let sliderTimer = setInterval(nextSlide, 10000);
+
+dots.forEach((dot, index) => {
+    dot.addEventListener("click", function() {
+        showSlide(index);
+        clearInterval(sliderTimer);
+        sliderTimer = setInterval(nextSlide, 10000);
+    });
+});
+
+showSlide(0);
+
+
+/*=========================================
+        CHECK ALREADY APPLIED JOBS ON LOAD
+=========================================*/
+
+async function checkAppliedJobsOnLoad() {
+    const userId = localStorage.getItem("userId");
+    
+    if (!userId) return;
+
+    try {
+        const { data: applications, error } = await sb
+            .from("job_applications")
+            .select("job_id")
+            .eq("user_id", userId);
+
+        if (error) {
+            console.error("Error fetching applications:", error);
+            return;
+        }
+
+        // Create a Set of applied job IDs for fast lookup
+        const appliedJobIds = new Set(applications.map(app => app.job_id));
+
+        // Update all apply buttons
+        document.querySelectorAll(".apply-btn").forEach(button => {
+            const jobId = parseInt(button.dataset.jobId);
+            
+            if (appliedJobIds.has(jobId)) {
+                button.innerHTML = "✅ Applied";
+                button.disabled = true;
+                button.classList.add("applied-btn");
+            }
+        });
+
+    } catch (err) {
+        console.error("Error:", err);
+    }
+}
+
+// Run on page load
+checkAppliedJobsOnLoad();
+
+/*=========================================
+        APPLY BUTTON
+=========================================*/
+
+document.querySelectorAll(".apply-btn").forEach(button => {
+
+    button.addEventListener("click", async function () {
+
+        try {
+
+            const userId = localStorage.getItem("userId");
+
+            if (!userId) {
+                alert("Please Login First");
+                window.location.href = "login.html";
+                return;
+            }
+
+            const jobId = parseInt(this.dataset.jobId);
+
+            const company = this.dataset.company;
+            const title = this.dataset.title;
+            const location = this.dataset.location;
+            const salary = this.dataset.salary;
+
+            // Already Applied Check
+            const { data: existing, error: checkError } = await sb
+                .from("job_applications")
+                .select("id")
+                .eq("user_id", userId)
+                .eq("job_id", jobId);
+
+            if (checkError) {
+                console.error(checkError);
+                alert(checkError.message);
+                return;
+            }
+
+            if (existing.length > 0) {
+
+                alert("You already applied.");
+
+                this.innerHTML = "✅ Applied";
+                this.disabled = true;
+                this.classList.add("applied-btn");
+
+                return;
+            }
+
+            // Insert Application
+            const { error } = await sb
+                .from("job_applications")
+                .insert([
+                    {
+                        user_id: userId,
+                        job_id: jobId,
+                        company_name: company,
+                        job_title: title,
+                        location: location,
+                        salary: salary,
+                        status: "Applied"
+                    }
+                ]);
+
+            if (error) {
+                console.error(error);
+                alert(error.message);
+                return;
+            }
+
+            this.innerHTML = "✅ Applied";
+            this.disabled = true;
+            this.classList.add("applied-btn");
+
+            alert("Application Submitted Successfully");
+
+        } catch (err) {
+
+            console.error(err);
+            alert("Unexpected Error");
+
+        }
+
+    });
+
+});
+
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>
+
+Applied Jobs | Delivery Jobs India
+
+</title>
+
+<!-- ==========================================
+        GOOGLE FONT
+========================================== -->
+
+<link rel="preconnect"
+href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+rel="stylesheet">
+
+<!-- ==========================================
+        FONT AWESOME
+========================================== -->
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+<!-- ==========================================
+        SUPABASE SDK
+========================================== -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<style>
+
+*{
+
+margin:0;
+
+padding:0;
+
+box-sizing:border-box;
+
+font-family:'Poppins',sans-serif;
+
+}
+
+body{
+
+background:#f5f7fb;
+
+overflow-x:hidden;
+
+color:#222;
+
+}
+
+:root{
+
+--primary:#ff7a00;
+
+--secondary:#111827;
+
+--white:#ffffff;
+
+--gray:#666;
+
+--shadow:0 12px 35px rgba(0,0,0,.08);
+
+}
+
+/*=========================================
+            WRAPPER
+=========================================*/
+
+.wrapper{
+
+display:flex;
+
+min-height:100vh;
+
+}
+
+/*=========================================
+            SIDEBAR
+=========================================*/
+
+.sidebar{
+
+width:250px;
+
+background:#111827;
+
+color:#fff;
+
+padding:25px 18px;
+
+display:flex;
+
+flex-direction:column;
+
+justify-content:space-between;
+
+}
+
+/*=========================================
+            LOGO
+=========================================*/
+
+.logo{
+
+display:flex;
+
+align-items:center;
+
+gap:12px;
+
+margin-bottom:35px;
+
+}
+
+.logo img{
+
+width:60px;
+
+height:60px;
+
+object-fit:contain;
+
+}
+
+.logo h2{
+
+font-size:22px;
+
+line-height:28px;
+
+font-weight:700;
+
+}
+
+.logo span{
+
+color:#ff7a00;
+
+}
+
+/*=========================================
+            MENU
+=========================================*/
+
+.menu{
+
+list-style:none;
+
+}
+
+.menu li{
+
+margin-bottom:15px;
+
+}
+
+.menu li a{
+
+display:flex;
+
+align-items:center;
+
+gap:12px;
+
+padding:14px 16px;
+
+text-decoration:none;
+
+color:#fff;
+
+font-weight:600;
+
+border-radius:12px;
+
+transition:.3s;
+
+}
+
+.menu li a:hover,
+
+.menu li a.active{
+
+background:#ff7a00;
+
+}
+
+/*=========================================
+        SUPPORT BOX
+=========================================*/
+
+.support-box{
+
+background:#fff;
+
+border-radius:15px;
+
+padding:18px;
+
+color:#222;
+
+box-shadow:var(--shadow);
+
+}
+
+.support-box h3{
+
+margin-bottom:10px;
+
+font-size:18px;
+
+}
+
+.support-box p{
+
+font-size:14px;
+
+color:#666;
+
+margin-bottom:8px;
+
+line-height:22px;
+
+}
+
+/*=========================================
+            CONTENT
+=========================================*/
+
+.content{
+
+flex:1;
+
+padding:35px;
+
+}
+
+/*=========================================
+            HEADER
+=========================================*/
+
+.header{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+background:#fff;
+
+padding:25px;
+
+border-radius:18px;
+
+box-shadow:var(--shadow);
+
+margin-bottom:30px;
+
+}
+
+.header h1{
+
+font-size:32px;
+
+font-weight:700;
+
+color:#111827;
+
+}
+
+.home-btn{
+
+background:#ff7a00;
+
+color:#fff;
+
+padding:12px 24px;
+
+text-decoration:none;
+
+border-radius:10px;
+
+font-weight:600;
+
+transition:.3s;
+
+}
+
+.home-btn:hover{
+
+background:#ea6500;
+
+}
+
+/*=========================================
+        JOB GRID
+=========================================*/
+
+.jobs-grid{
+
+display:grid;
+
+grid-template-columns:
+repeat(auto-fill,minmax(330px,1fr));
+
+gap:25px;
+
+}
+
+/*=========================================
+        JOB CARD
+=========================================*/
+
+.job-card{
+
+background:#fff;
+
+border-radius:18px;
+
+padding:25px;
+
+box-shadow:var(--shadow);
+
+transition:.3s;
+
+}
+
+.job-card:hover{
+
+transform:translateY(-5px);
+
+}
+
+.company{
+
+font-size:24px;
+
+font-weight:700;
+
+color:#111827;
+
+margin-bottom:12px;
+
+}
+
+.job-title{
+
+font-size:18px;
+
+font-weight:600;
+
+margin-bottom:15px;
+
+color:#444;
+
+}
+
+.info{
+
+margin-bottom:10px;
+
+font-size:15px;
+
+color:#555;
+
+}
+
+.status{
+
+display:inline-block;
+
+margin-top:15px;
+
+padding:8px 20px;
+
+border-radius:30px;
+
+background:#28a745;
+
+color:#fff;
+
+font-weight:600;
+
+}
+
+/*=========================================
+        EMPTY BOX
+=========================================*/
+
+.empty-box{
+
+background:#fff;
+
+padding:50px;
+
+border-radius:18px;
+
+text-align:center;
+
+box-shadow:var(--shadow);
+
+}
+
+.empty-box i{
+
+font-size:70px;
+
+color:#ff7a00;
+
+margin-bottom:20px;
+
+}
+
+.empty-box h2{
+
+font-size:30px;
+
+margin-bottom:10px;
+
+}
+
+.empty-box p{
+
+color:#666;
+
+font-size:16px;
+
+}
+
+/*=========================================
+        RESPONSIVE
+=========================================*/
+
+@media(max-width:900px){
+
+.wrapper{
+
+flex-direction:column;
+
+}
+
+.sidebar{
+
+width:100%;
+
+}
+
+.content{
+
+padding:20px;
+
+}
+
+.header{
+
+flex-direction:column;
+
+gap:20px;
+
+text-align:center;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="wrapper">
+
+<!-- ==========================================
+            SIDEBAR
+========================================== -->
+
+<div class="sidebar">
+
+<div>
+
+<!-- LOGO -->
+
+<div class="logo">
+
+<img src="logo.png"
+alt="Delivery Jobs India">
+
+<h2>
+
+Delivery Jobs
+
+<br>
+
+<span>India</span>
+
+</h2>
+
+</div>
+
+<!-- MENU -->
+
+<ul class="menu">
+
+<li>
+
+<a href="profile.html">
+
+<i class="fa-solid fa-user"></i>
+
+Profile
+
+</a>
+
+</li>
+
+<li>
+
+<a href="applied-jobs.html"
+class="active">
+
+<i class="fa-solid fa-file-circle-check"></i>
+
+Applied Jobs
+
+</a>
+
+</li>
+
+<li>
+
+<a href="home.html">
+
+<i class="fa-solid fa-house"></i>
+
+Home
+
+</a>
+
+</li>
+
+<li>
+
+<a href="index.html"
+id="logoutBtn">
+
+<i class="fa-solid fa-right-from-bracket"></i>
+
+Logout
+
+</a>
+
+</li>
+
+</ul>
+
+</div>
+
+<!-- SUPPORT -->
+
+<div class="support-box">
+
+<h3>
+
+Need Support?
+
+</h3>
+
+<p>
+
+📞 +91 98765 43210
+
+</p>
+
+<p>
+
+📧 support@deliveryjobsindia.in
+
+</p>
+
+</div>
+
+</div>
+
+<!-- ==========================================
+            CONTENT
+========================================== -->
+
+<div class="content">
+
+<div class="header">
+
+<div>
+
+<h1>
+
+My Applied Jobs
+
+</h1>
+
+<p>
+
+View all jobs you have applied for.
+
+</p>
+
+</div>
+
+<a href="home.html"
+class="home-btn">
+
+<i class="fa-solid fa-house"></i>
+
+Home
+
+</a>
+
+</div>
+
+<!-- ==========================================
+        JOBS GRID
+========================================== -->
+
+<div
+id="jobsContainer"
+class="jobs-grid">
+
+<!-- Supabase jobs load here -->
+
+</div>
+
+<!-- ==========================================
+            FOOTER
+========================================== -->
+
+<div
+style="
+margin-top:40px;
+text-align:center;
+color:#666;
+font-size:14px;
+">
+
+© 2026 Delivery Jobs India.
+All Rights Reserved.
+
+</div>
+
+</div>
+
+</div>
+<script>
+
+/*=========================================
+        SUPABASE CONNECTION
+=========================================*/
+
+const SUPABASE_URL = "https://xeraljvxmfpwyenkiebb.supabase.co";
+
+const SUPABASE_KEY = "sb_publishable_Zypr-BL-TfIInUlHt6FhKw_Svt8baSU";
+
+const sb = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+);
+
+/*=========================================
+        LOAD APPLIED JOBS
+=========================================*/
+
+async function loadAppliedJobs(){
+
+    const userId = localStorage.getItem("userId");
+
+    if(!userId){
+
+        alert("Please Login First");
+
+        window.location.href="login.html";
+
+        return;
+
+    }
+
+    const { data, error } = await sb
+        .from("job_applications")
+        .select("*")
+        .eq("user_id", userId)
+        .order("created_at", { ascending:false });
+
+    if(error){
+
+        console.log(error);
+
+        return;
+
+    }
+
+    const jobsContainer =
+        document.getElementById("jobsContainer");
+
+    jobsContainer.innerHTML = "";
+    /*=========================================
+            NO JOBS
+    =========================================*/
+
+    if(data.length === 0){
+
+        jobsContainer.innerHTML = `
+
+        <div class="empty-box">
+
+            <i class="fa-solid fa-file-circle-xmark"></i>
+
+            <h2>
+
+                No Applied Jobs
+
+            </h2>
+
+            <p>
+
+                You haven't applied for any jobs yet.
+
+            </p>
+
+        </div>
+
+        `;
+
+        return;
+
+    }
+
+    /*=========================================
+            DISPLAY JOBS
+    =========================================*/
+
+    data.forEach(job=>{
+
+        jobsContainer.innerHTML += `
+
+        <div class="job-card">
+
+            <div class="company">
+
+                ${job.company_name}
+
+            </div>
+
+            <div class="job-title">
+
+                ${job.job_title}
+
+            </div>
+
+            <div class="info">
+
+                📍 <b>Location :</b>
+
+                ${job.location}
+
+            </div>
+
+            <div class="info">
+
+                💰 <b>Salary :</b>
+
+                ${job.salary}
+
+            </div>
+
+            <div class="info">
+
+                📅 <b>Applied :</b>
+
+                ${new Date(job.created_at).toLocaleDateString()}
+
+            </div>
+
+            <div class="status">
+
+                ✅ ${job.status}
+
+            </div>
+
+        </div>
+
+        `;
+
+    });
+
+}
+/*=========================================
+        LOGOUT
+=========================================*/
+
+const logoutBtn = document.getElementById("logoutBtn");
+
+if(logoutBtn){
+
+    logoutBtn.addEventListener("click",function(e){
+
+        e.preventDefault();
+
+        const logout = confirm(
+            "Are you sure you want to logout?"
+        );
+
+        if(!logout) return;
+
+        localStorage.clear();
+
+        sessionStorage.clear();
+
+        window.location.href = "index.html";
+
+    });
+
+}
+
+/*=========================================
+        PAGE LOAD
+=========================================*/
+
+window.addEventListener("load",()=>{
+
+    loadAppliedJobs();
+
+    console.log("Applied Jobs Loaded Successfully");
+
+});
+
+</script>
+
+</body>
+
+</html>
