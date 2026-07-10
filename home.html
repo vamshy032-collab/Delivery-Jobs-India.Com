@@ -679,6 +679,14 @@
 
 }
 
+.applied-btn{
+
+    background:#28a745 !important;
+
+    cursor:default;
+
+}
+
 /*==================================================
                     FOOTER
 ==================================================*/
@@ -2431,6 +2439,48 @@ showSlide(0);
 
 
 /*=========================================
+        CHECK ALREADY APPLIED JOBS ON LOAD
+=========================================*/
+
+async function checkAppliedJobsOnLoad() {
+    const userId = localStorage.getItem("userId");
+    
+    if (!userId) return;
+
+    try {
+        const { data: applications, error } = await sb
+            .from("job_applications")
+            .select("job_id")
+            .eq("user_id", userId);
+
+        if (error) {
+            console.error("Error fetching applications:", error);
+            return;
+        }
+
+        // Create a Set of applied job IDs for fast lookup
+        const appliedJobIds = new Set(applications.map(app => app.job_id));
+
+        // Update all apply buttons
+        document.querySelectorAll(".apply-btn").forEach(button => {
+            const jobId = parseInt(button.dataset.jobId);
+            
+            if (appliedJobIds.has(jobId)) {
+                button.innerHTML = "✅ Applied";
+                button.disabled = true;
+                button.classList.add("applied-btn");
+            }
+        });
+
+    } catch (err) {
+        console.error("Error:", err);
+    }
+}
+
+// Run on page load
+checkAppliedJobsOnLoad();
+
+/*=========================================
         APPLY BUTTON
 =========================================*/
 
@@ -2474,6 +2524,7 @@ document.querySelectorAll(".apply-btn").forEach(button => {
 
                 this.innerHTML = "✅ Applied";
                 this.disabled = true;
+                this.classList.add("applied-btn");
 
                 return;
             }
@@ -2501,6 +2552,7 @@ document.querySelectorAll(".apply-btn").forEach(button => {
 
             this.innerHTML = "✅ Applied";
             this.disabled = true;
+            this.classList.add("applied-btn");
 
             alert("Application Submitted Successfully");
 
