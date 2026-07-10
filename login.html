@@ -8,6 +8,7 @@
 <title>Delivery Jobs India | Login with OTP</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
 
@@ -675,47 +676,132 @@ font-size:20px;
 
    
 // ==============================
-// Mobile Validation
+// Supabase Connection
+// ==============================
+
+const SUPABASE_URL = "https://xeraljvxmfpwyenkiebb.supabase.co";
+const SUPABASE_KEY = "sb_publishable_Zypr-BL-TfIInUlHt6FhKw_Svt8baSU";
+
+const sb = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+);
+
+// ==============================
+// Mobile Validation + OTP Create
 // ==============================
 
 const loginForm = document.getElementById("loginForm");
 const loginInput = document.getElementById("loginInput");
 const loginError = document.getElementById("loginError");
+const otpError = document.getElementById("otpError");
+const sendBtn = document.querySelector(".send-btn");
+const verifyBtn = document.getElementById("verifyBtn");
 
 const userValue = document.getElementById("userValue");
 const otpSection = document.getElementById("otpSection");
+const otpInputs = document.querySelectorAll(".otp-input");
 
+let generatedOtp = "";
+let currentUser = null;
 
+const mobilePattern = /^[6-9]\d{9}$/;
 
-const mobilePattern=/^[6-9]\d{9}$/;
-loginForm.addEventListener("submit", function (e) {
+function setButtonLoading(button, text, isLoading) {
+    button.disabled = isLoading;
+    button.dataset.originalText = button.dataset.originalText || button.innerText;
+    button.innerText = isLoading ? text : button.dataset.originalText;
+}
 
+function showError(element, message) {
+    element.innerText = message;
+    element.style.display = "block";
+}
+
+function hideError(element) {
+    element.style.display = "none";
+}
+
+function createOtp() {
+    return Math.floor(1000 + Math.random() * 9000).toString();
+}
+
+async function findOrCreateUser(mobile) {
+    const { data: existingUser, error: findError } = await sb
+        .from("users")
+        .select("id, phone, email, login_type, is_verified, last_login")
+        .eq("phone", mobile)
+        .maybeSingle();
+
+    if (findError) throw findError;
+    if (existingUser) return existingUser;
+
+    const newUser = {
+        phone: mobile,
+        email: `${mobile}@deliveryjobsindia.local`,
+        login_type: "PHONE",
+        is_verified: false
+    };
+
+    const { data: createdUser, error: createError } = await sb
+        .from("users")
+        .insert([newUser])
+        .select("id, phone, email, login_type, is_verified, last_login")
+        .single();
+
+    if (createError) throw createError;
+    return createdUser;
+}
+
+async function saveOtpLog(tableName, payload) {
+    const { error } = await sb
+        .from(tableName)
+        .insert([payload]);
+
+    if (error) {
+        console.warn(`${tableName} log skipped:`, error.message);
+    }
+}
+
+async function startOtpLogin(mobile) {
+    currentUser = await findOrCreateUser(mobile);
+    generatedOtp = createOtp();
+
+    userValue.innerHTML = "+91 " + mobile;
+    loginForm.style.display = "none";
+    otpSection.style.display = "block";
+    otpInputs[0].focus();
+
+    alert("OTP Sent Successfully.\n\nYour OTP : " + generatedOtp);
+}
+
+loginForm.addEventListener("submit", async function (e) {
     e.preventDefault();
 
     const mobile = loginInput.value.trim();
 
     if (!mobilePattern.test(mobile)) {
-        loginError.style.display = "block";
+        showError(loginError, "Please enter a valid 10 digit Mobile Number.");
         return;
     }
 
-    loginError.style.display = "none";
+    hideError(loginError);
+    hideError(otpError);
+    setButtonLoading(sendBtn, "Sending...", true);
 
-    userValue.innerHTML = "+91 " + mobile;
-
-    loginForm.style.display = "none";
-    otpSection.style.display = "block";
-
-    alert("Demo OTP : 1234");
-
+    try {
+        await startOtpLogin(mobile);
+    } catch (error) {
+        console.error(error);
+        showError(loginError, error.message || "Supabase connection failed. Please try again.");
+    } finally {
+        setButtonLoading(sendBtn, "Sending...", false);
+    }
 });
-
 
 // ==============================
 // OTP Auto Move
 // ==============================
-
-const otpInputs=document.querySelectorAll(".otp-input");
 
 otpInputs.forEach((input,index)=>{
 
@@ -743,10 +829,6 @@ otpInputs[index-1].focus();
 
 });
 
-
-
-
-
 // ==============================
 // Resend OTP
 // ==============================
@@ -755,10 +837,15 @@ document.getElementById("resendOtp").addEventListener("click",function(e){
 
 e.preventDefault();
 
-alert("OTP Sent Successfully.\n\nDemo OTP : 1234");
+const mobile = loginInput.value.trim();
+
+if (!mobilePattern.test(mobile)) return;
+
+generatedOtp = createOtp();
+
+alert("OTP Sent Successfully.\n\nYour OTP : " + generatedOtp);
 
 });
-
 
 // ==============================
 // Change Number
@@ -776,39 +863,78 @@ otpSection.style.display="none";
 
 loginForm.style.display="block";
 
+generatedOtp="";
+
+currentUser=null;
+
+hideError(otpError);
+
 loginInput.focus();
 
 });
 
+// ==============================
+// Verify OTP + Save Login
+// ==============================
 
-// ==============================
-// Prevent Login Page After Login
-// ==============================
-document.getElementById("verifyBtn").addEventListener("click", function () {
+document.getElementById("verifyBtn").addEventListener("click", async function () {
 
     const otp = [...document.querySelectorAll(".otp-input")]
         .map(x => x.value)
         .join("");
 
-    if (otp !== "1234") {
+    if (otp !== generatedOtp) {
 
-        document.getElementById("otpError").style.display = "block";
+        showError(otpError, "Invalid OTP. Please try again.");
+
+        await saveOtpLog("otp_failed_logs", {
+            phone: loginInput.value.trim(),
+            email: currentUser && currentUser.email ? currentUser.email : `${loginInput.value.trim()}@deliveryjobsindia.local`,
+            entered_otp: otp,
+            otp_type: "login",
+            reason: "Invalid OTP",
+            failed_at: new Date().toISOString()
+        });
+
         return;
 
     }
-document.getElementById("otpError").style.display = "none";
 
-    localStorage.setItem("isLoggedIn", "true");
-localStorage.setItem("userId", crypto.randomUUID());
-localStorage.setItem("userMobile", loginInput.value);
-localStorage.setItem("userName", "Delivery Partner");
+    hideError(otpError);
+    setButtonLoading(verifyBtn, "Verifying...", true);
 
-    alert("Login Successful");
+    try {
+        if (!currentUser) {
+            currentUser = await findOrCreateUser(loginInput.value.trim());
+        }
 
-    window.location.href = "home.html";
+        const { error: updateError } = await sb
+            .from("users")
+            .update({
+                is_verified: true,
+                last_login: new Date().toISOString()
+            })
+            .eq("id", currentUser.id);
 
-});
-</script>
+        if (updateError) throw updateError;
+
+        localStorage.setItem("isLoggedIn", "true");
+        localStorage.setItem("userId", currentUser.id);
+        localStorage.setItem("userMobile", currentUser.phone || loginInput.value.trim());
+        localStorage.setItem("userName", "Delivery Partner");
+        localStorage.setItem("userEmail", currentUser.email || "");
+
+        alert("Login Successful");
+
+        window.location.href = "home.html";
+    } catch (error) {
+        console.error(error);
+        showError(otpError, error.message || "Login failed. Please try again.");
+    } finally {
+        setButtonLoading(verifyBtn, "Verifying...", false);
+    }
+
+});</script>
 
 </body>
 </html>

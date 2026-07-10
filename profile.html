@@ -27,6 +27,8 @@ rel="stylesheet">
 <link rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 <style>
 
 *{
@@ -940,6 +942,14 @@ Save Changes
     CHARACTER COUNTER
 ==============================*/
 
+const SUPABASE_URL = "https://xeraljvxmfpwyenkiebb.supabase.co";
+const SUPABASE_KEY = "sb_publishable_Zypr-BL-TfIInUlHt6FhKw_Svt8baSU";
+
+const sb = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+);
+
 const fullName=document.getElementById("fullName");
 
 const email=document.getElementById("email");
@@ -952,9 +962,19 @@ const emailCount=document.getElementById("emailCount");
 
 const mobileCount=document.getElementById("mobileCount");
 
+const profileName=document.querySelector(".profile-name");
+
+function updateProfileName(){
+
+profileName.innerHTML=fullName.value.trim() || "Add Name Here";
+
+}
+
 fullName.addEventListener("input",function(){
 
 nameCount.innerHTML=this.value.length;
+
+updateProfileName();
 
 });
 
@@ -978,11 +998,23 @@ mobileCount.innerHTML=this.value.length;
 
 window.onload=function(){
 
+if(!localStorage.getItem("userId")){
+
+alert("Please Login First");
+
+window.location.href="login.html";
+
+return;
+
+}
+
 if(localStorage.getItem("userName")){
 
 fullName.value=localStorage.getItem("userName");
 
 nameCount.innerHTML=fullName.value.length;
+
+updateProfileName();
 
 }
 
@@ -1010,13 +1042,25 @@ mobileCount.innerHTML=mobile.value.length;
 
 document.getElementById("profileForm")
 
-.addEventListener("submit",function(e){
+.addEventListener("submit",async function(e){
 
 e.preventDefault();
 
 const emailPattern=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 const mobilePattern=/^[6-9]\d{9}$/;
+
+const userId=localStorage.getItem("userId");
+
+if(!userId){
+
+alert("Please Login First");
+
+window.location.href="login.html";
+
+return;
+
+}
 
 if(fullName.value.trim()==""){
 
@@ -1048,17 +1092,49 @@ return;
 
 }
 
-localStorage.setItem("userName",fullName.value);
+const saveBtn=document.querySelector(".save-btn");
+const oldText=saveBtn.innerHTML;
 
-localStorage.setItem("userEmail",email.value);
+saveBtn.disabled=true;
+saveBtn.innerHTML="Saving...";
 
-localStorage.setItem("userMobile",mobile.value);
+try{
+
+const { error } = await sb
+    .from("users")
+    .update({
+        phone: mobile.value.trim(),
+        email: email.value.trim(),
+        login_type: "PHONE"
+    })
+    .eq("id", userId);
+
+if(error) throw error;
+
+localStorage.setItem("userName",fullName.value.trim());
+
+localStorage.setItem("userEmail",email.value.trim());
+
+localStorage.setItem("userMobile",mobile.value.trim());
+
+updateProfileName();
 
 alert("Profile Updated Successfully.");
 
-});
+}catch(error){
 
-</script>
+console.error(error);
+
+alert(error.message || "Profile update failed. Please try again.");
+
+}finally{
+
+saveBtn.disabled=false;
+saveBtn.innerHTML=oldText;
+
+}
+
+});</script>
 
 </body>
 

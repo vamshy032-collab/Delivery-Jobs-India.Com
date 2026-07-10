@@ -31,6 +31,8 @@ rel="stylesheet">
 <link rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 <style>
 
 *{
@@ -1772,6 +1774,62 @@ Quick Links
 
 <script>
 
+
+
+/*==============================
+        VISITOR DEVICE SAVE
+==============================*/
+
+const SUPABASE_URL = "https://xeraljvxmfpwyenkiebb.supabase.co";
+const SUPABASE_ANON_KEY = "sb_publishable_Zypr-BL-TfIInUlHt6FhKw_Svt8baSU";
+const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+function getDeviceType() {
+    const ua = navigator.userAgent.toLowerCase();
+
+    if (/tablet|ipad/.test(ua)) return "tablet";
+    if (/mobile|android|iphone|ipod/.test(ua)) return "mobile";
+
+    return "desktop";
+}
+
+function getVisitorDeviceId() {
+    let deviceId = localStorage.getItem("visitorDeviceId");
+
+    if (!deviceId) {
+        deviceId = crypto.randomUUID ? crypto.randomUUID() : "device-" + Date.now() + "-" + Math.random().toString(16).slice(2);
+        localStorage.setItem("visitorDeviceId", deviceId);
+    }
+
+    return deviceId;
+}
+
+async function saveVisitorDevice(pageName) {
+    const deviceId = getVisitorDeviceId();
+    const visitCount = Number(localStorage.getItem("visitorVisitCount") || "0") + 1;
+
+    localStorage.setItem("visitorVisitCount", String(visitCount));
+    localStorage.setItem("lastVisitedPage", pageName);
+
+    const { error } = await sb
+        .from("visitor_logs")
+        .insert([{
+            device_id: deviceId,
+            page: pageName,
+            device_type: getDeviceType(),
+            user_agent: navigator.userAgent,
+            visit_count: visitCount,
+            visited_at: new Date().toISOString()
+        }]);
+
+    if (error) {
+        console.warn("Visitor save skipped:", error.message);
+    }
+}
+
+saveVisitorDevice("index.html");
+
+
 /*==============================
         HERO SLIDER
 ==============================*/
@@ -1794,7 +1852,7 @@ dots[index].classList.add("active");
 
 }
 
-/* Auto Slide Every 5 Seconds */
+/* Auto Slide Every 10 Seconds */
 
 setInterval(function(){
 
@@ -1808,7 +1866,7 @@ currentSlide=0;
 
 showSlide(currentSlide);
 
-},5000);
+},10000);
 
 /* Dot Navigation */
 

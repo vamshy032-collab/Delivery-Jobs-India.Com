@@ -364,7 +364,7 @@
 
 .slider{
 
-    width:400%;
+    width:100%;
 
     height:100%;
 
@@ -376,7 +376,7 @@
 
 .slide{
 
-    width:100%;
+    min-width:100%;
 
     height:100%;
 
@@ -2272,6 +2272,123 @@ const sb = window.supabase.createClient(
 );
 
 console.log("Supabase Connected");
+
+/*=========================================
+        LOGIN CHECK + LOGOUT
+=========================================*/
+
+const loggedInUserId = localStorage.getItem("userId");
+
+if (!loggedInUserId) {
+    window.location.href = "login.html";
+}
+
+const storedUserName = localStorage.getItem("userName");
+
+if (storedUserName) {
+    document.getElementById("userName").innerText = "Hi, " + storedUserName;
+}
+
+document.getElementById("logoutLink").addEventListener("click", function(e) {
+    e.preventDefault();
+
+    localStorage.removeItem("isLoggedIn");
+    localStorage.removeItem("userId");
+    localStorage.removeItem("userMobile");
+    localStorage.removeItem("userName");
+    localStorage.removeItem("userEmail");
+
+    alert("Logged out successfully");
+    window.location.href = "index.html";
+});
+
+/*=========================================
+        VISITOR DEVICE SAVE
+=========================================*/
+
+function getDeviceType() {
+    const ua = navigator.userAgent.toLowerCase();
+
+    if (/tablet|ipad/.test(ua)) return "tablet";
+    if (/mobile|android|iphone|ipod/.test(ua)) return "mobile";
+
+    return "desktop";
+}
+
+function getVisitorDeviceId() {
+    let deviceId = localStorage.getItem("visitorDeviceId");
+
+    if (!deviceId) {
+        deviceId = crypto.randomUUID ? crypto.randomUUID() : "device-" + Date.now() + "-" + Math.random().toString(16).slice(2);
+        localStorage.setItem("visitorDeviceId", deviceId);
+    }
+
+    return deviceId;
+}
+
+async function saveVisitorDevice(pageName) {
+    const deviceId = getVisitorDeviceId();
+    const visitCount = Number(localStorage.getItem("visitorVisitCount") || "0") + 1;
+
+    localStorage.setItem("visitorVisitCount", String(visitCount));
+    localStorage.setItem("lastVisitedPage", pageName);
+
+    const { error } = await sb
+        .from("visitor_logs")
+        .insert([{
+            device_id: deviceId,
+            page: pageName,
+            device_type: getDeviceType(),
+            user_agent: navigator.userAgent,
+            visit_count: visitCount,
+            visited_at: new Date().toISOString()
+        }]);
+
+    if (error) {
+        console.warn("Visitor save skipped:", error.message);
+    }
+}
+
+saveVisitorDevice("home.html");
+
+/*=========================================
+        HERO SLIDER
+=========================================*/
+
+const slider = document.getElementById("slider");
+const slides = document.querySelectorAll(".slide");
+const dots = document.querySelectorAll(".dot");
+let currentSlide = 0;
+
+function showSlide(index) {
+    if (!slider || slides.length === 0) return;
+
+    currentSlide = index;
+    slider.style.transform = "translateX(-" + (currentSlide * 100) + "%)";
+
+    dots.forEach(dot => dot.classList.remove("active"));
+
+    if (dots[currentSlide]) {
+        dots[currentSlide].classList.add("active");
+    }
+}
+
+function nextSlide() {
+    showSlide((currentSlide + 1) % slides.length);
+}
+
+let sliderTimer = setInterval(nextSlide, 10000);
+
+dots.forEach((dot, index) => {
+    dot.addEventListener("click", function() {
+        showSlide(index);
+        clearInterval(sliderTimer);
+        sliderTimer = setInterval(nextSlide, 10000);
+    });
+});
+
+showSlide(0);
+
 
 /*=========================================
         APPLY BUTTON

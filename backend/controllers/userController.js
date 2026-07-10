@@ -1,31 +1,28 @@
 const supabase = require("../config/database");
-console.log("✅ NEW USER CONTROLLER LOADED");
-const signup = async (req, res) => {
-console.log("Signup API Called");
- console.log(req.body);
-try {
-    const { full_name, email, phone, password } = req.body;
 
-    // Validation
-    if (!full_name || !email || !phone || !password) {
+const signup = async (req, res) => {
+  try {
+    const { email, phone } = req.body;
+
+    if (!email || !phone) {
       return res.status(400).json({
         success: false,
-        message: "All fields are required"
+        message: "Email and phone are required"
       });
     }
 
-    // Insert into users table
     const { data, error } = await supabase
       .from("users")
       .insert([
         {
-          full_name,
           email,
           phone,
-          password_hash: password
+          login_type: "PHONE",
+          is_verified: false
         }
       ])
-      .select();
+      .select("id, phone, email, login_type, is_verified, created_at, last_login")
+      .single();
 
     if (error) {
       return res.status(400).json({
@@ -36,8 +33,8 @@ try {
 
     res.status(201).json({
       success: true,
-      message: "User Registered Successfully ✅",
-      user: data[0]
+      message: "User registered successfully",
+      user: data
     });
 
   } catch (err) {
