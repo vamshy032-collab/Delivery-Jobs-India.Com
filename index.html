@@ -1788,6 +1788,7 @@ async function trackVisitor(pageName) {
         const { data, error } = await supabase
             .from('visitors')
             .insert([{
+                full_name: 'Anonymous Visitor',
                 visited_page: pageName,
                 visit_date: new Date().toISOString(),
                 user_agent: navigator.userAgent,
