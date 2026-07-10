@@ -4,6 +4,9 @@ require("dotenv").config();
 
 const supabase = require("./config/database");
 const userRoutes = require("./routes/userRoutes");
+const authRoutes = require("./routes/authRoutes");
+const visitorRoutes = require("./routes/visitorRoutes");
+const jobRoutes = require("./routes/jobRoutes");
 
 const app = express();
 
@@ -14,17 +17,41 @@ app.use(cors());
 app.use(express.json());
 
 // ================================
-// User Routes
+// Routes
 // ================================
 app.use("/api/users", userRoutes);
+app.use("/api/auth", authRoutes);
+app.use("/api/visitors", visitorRoutes);
+app.use("/api/jobs", jobRoutes);
 
 // ================================
-// Test User Route
+// Test Routes
 // ================================
 app.get("/api/users/test", (req, res) => {
   res.status(200).json({
     success: true,
     message: "✅ User Route Working Successfully"
+  });
+});
+
+app.get("/api/auth/test", (req, res) => {
+  res.status(200).json({
+    success: true,
+    message: "✅ Auth Route Working Successfully"
+  });
+});
+
+app.get("/api/visitors/test", (req, res) => {
+  res.status(200).json({
+    success: true,
+    message: "✅ Visitor Route Working Successfully"
+  });
+});
+
+app.get("/api/jobs/test", (req, res) => {
+  res.status(200).json({
+    success: true,
+    message: "✅ Job Route Working Successfully"
   });
 });
 
@@ -34,7 +61,12 @@ app.get("/api/users/test", (req, res) => {
 app.get("/", (req, res) => {
   res.status(200).json({
     success: true,
-    message: "🚀 Delivery Jobs India Backend Running Successfully"
+    message: "🚀 Delivery Jobs India Backend Running Successfully",
+    endpoints: {
+      auth: "/api/auth",
+      visitors: "/api/visitors",
+      jobs: "/api/jobs"
+    }
   });
 });
 
