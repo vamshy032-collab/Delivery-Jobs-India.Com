@@ -1,11 +1,12 @@
 require("dotenv").config();
 
 // MSG91 Configuration
-const MSG91_API_KEY = process.env.MSG91_API_KEY || "YOUR_MSG91_API_KEY";
-const MSG91_TEMPLATE_ID = process.env.MSG91_TEMPLATE_ID || "YOUR_TEMPLATE_ID";
+const MSG91_API_KEY = process.env.MSG91_API_KEY;
+const MSG91_TEMPLATE_ID = process.env.MSG91_TEMPLATE_ID || "DELJOBOTP";
+const MSG91_SENDER_ID = process.env.MSG91_SENDER_ID || "DLVJOB";
 const MSG91_BASE_URL = "https://api.msg91.com/api/v5/otp";
 
-// In-memory OTP store (for demo - use Redis in production)
+// In-memory OTP store
 const otpStore = new Map();
 
 // ==========================================
@@ -42,16 +43,15 @@ const sendOTP = async (req, res) => {
       userId,
       purpose: purpose || "login",
       createdAt: Date.now(),
-      expiresAt: Date.now() + 5 * 60 * 1000 // 5 minutes
+      expiresAt: Date.now() + 5 * 60 * 1000
     };
     
-    // Use mobile as key
     otpStore.set(mobile, otpData);
 
-    // If using MSG91 API (with real API key)
-    if (MSG91_API_KEY && MSG91_API_KEY !== "YOUR_MSG91_API_KEY") {
+    // Send via MSG91 if API key is configured
+    if (MSG91_API_KEY) {
       try {
-        const response = await fetch(`${MSG91_BASE_URL}`, {
+        const response = await fetch(MSG91_BASE_URL, {
           method: "POST",
           headers: {
             "authkey": MSG91_API_KEY,
@@ -59,18 +59,21 @@ const sendOTP = async (req, res) => {
           },
           body: JSON.stringify({
             mobile: fullMobile,
-            message: `Your Delivery Jobs India OTP is ${otp}. Valid for 5 minutes.`,
-            sender: "DLVJOB",
-            template_id: MSG91_TEMPLATE_ID
+            otp: otp,
+            template_id: MSG91_TEMPLATE_ID,
+            sender: MSG91_SENDER_ID,
+            verify_otp: true
           })
         });
 
         const result = await response.json();
         
-        if (result.type === "success") {
+        console.log("MSG91 Response:", result);
+        
+        if (result.type === "success" || response.ok) {
           return res.status(200).json({
             success: true,
-            message: "OTP sent successfully",
+            message: "OTP sent successfully to " + mobile,
             request_id: result.request_id
           });
         } else {
@@ -85,14 +88,14 @@ const sendOTP = async (req, res) => {
       }
     }
 
-    // Demo mode - return OTP in response (for testing)
+    // Demo mode
     console.log(`📱 OTP for ${mobile}: ${otp}`);
     
     return res.status(200).json({
       success: true,
-      message: "OTP sent successfully",
+      message: "OTP sent successfully (Demo Mode)",
       demo_mode: true,
-      otp: otp // Only in demo mode!
+      otp: otp
     });
 
   } catch (err) {
