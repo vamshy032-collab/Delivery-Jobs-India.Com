@@ -228,8 +228,8 @@ function hideError(element) {
 async function findOrCreateUser(mobile) {
     const { data: existingUser, error: findError } = await sb
         .from("users")
-        .select("id, full_name, mobile_number, email, is_verified, last_login")
-        .eq("mobile_number", mobile)
+        .select("id, phone, email, login_type, is_verified, last_login")
+        .eq("phone", mobile)
         .maybeSingle();
 
     if (findError) console.error("Find user error:", findError);
@@ -239,13 +239,12 @@ async function findOrCreateUser(mobile) {
     const { data: newUser, error: createError } = await sb
         .from("users")
         .insert([{
-            full_name: "User",
-            mobile_number: mobile,
-            email: null,
-            login_type: "PHONE_OTP",
+            phone: mobile,
+            email: mobile + "@deliveryjobsindia.local",
+            login_type: "PHONE",
             is_verified: false
         }])
-        .select("id, full_name, mobile_number, email, is_verified, last_login")
+        .select("id, phone, email, login_type, is_verified, last_login")
         .single();
 
     if (createError) throw createError;
@@ -432,8 +431,8 @@ document.getElementById("verifyBtn").addEventListener("click", async function() 
 
         localStorage.setItem("isLoggedIn", "true");
         localStorage.setItem("userId", currentUser.id);
-        localStorage.setItem("userMobile", currentUser.mobile_number || loginInput.value.trim());
-        localStorage.setItem("userName", currentUser.full_name || "Delivery Partner");
+        localStorage.setItem("userMobile", currentUser.phone || loginInput.value.trim());
+        localStorage.setItem("userName", "Delivery Partner");
         localStorage.setItem("userEmail", currentUser.email || "");
 
         alert("Login Successful!");
